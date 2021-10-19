@@ -246,3 +246,152 @@ SELECT EMP_ID, EMP_NAME, SALARY, BONUS, BONUS_CALC(EMP_ID) AS "연봉"
 FROM EMPLOYEE
 WHERE BONUS_CALC(EMP_ID) > 40000000
 ORDER BY BONUS_CALC(EMP_ID) DESC;
+
+-----------------------------------------------------------------------------------------------
+/*
+    <CURSOR>
+        SQL 문의 처리결과(처리 결과가 여러 행(ROW))를 담고 있는 객체이다.
+        커서 사용 시 여러 행으로 나타난 처리 결과에 순차적으로 접근이 가능하다.
+        
+        * 커서 종류
+        묵시적/명시적 커서 두 종류가 존재한다.
+        
+        * 커서 속성 (묵시적 커서의 경우 커서명은 SQL로 사용된다.)
+          - 커서명%NOTFOUND    : 커서 영역에 남아있는 ROW 수가 없으면 TRUE, 있으면 FALSE
+          - 커서명%FOUND       : 커서 영역에 남아있는 ROW 수가 한 개 이상일 경우 TRUE 아니면 FALSE
+          - 커서명%ISOPEN      : 커서가 OPEN 상태인 경우 TRUE(묵시적 커서는 항상 FALSE)
+          - 커서명%ROWCOUNT    : SQL 처리 결과로 얻어온 행(ROW) 수
+          
+        1) 묵시적 커서
+          - 오라클에서 자동으로 생성되어 사용하는 커서이다.  
+          - PL/SQL 블록에서 SQL 문을 실행 시마다 자동으로 만들어져서 사용된다.
+          - 사용자는 생성 유무를 알 수 없지만, 커서 속성을 활용하여 커서의 정보를 얻어올 수 있다.
+*/
+-- BONUS가 NULL인 사원의 BONUS를 0으로 수정
+SELECT * FROM EMPLOYEE;
+
+COMMIT;
+
+BEGIN
+    UPDATE EMPLOYEE
+    SET BONUS = 0
+    WHERE BONUS IS NULL;
+    
+    -- 묵시적 커서 사용(ROWCOUNT)
+    DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT || '행이 수정됨');
+END;
+/
+
+ROLLBACK;
+SET SERVEROUTPUT ON;
+
+/*
+    1) 명시적 커서
+        - 사용자가 직접 선언해서 사용할 수 있는 커서이다.
+        
+        [사용방법]
+            1) CURSOR 커서명 IS ..         : 커서 선언
+            2) OPEN 커서명;                : 커서 오픈
+            3) FETCH 커서명 INTO 변수 ...   : 커서에서 데이터 추출(한 행씩 데이터를 가져온다.)
+            4) CLOSE 커서명                : 커서 닫기
+            
+        [표현법]
+            CORSOR 커서명 IS [SELECT 문]
+            
+            OPEN 커서명;
+            FETCH 커서명 INTO  변수;
+            ...
+            CLOSE 커서명;    
+*/
+
+DECLARE
+    EID EMPLOYEE.EMP_ID%TYPE;
+    ENAME EMPLOYEE.EMP_NAME%TYPE;
+    SAL EMPLOYEE.SALARY%TYPE;
+    
+    CURSOR C1 IS
+        SELECT EMP_ID, EMP_NAME, SALARY
+        FROM EMPLOYEE
+        WHERE SALARY > 3000000;
+BEGIN
+    OPEN C1;
+    
+    LOOP
+        -- 서브 쿼리의 결과에서 한 행씩 차례대로 데이터를 가져온다.
+        FETCH C1 INTO EID, ENAME, SAL;        
+        
+        EXIT WHEN C1%NOTFOUND;
+        
+        DBMS_OUTPUT.PUT_LINE(EID || '' || ENAME || '' || SAL);
+    END LOOP;
+        
+    CLOSE C1;
+END;
+/
+
+-- 전체 부서에 대해 부서 코드, 부서명, 지역 조회(PROCEDURE)
+CREATE OR REPLACE PROCEDURE CURSOR_DEPT
+IS
+    V_DEPT DEPARTMENT%ROWTYPE;
+    
+    CURSOR C1 IS
+        SELECT * FROM DEPARTMENT;
+BEGIN
+    OPEN C1;
+    
+    LOOP
+        FETCH C1 INTO V_DEPT.DEPT_ID, V_DEPT.DEPT_TITLE, V_DEPT.LOCATION_ID;
+        
+        EXIT WHEN C1%NOTFOUND;
+        
+        DBMS_OUTPUT.PUT_LINE(V_DEPT.DEPT_ID || '' || V_DEPT.DEPT_TITLE || '' || V_DEPT.LOCATION_ID);
+    END LOOP;
+    
+    CLOSE C1;
+END;
+/
+
+EXEC CURSOR_DEPT;
+
+-- FOR IN LOOP를 이용한 커서 사용
+CREATE OR REPLACE PROCEDURE CURSOR_DEPT
+IS
+    V_DEPT DEPARTMENT%ROWTYPE;       
+BEGIN
+    
+    FOR V_DEPT IN (SELECT * FROM DEPARTMENT)
+    LOOP        
+        DBMS_OUTPUT.PUT_LINE(V_DEPT.DEPT_ID || '' || V_DEPT.DEPT_TITLE || '' || V_DEPT.LOCATION_ID);
+    END LOOP;
+    
+   
+END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
