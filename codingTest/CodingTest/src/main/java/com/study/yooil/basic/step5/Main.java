@@ -81,17 +81,49 @@ public class Main {
 //		System.out.println(maxIndex);
 		
 //		 3. 숫자의 개수
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		int i = 0;
+//		int temp = 0;
+//		String result = null;
+//		int[] N = new int[3];
+//		int[] count = new int[10];
+//		
+//		while(i < 3) {
+//			try {
+//				N[i] = Integer.parseInt(br.readLine());
+//				
+//			} catch (NumberFormatException | IOException e) {
+//				e.printStackTrace();
+//			}
+//			i++;
+//		}
+//		
+//		result = "" + N[0] * N[1] * N[2];
+//		
+//		for(i = 0; i < result.length(); i++) {
+//			temp = Integer.parseInt("" + result.charAt(i));
+//			count[temp]++;
+//		}
+//		
+//		for (int n : count) {
+//			System.out.println(n);
+//		}
+		
+		// 4. 나머지
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
 		int i = 0;
 		int temp = 0;
-		String result = null;
-		int[] N = new int[3];
-		int[] count = new int[10];
+		int count = 0;
+		int[] N1 = new int[10];
+		int[] N2 = new int[10];
+		int[] remainder = new int[42];
 		
-		while(i < 3) {
+		while(i < 10) {
 			try {
-				N[i] = Integer.parseInt(br.readLine());
+				N1[i] = Integer.parseInt(br.readLine());
 				
 			} catch (NumberFormatException | IOException e) {
 				e.printStackTrace();
@@ -99,40 +131,38 @@ public class Main {
 			i++;
 		}
 		
-		result = "" + N[0] * N[1] * N[2];
+		i = 0;
 		
-		for(i = 0; i < result.length(); i++) {
-			temp = Integer.parseInt("" + result.charAt(i));
-			count[temp]++;
+		while(i < 10) {
+			N2[i] = N1[i] % 42;
+			i++;
 		}
 		
-		for (int n : count) {
-			System.out.println(n);
-		}
-		
-//		Scanner scan = new Scanner(System.in);
-//		int a = 0;
-//		int b=  0;
-//		int c = 0;
+//		i = 0;
 //		
-//		a = scan.nextInt();
-//		b = scan.nextInt();
-//		c = scan.nextInt();
-//
-//		int result = a*b*c;
-//		String resultStr = ""+result;
-//		
-//		int[] jari_cnt = new int[10];
-//		
-//		for (int i=0;i<resultStr.length();i++) {
-//			int temp = Integer.parseInt(""+resultStr.charAt(i));
-//			jari_cnt[temp]++;		
+//		while(i < 10) {
+//			System.out.println(N2[i]);
+//			i++;
 //		}
-//		
-//		for(int n : jari_cnt)
-//			System.out.println(n);
-//		
-//		scan.close();
+		
+		i = 0;
+		
+		while(i < 10) {
+			temp = N2[i];
+			remainder[temp]++;
+			i++;			
+		}
+		
+		i = 0;
+		
+		while(i < 42) {
+			if(remainder[i] != 0) {
+				count++;
+			}			
+			i++;
+		}
+		
+		System.out.println(count);
 	}
 
 	
