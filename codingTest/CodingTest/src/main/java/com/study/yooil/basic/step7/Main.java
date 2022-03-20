@@ -169,6 +169,100 @@ public class Main {
 //		}
 		
 		
+//		// 7. 상수
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		
+//		String[] strArr = new String[2];
+//		int[] intArr = new int[2];
+//		String[] temp = new String[2];
+//		
+//		try {
+//			strArr = br.readLine().split(" ");
+//			
+//			for(int i = 0; i < 2; i++) {
+//				temp[i] = Character.toString(strArr[i].charAt(2)) + strArr[i].charAt(1) + strArr[i].charAt(0);
+//			}
+//			
+//			if(Integer.parseInt(temp[0]) > Integer.parseInt(temp[1])) {
+//				System.out.println(temp[0]);
+//			} else if(Integer.parseInt(temp[0]) == Integer.parseInt(temp[1])) {
+//				System.out.println("서로 다른 수를 입력하시오");
+//			} else {
+//				System.out.println(temp[1]);
+//			}
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+	
+		// 8. 다이얼
+		
+		// 각 문자당 걸리는 시간 : 2 + (n-1)
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String S = null;
+		int sum = 0;
+		
+		try {
+			S = br.readLine();
+			
+			char[] ch = new char[S.length()];
+			
+			for(int i = 0; i < S.length(); i++) {
+				ch[i] = S.charAt(i);
+				
+				switch (ch[i]) {
+				case 'A':
+				case 'B':
+				case 'C':
+					sum += 3;
+					break;
+				case 'D':
+				case 'E':
+				case 'F':
+					sum += 4;
+					break;
+				case 'G':
+				case 'H':
+				case 'I':
+					sum += 5;
+					break;
+				case 'J':
+				case 'K':
+				case 'L':
+					sum += 6;
+					break;
+				case 'M':
+				case 'N':
+				case 'O':
+					sum += 7;
+					break;
+				case 'P':
+				case 'Q':
+				case 'R':
+				case 'S':
+					sum += 8;
+					break;
+				case 'T':
+				case 'U':
+				case 'V':
+					sum += 9;
+					break;
+				case 'W':
+				case 'X':
+				case 'Y':
+				case 'Z':
+					sum += 10;
+					break;
+				}
+			}
+			
+			System.out.println(sum);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 
@@ -210,9 +304,9 @@ public class Main {
 		
 	}
 	
-	public static int countChar(String str, char ch) {
-		
-		return str.length() - str.replace(String.valueOf(ch), "").length();
-	}
+//	public static int countChar(String str, char ch) {
+//		
+//		return str.length() - str.replace(String.valueOf(ch), "").length();
+//	}
 
 }
