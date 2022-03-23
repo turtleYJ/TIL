@@ -3,9 +3,7 @@ package com.study.yooil.basic.step7;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.StringTokenizer;
+import java.util.Arrays;
 
 public class Main {
 
@@ -196,77 +194,181 @@ public class Main {
 //			e.printStackTrace();
 //		} 
 	
-		// 8. 다이얼
+//		// 8. 다이얼
+//		
+//		// 각 문자당 걸리는 시간 : 2 + (n-1)
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		
+//		String S = null;
+//		int sum = 0;
+//		
+//		try {
+//			S = br.readLine();
+//			
+//			char[] ch = new char[S.length()];
+//			
+//			for(int i = 0; i < S.length(); i++) {
+//				ch[i] = S.charAt(i);
+//				
+//				switch (ch[i]) {
+//				case 'A':
+//				case 'B':
+//				case 'C':
+//					sum += 3;
+//					break;
+//				case 'D':
+//				case 'E':
+//				case 'F':
+//					sum += 4;
+//					break;
+//				case 'G':
+//				case 'H':
+//				case 'I':
+//					sum += 5;
+//					break;
+//				case 'J':
+//				case 'K':
+//				case 'L':
+//					sum += 6;
+//					break;
+//				case 'M':
+//				case 'N':
+//				case 'O':
+//					sum += 7;
+//					break;
+//				case 'P':
+//				case 'Q':
+//				case 'R':
+//				case 'S':
+//					sum += 8;
+//					break;
+//				case 'T':
+//				case 'U':
+//				case 'V':
+//					sum += 9;
+//					break;
+//				case 'W':
+//				case 'X':
+//				case 'Y':
+//				case 'Z':
+//					sum += 10;
+//					break;
+//				}
+//			}
+//			
+//			System.out.println(sum);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		// 각 문자당 걸리는 시간 : 2 + (n-1)
+		
+////		9. 크로아티아 알파벳
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		
+// 		
+//		
+//		try {
+//			String S = null;
+//			int count = 0;
+//			
+//			S = br.readLine();
+//			
+//			count = S.length();
+//			
+//			if(S.length() <= 100) {
+//			
+//				for (int i = 1; i < S.length(); i++) {
+//					// =일 때
+//					if(S.charAt(i) == 61) {
+//						if(S.charAt(i-1) == 'c') {
+//							count--;
+//						}
+//						if(S.charAt(i-1) == 's') {
+//							count--;
+//						}
+//						if(S.charAt(i-1) == 'z') {
+//							if(i > 1 && S.charAt(i-2) == 'd') {
+//								count -= 2;
+//								
+//								continue;
+//							}
+//							count--;
+//						}
+//					}
+//					
+//					// - 일 때
+//					if(S.charAt(i) == 45) {
+//						if(S.charAt(i-1) == 'c') {
+//							count--;
+//						}
+//						if(S.charAt(i-1) == 'd') {
+//							count--;
+//						}
+//					}
+//					
+//					// j일 때
+//					if(S.charAt(i) == 'j') {
+//						if(S.charAt(i-1) == 'l') {
+//							count--;
+//						}
+//						if(S.charAt(i-1) == 'n') {
+//							count--;
+//						}
+//					}
+//				}
+//				
+//				System.out.println(count);
+//			} else {
+//				return;
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		// 10. 그룹 단어 체커
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		String S = null;
-		int sum = 0;
-		
-		try {
-			S = br.readLine();
-			
-			char[] ch = new char[S.length()];
-			
-			for(int i = 0; i < S.length(); i++) {
-				ch[i] = S.charAt(i);
+		int n = 0;
+		int count = 0;
 				
-				switch (ch[i]) {
-				case 'A':
-				case 'B':
-				case 'C':
-					sum += 3;
-					break;
-				case 'D':
-				case 'E':
-				case 'F':
-					sum += 4;
-					break;
-				case 'G':
-				case 'H':
-				case 'I':
-					sum += 5;
-					break;
-				case 'J':
-				case 'K':
-				case 'L':
-					sum += 6;
-					break;
-				case 'M':
-				case 'N':
-				case 'O':
-					sum += 7;
-					break;
-				case 'P':
-				case 'Q':
-				case 'R':
-				case 'S':
-					sum += 8;
-					break;
-				case 'T':
-				case 'U':
-				case 'V':
-					sum += 9;
-					break;
-				case 'W':
-				case 'X':
-				case 'Y':
-				case 'Z':
-					sum += 10;
-					break;
-				}
+		try {
+			n = Integer.parseInt(br.readLine());
+			
+			String[] S = new String[n];
+			
+			// String들을 S[]에 대입
+			for(int i = 0; i < n; i++) {
+				S[i] = br.readLine();
 			}
 			
-			System.out.println(sum);
+			for(int i = 0; i < n; i++) {
+				Loop1 :
+				for(int j = 0; j < S[i].length() - 1; j++) {
+					if(S[i].charAt(j) != S[i].charAt(j+1)) {
+						for(int k = j+2; k < S[i].length(); k++) {
+							if(S[i].charAt(j) == S[i].charAt(k)) {
+								count++;
+								
+								break Loop1;
+							}
+						}
+					}
+				}
+				
+			}
+			
+			System.out.println(n - count);
+			
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
 
-		
 		
 		
 		
