@@ -79,34 +79,69 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+//		
+//		// 5. ACM 호텔
+//		try {
+//			int n = Integer.parseInt(br.readLine());
+//			
+//			String[] S = new String[n];
+//			int[] result = new int[n];
+//			
+//			for(int i = 0; i < S.length; i++) {
+//				S[i] = br.readLine();
+//			}
+//			
+//			for(int i = 0; i < S.length; i++) {
+//				int A = Integer.parseInt(S[i].split(" ")[0]);
+//				int B = Integer.parseInt(S[i].split(" ")[1]);
+//				int C = Integer.parseInt(S[i].split(" ")[2]);
+//				
+//				if(C % A != 0) {
+//					result[i] = C % A * 100 + C / A + 1;
+//				} else {
+//					result[i] = A * 100 + C / A ;
+//				}
+//			}
+//			
+//			for (int i : result) {
+//				System.out.println(i);
+//			}
+//			
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		// 5. ACM 호텔
+		// 6. 부녀회장이 될테야
+		
+		int[][] apt = new int[15][14];
+		
+		// 호(-1 해주어야 한다.
+		for(int j = 0; j < 14; j++) {
+			apt[0][j] = j+1;
+		}
+		
+		// 층(그대로)
+		for(int i = 0; i < 15; i++) {
+			apt[i][0] = 1;
+		}
+		
+		for(int i = 1; i < 15; i++) {
+			for(int j = 1; j < 14; j++) {
+				apt[i][j] = apt[i][j-1] + apt[i-1][j];
+			}
+		}
+		
+		int n = 0;
 		try {
-			int n = Integer.parseInt(br.readLine());
+			n = Integer.parseInt(br.readLine());
 			
-			String[] S = new String[n];
-			int[] result = new int[n];
-			
-			for(int i = 0; i < S.length; i++) {
-				S[i] = br.readLine();
+			for(int i = 0; i < n; i++) {
+				System.out.println(apt[Integer.parseInt(br.readLine())][Integer.parseInt(br.readLine()) - 1]);
 			}
-			
-			for(int i = 0; i < S.length; i++) {
-				int A = Integer.parseInt(S[i].split(" ")[0]);
-				int B = Integer.parseInt(S[i].split(" ")[1]);
-				int C = Integer.parseInt(S[i].split(" ")[2]);
-				
-				if(C % A != 0) {
-					result[i] = C % A * 100 + C / A + 1;
-				} else {
-					result[i] = A * 100 + C / A ;
-				}
-			}
-			
-			for (int i : result) {
-				System.out.println(i);
-			}
-			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,8 +149,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		
 		
 		
