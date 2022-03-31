@@ -1,22 +1,113 @@
 package com.study.yooil.basic.step7;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.OutputStreamWriter;
+import java.math.BigInteger;
+import java.util.StringTokenizer;
 
 public class Main {
 
 	public static void main(String[] args) {
-//		// 1. 아스키 코드
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		int a = 0;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		
+//		// 1. 손익분기점
+//		String[] arrStr = new String[3];
+//		int[] arrInt = new int[3];
+//		int A1 = 0; // 고정비
+//		int A2 = 0; // 유지비
+//		int B = 0; // 개당 판매 액
 //		
 //		try {
-//			a = (int)(br.readLine().charAt(0));
+//			arrStr = br.readLine().split(" ");
 //			
-//			System.out.println(a);
+//			for(int i = 0; i < arrStr.length; i++) {
+//				arrInt[i] = Integer.parseInt(arrStr[i]);
+//			}
+//			
+//			A1 = arrInt[0];
+//			A2 = arrInt[1];
+//			B = arrInt[2];
+//			
+//			if(A2 >= B) {
+//				System.out.println("-1");
+//				
+//				return;
+//			} else {
+//				System.out.println(A1 / (B-A2) + 1);
+//			}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+		// 2. 벌집 (보류)
+//		int n = 1;
+		
+//		// 4. 달팽이는 올라가고 싶다.
+//		
+//		try {
+//			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+//			
+//			int A = 0;
+//			int B = 0;
+//			int V = 0;
+//			int day = 0;
+//			
+//			A = Integer.parseInt(st.nextToken());
+//			B = Integer.parseInt(st.nextToken());
+//			V = Integer.parseInt(st.nextToken());
+//			
+//			// 5 1 10
+//			day = (V - B) / (A - B);
+//			
+//			if((V-B) % (A-B) != 0) {
+//				
+//				day++;
+//			} 
+//			
+//			bw.write(day + "");
+//			bw.flush();
+//			bw.close();
+//			
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		// 5. ACM 호텔
+//		try {
+//			int n = Integer.parseInt(br.readLine());
+//			
+//			String[] S = new String[n];
+//			int[] result = new int[n];
+//			
+//			for(int i = 0; i < S.length; i++) {
+//				S[i] = br.readLine();
+//			}
+//			
+//			for(int i = 0; i < S.length; i++) {
+//				int A = Integer.parseInt(S[i].split(" ")[0]);
+//				int B = Integer.parseInt(S[i].split(" ")[1]);
+//				int C = Integer.parseInt(S[i].split(" ")[2]);
+//				
+//				if(C % A != 0) {
+//					result[i] = C % A * 100 + C / A + 1;
+//				} else {
+//					result[i] = A * 100 + C / A ;
+//				}
+//			}
+//			
+//			for (int i : result) {
+//				System.out.println(i);
+//			}
+//			
 //		} catch (NumberFormatException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
@@ -24,27 +115,62 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+//		// 6. 부녀회장이 될테야
 //		
-//		// 2. 숫자의 합
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		int[][] apt = new int[15][14];
+//		
+//		// 호(-1 해주어야 한다.
+//		for(int j = 0; j < 14; j++) {
+//			apt[0][j] = j+1;
+//		}
+//		
+//		// 층(그대로)
+//		for(int i = 0; i < 15; i++) {
+//			apt[i][0] = 1;
+//		}
+//		
+//		for(int i = 1; i < 15; i++) {
+//			for(int j = 1; j < 14; j++) {
+//				apt[i][j] = apt[i][j-1] + apt[i-1][j];
+//			}
+//		}
+//		
+//		int n = 0;
+//		try {
+//			n = Integer.parseInt(br.readLine());
+//			
+//			for(int i = 0; i < n; i++) {
+//				System.out.println(apt[Integer.parseInt(br.readLine())][Integer.parseInt(br.readLine()) - 1]);
+//			}
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//		// 7. 설탕 배달
 //		
 //		int N = 0;
-//		String[] arr = null;
-//		int sum = 0;
 //		
 //		try {
 //			N = Integer.parseInt(br.readLine());
 //			
-//			arr = new String[N];
-//			
-//			arr = br.readLine().split("");
-//			
-//			for(int i = 0; i < arr.length; i++) {
-//				sum += Integer.parseInt(arr[i]); 
+//			if(N % 5 == 0) {
+//				System.out.println(N / 5);
+//			} else if(N % 5 == 3) {
+//				System.out.println(N / 5 + 1);
+//			} else if(N % 5 == 1 && N >= 6) {
+//				System.out.println(N / 5 + 1);
+//			} else if(N % 5 == 2 && N >= 12) {
+//				System.out.println((N-12) / 5 + 4);
+//			} else if(N % 5 == 4 && N >= 9) {
+//				System.out.println((N-9) / 5 + 3);
+//			} else {
+//				System.out.println("-1");
 //			}
-//			
-//			System.out.println(sum);
-//			
 //			
 //		} catch (NumberFormatException e) {
 //			// TODO Auto-generated catch block
@@ -53,312 +179,60 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		
-//		// 3. 알파벳 찾기
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		ArrayList<Character> al = new ArrayList<>();
-//		String str = null;
-//		
-//		
+		
+//		// 8. 큰 수 A+B
 //		try {
-//			str = br.readLine();
+//			String S = br.readLine();
+//			StringTokenizer st = new StringTokenizer(S, " ");
 //			
-//			for(int i = 0; i < str.length(); i++) {
-//				al.add(str.charAt(i));
-//			}
+//			BigInteger A = new BigInteger(st.nextToken());
+//			BigInteger B = new BigInteger(st.nextToken());
 //			
-//			for(int j = 97; j < 123; j++) {
-//				
-//				char ch = (char)j;
-//
-//				System.out.print(al.indexOf(ch) + " ");
-//			}
+//			System.out.println(A.add(B));
 //			
-//		} catch (IOException e) {
+//		} catch (NumberFormatException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//		}
-//		
-		// 4. 문자열 반복
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		int n = 0;
-//		int k = 0;
-//		char ch = 0;
-//		
-//		try {
-//			
-//			n = Integer.parseInt(br.readLine());
-//			
-//			int[] N = new int[n];
-//			String[] S = new String[n];
-//			
-//			StringBuilder sb = new StringBuilder();
-//			
-//			
-//			while(k < n) {
-//				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-//				
-//				N[k] = Integer.parseInt(st.nextToken());
-//				S[k] = st.nextToken();
-//				
-//				for(int i = 0; i < S[k].length(); i++) {
-//					ch = S[k].charAt(i);
-//					for(int j = 0; j < N[k]; j++) {
-//						sb.append(ch);
-//					}
-//				}
-//				
-//				sb.append("\n");
-//				
-//				k++;
-//			}
-//			
-//			System.out.println(sb);
-//			
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-//		// 5. 단어 공부 (!! 못품)
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		String S = null;
-//		int n = 0;
-//		int max = 0;
-//		char maxCh = '\u0000';
-//		
-//		try {
-//			S = br.readLine().toLowerCase();
-//			
-//			n = S.length();
-//			
-//			char[] ch = new char[n];
-//			int[] count = new int[n];
-//			
-//			// 대입해준다.
-//			for(int i = 0; i < n; i++) {
-//				ch[i] = S.charAt(i);
-//			}
-//			
-//			// 축출
-//			for(int i = 0; i < n; i++) {
-//				
-//				 count[i] = countChar(S, ch[i]); 
-//				 
-//				 if(i > 0 && ch[i] != ch[i-1]) {
-//					 if(max == count[i-1]) {
-//						 System.out.println("?");
-//						 return;
-//					 } else if(max < count[i]) {
-//						 max = count[i];
-//					 } 
-//				 }
-//			}
-//			
-//			System.out.println(max);
-//			
-//			System.out.println(maxCh);
-//			
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 		
-		
-//		// 7. 상수
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		String[] strArr = new String[2];
-//		int[] intArr = new int[2];
-//		String[] temp = new String[2];
-//		
-//		try {
-//			strArr = br.readLine().split(" ");
-//			
-//			for(int i = 0; i < 2; i++) {
-//				temp[i] = Character.toString(strArr[i].charAt(2)) + strArr[i].charAt(1) + strArr[i].charAt(0);
-//			}
-//			
-//			if(Integer.parseInt(temp[0]) > Integer.parseInt(temp[1])) {
-//				System.out.println(temp[0]);
-//			} else if(Integer.parseInt(temp[0]) == Integer.parseInt(temp[1])) {
-//				System.out.println("서로 다른 수를 입력하시오");
-//			} else {
-//				System.out.println(temp[1]);
-//			}
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
-	
-//		// 8. 다이얼
-//		
-//		// 각 문자당 걸리는 시간 : 2 + (n-1)
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-//		String S = null;
-//		int sum = 0;
-//		
-//		try {
-//			S = br.readLine();
-//			
-//			char[] ch = new char[S.length()];
-//			
-//			for(int i = 0; i < S.length(); i++) {
-//				ch[i] = S.charAt(i);
-//				
-//				switch (ch[i]) {
-//				case 'A':
-//				case 'B':
-//				case 'C':
-//					sum += 3;
-//					break;
-//				case 'D':
-//				case 'E':
-//				case 'F':
-//					sum += 4;
-//					break;
-//				case 'G':
-//				case 'H':
-//				case 'I':
-//					sum += 5;
-//					break;
-//				case 'J':
-//				case 'K':
-//				case 'L':
-//					sum += 6;
-//					break;
-//				case 'M':
-//				case 'N':
-//				case 'O':
-//					sum += 7;
-//					break;
-//				case 'P':
-//				case 'Q':
-//				case 'R':
-//				case 'S':
-//					sum += 8;
-//					break;
-//				case 'T':
-//				case 'U':
-//				case 'V':
-//					sum += 9;
-//					break;
-//				case 'W':
-//				case 'X':
-//				case 'Y':
-//				case 'Z':
-//					sum += 10;
-//					break;
-//				}
-//			}
-//			
-//			System.out.println(sum);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
-////		9. 크로아티아 알파벳
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		
-// 		
-//		
-//		try {
-//			String S = null;
-//			int count = 0;
-//			
-//			S = br.readLine();
-//			
-//			count = S.length();
-//			
-//			if(S.length() <= 100) {
-//			
-//				for (int i = 1; i < S.length(); i++) {
-//					// =일 때
-//					if(S.charAt(i) == 61) {
-//						if(S.charAt(i-1) == 'c') {
-//							count--;
-//						}
-//						if(S.charAt(i-1) == 's') {
-//							count--;
-//						}
-//						if(S.charAt(i-1) == 'z') {
-//							if(i > 1 && S.charAt(i-2) == 'd') {
-//								count -= 2;
-//								
-//								continue;
-//							}
-//							count--;
-//						}
-//					}
-//					
-//					// - 일 때
-//					if(S.charAt(i) == 45) {
-//						if(S.charAt(i-1) == 'c') {
-//							count--;
-//						}
-//						if(S.charAt(i-1) == 'd') {
-//							count--;
-//						}
-//					}
-//					
-//					// j일 때
-//					if(S.charAt(i) == 'j') {
-//						if(S.charAt(i-1) == 'l') {
-//							count--;
-//						}
-//						if(S.charAt(i-1) == 'n') {
-//							count--;
-//						}
-//					}
-//				}
-//				
-//				System.out.println(count);
-//			} else {
-//				return;
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-		// 10. 그룹 단어 체커
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = 0;
+		// 9. 소수 찾기
 		int count = 0;
-				
+		
 		try {
-			n = Integer.parseInt(br.readLine());
+			int N = Integer.parseInt(br.readLine());
 			
-			String[] S = new String[n];
+			String[] strArr = new String[N];
+			int[] intArr = new int[N];
 			
-			// String들을 S[]에 대입
-			for(int i = 0; i < n; i++) {
-				S[i] = br.readLine();
+			strArr = br.readLine().split(" ");
+			
+			for(int i = 0; i < strArr.length; i++) {
+				intArr[i] = Integer.parseInt(strArr[i]);
 			}
 			
-			for(int i = 0; i < n; i++) {
-				Loop1 :
-				for(int j = 0; j < S[i].length() - 1; j++) {
-					if(S[i].charAt(j) != S[i].charAt(j+1)) {
-						for(int k = j+2; k < S[i].length(); k++) {
-							if(S[i].charAt(j) == S[i].charAt(k)) {
-								count++;
-								
-								break Loop1;
-							}
+			for(int i = 0; i < intArr.length; i++) {
+				if(intArr[i] == 1) {
+					continue;
+				} else if(intArr[i] == 2) {
+					count++;
+				} else {
+					count++;
+					
+					for(int j = 2; j < intArr[i]; j++) {
+						if(intArr[i] % j == 0) {
+							count--;
+							
+							break;
 						}
 					}
 				}
-				
 			}
 			
-			System.out.println(n - count);
+			System.out.println(count);
+			
 			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -367,14 +241,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -406,9 +272,5 @@ public class Main {
 		
 	}
 	
-//	public static int countChar(String str, char ch) {
-//		
-//		return str.length() - str.replace(String.valueOf(ch), "").length();
-//	}
 
 }

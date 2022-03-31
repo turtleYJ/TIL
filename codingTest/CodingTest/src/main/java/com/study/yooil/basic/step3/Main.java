@@ -239,36 +239,110 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		// 11. X보다 작은 수
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		// 11. X보다 작은 수
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
+//		
+//		int N = 0;
+//		int X = 0;
+//		String[] arr1 =  new String[2];
+//		
+//		try {
+//			arr1 = br.readLine().split(" ");
+//			N = Integer.parseInt(arr1[0]);
+//			X = Integer.parseInt(arr1[1]);
+//			
+//			String[] arr2 =  new String[N];
+//			
+//			arr2 = br.readLine().split(" ");
+//			
+//			for(int i = 0; i < N; i++) {
+//				if(Integer.parseInt(arr2[i]) < X) {
+//					bw.write(arr2[i] + " ");
+//				}
+//			}
+//			
+//			bw.flush();
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		// 12. A + B - 5
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		int A = 0;
+//		int B = 0;
+//		String[] arr =  new String[2];
+//		
+//		try {
+//			while(true) {			
+//			arr = br.readLine().split(" ");
+//			A = Integer.parseInt(arr[0]);
+//			B = Integer.parseInt(arr[1]);	
+//			
+//			if(A == 0 && B == 0) {
+//				break;
+//			}
+//			bw.write(A + B + "\n");
+//			}
+//			
+//			bw.flush();
+//		} catch (IOException e) {
+//			e.printStackTrace();			
+//		}
+		
+		// 13. A + B - 4
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        StringTokenizer st;
+//        String input;
+//        StringBuilder sb = new StringBuilder();
+//        
+//        try {
+//			while((input = br.readLine()) != null){
+//			    st = new StringTokenizer(input, " ");
+//			    
+//			    int A = Integer.parseInt(st.nextToken());
+//			    int B = Integer.parseInt(st.nextToken());
+//			    
+//			    
+//			    sb.append((A+B)).append("\n");
+//			}
+//		} catch (NumberFormatException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        System.out.println(sb);
+//    
+        // 14. 더하기 사이클
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		PrintWriter pw = new PrintWriter(new BufferedOutputStream(System.out));
-		
-		int N = 0;
-		int X = 0;
-		String[] arr1 =  new String[2];
-		
+        
+        int N = 0;
+        int N1 = 0;
+        int count = 0;
+        
 		try {
-			arr1 = br.readLine().split(" ");
-			N = Integer.parseInt(arr1[0]);
-			X = Integer.parseInt(arr1[1]);
+			N = Integer.parseInt(br.readLine());
 			
-			String[] arr2 =  new String[N];
+			N1 = N;
 			
-			arr2 = br.readLine().split(" ");
 			
-			for(int i = 0; i < N; i++) {
-				if(Integer.parseInt(arr2[i]) < X) {
-					bw.write(arr2[i] + " ");
-				}
-			}
+			do {
+				N = (N % 10) * 10 + (N / 10 + N % 10) % 10;
+				count += 1;
+			} while (!(N == N1));
 			
-			bw.flush();
+			bw.write(count + "");
+			bw.close();
 			
-		} catch (IOException e) {
+		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}
 	}
 
 }
