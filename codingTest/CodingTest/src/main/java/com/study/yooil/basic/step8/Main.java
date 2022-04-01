@@ -191,47 +191,132 @@ public class Main {
 //				e.printStackTrace();
 //			}
 		
-			// 베트트랑 공준
-				try {
-					
-					
-					while(true) {
-						int n = 0;
-						int count = 0;
-						
-						n = Integer.parseInt(br.readLine());
-						
-						if(n == 0) break;
-						
-						boolean[] arr = new boolean[2*n+1];
-						
-						arr[0] = true;
-						arr[1] = true;
-						
-						for(int i = 2; i < Math.sqrt(2*n+1); i++) {
-							for(int j = i*i; j < 2*n+1; j += i) {
-								arr[j] = true;
-							}
-						}
-						
-						for(int i = n+1; i < 2*n+1; i++) {
-							if(arr[i] == false) {
-								count++;
-							}
-						}
-						
-						System.out.println(count);
-					}
-					
-					
-					
-				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+//		// 5. 베트트랑 공준
+//			try {
+//				
+//				
+//				while(true) {
+//					int n = 0;
+//					int count = 0;
+//					
+//					n = Integer.parseInt(br.readLine());
+//					
+//					if(n == 0) break;
+//					
+//					boolean[] arr = new boolean[2*n+1];
+//					
+//					arr[0] = true;
+//					arr[1] = true;
+//					
+//					for(int i = 2; i < Math.sqrt(2*n+1); i++) {
+//						for(int j = i*i; j < 2*n+1; j += i) {
+//							arr[j] = true;
+//						}
+//					}
+//					
+//					for(int i = n+1; i < 2*n+1; i++) {
+//						if(arr[i] == false) {
+//							count++;
+//						}
+//					}
+//					
+//					System.out.println(count);
+//				}
+//				
+//				
+//				
+//			} catch (NumberFormatException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		
+		// 6. 골드바흐의 추측
+		int n = 0; // 테스트의 수
+		StringBuilder sb = new StringBuilder();
+		
+		try {
+			// 테스트 횟수 입력
+			n = Integer.parseInt(br.readLine());
+			
+//			int[] arr = new int[n];
+			
+//			// 테스트 수 입력
+//			for(int i = 0; i < arr.length; i++) {
+//				arr[i] = Integer.parseInt(br.readLine());
+//			}
+			
+			// 소수 입력
+			boolean[] bArr = new boolean[10000 + 1];
+			
+			bArr[0] = true;
+			bArr[1] = true;
+			
+			for(int i = 2; i < Math.sqrt(10000 + 1); i++) {
+				if(bArr[i]) continue;
+				
+				for(int j = i*i; j < 10000 + 1; j += i) {
+					bArr[j] = true;
 				}
+			}
+			//
+			
+			while(true) {
+				if(n == 0) {
+					break;
+				}
+				
+				int num = 0;
+				int A = 0;
+				int B = 0;
+				
+				num = Integer.parseInt(br.readLine());
+				
+				
+				A = B = num / 2;
+				
+				if(bArr[A] == false) {
+					sb.append(A + " " + B).append("\n");
+				} else {
+					while(true) {
+						A--;
+						B++;
+						if(bArr[A] == false && bArr[B] == false) {
+							sb.append(A + " " + B).append("\n");
+							
+							break;
+						}
+					}
+				}
+				
+				
+				
+				n--;
+			}
+			
+			System.out.println(sb);
+			
+//			for(int i = 0; i < arr.length; i++) {
+//				
+//				
+//				for(int j = 0; j < arr[i] + 1; j++) {
+//					if(bArr[j] == false) {
+//						System.out.println(j);
+//					}
+//				}
+//			}
+			
+			
+			
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
 		
 		
