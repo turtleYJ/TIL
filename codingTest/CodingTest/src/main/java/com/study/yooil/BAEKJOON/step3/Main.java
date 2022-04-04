@@ -1,4 +1,4 @@
-package com.study.yooil.basic.step3;
+package com.study.yooil.BAEKJOON.step3;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

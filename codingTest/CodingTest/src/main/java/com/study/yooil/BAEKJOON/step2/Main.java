@@ -1,4 +1,4 @@
-package com.study.yooil.basic.step2;
+package com.study.yooil.BAEKJOON.step2;
 
 import java.util.Scanner;
 

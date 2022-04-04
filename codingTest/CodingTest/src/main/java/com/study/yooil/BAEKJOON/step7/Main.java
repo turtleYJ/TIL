@@ -1,4 +1,4 @@
-package com.study.yooil.basic.step7;
+package com.study.yooil.BAEKJOON.step7;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

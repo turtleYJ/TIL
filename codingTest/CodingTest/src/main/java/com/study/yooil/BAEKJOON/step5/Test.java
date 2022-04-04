@@ -1,4 +1,4 @@
-package com.study.yooil.basic.step5;
+package com.study.yooil.BAEKJOON.step5;
 
 public class Test {
 
