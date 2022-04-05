@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 public class Main {
 	static char[][] arr;
+	static StringBuilder sb = null;
+	static int count = 0;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -39,28 +41,61 @@ public class Main {
 //		
 //		System.out.println(result);
 		
-//		 3. 별 찍기 - 10(*****)
+//		// 3. 별 찍기 - 10(*****)
+//		int N = 0;
+//		StringBuilder sb = new StringBuilder();
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		arr = new char[N][N];
+//		
+//		starMaker(0, 0, N, false);
+//		
+//		// i - 행, j - 열
+//		for(int i = 0; i < N; i++) {
+//			for(int j = 0; j < N; j++) {
+//				sb.append(arr[i][j]);
+//			}
+//			sb.append('\n');
+//		}
+//		
+//		System.out.println(sb);
+		
+		// 4. 하노이 탑 이동 순서(*****)
 		int N = 0;
-		StringBuilder sb = new StringBuilder();
+		int result = 0;
+		
+		sb = new StringBuilder();
 		
 		N = Integer.parseInt(br.readLine());
 		
-		arr = new char[N][N];
+		hanoi(N, 1, 3, 2);
 		
-		starMaker(0, 0, N, false);
-		
-		// i - 행, j - 열
-		for(int i = 0; i < N; i++) {
-			for(int j = 0; j < N; j++) {
-				sb.append(arr[i][j]);
-			}
-			sb.append('\n');
-		}
+		System.out.println(count);
 		
 		System.out.println(sb);
 	}
+	
+	
 
 	
+	private static void hanoi(int N, int from, int to, int remain) {
+		
+		
+		if(N == 0) return;
+		
+		count++;
+		
+		// 바로 전전
+		hanoi(N-1, from, remain, to);
+		sb.append(from + " " + to + "\n");
+		// 바로 전
+		hanoi(N-1, remain, to, from);
+	}
+
+
+
+
 	private static void starMaker(int x, int y, int N, boolean blank) {
 		// 공백인 경우
 		if(blank) {
