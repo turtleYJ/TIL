@@ -4,35 +4,44 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
+
+
 public class Main {
+	
+	
 
 	public static void main(String[] args) {
 //		
-//		// 1. 정수 N개의 합
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//		Test test = new Test();
-//		
-//		int[] a;
-//		try {
-//			a = new int[Integer.parseInt(br.readLine())];
-//			
-//			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-//			
-//			for(int i = 0; i < a.length; i++) {
-//				a[i] = Integer.parseInt(st.nextToken());
-//			}
-//					
-//			System.out.println(test.sum(a));
-//		} catch (NumberFormatException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// 1. 정수 N개의 합
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Test test = new Test();		
+		List<Integer> arr = new ArrayList<>();
+		int sum = 0;
+		
+		try {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			
+			while(st.hasMoreTokens()) {
+				arr.add(Integer.parseInt(st.nextToken()));
+			}
+			
+			for (Integer i : arr) {
+				sum += i;
+			}
+			
+			System.out.println();
+	
+			
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 //		// 2. 셀프 넘버
 //		int num = 0;		
@@ -64,51 +73,51 @@ public class Main {
 //		}
 		
 		// 3. 한수
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int N = 0;
-		int i = 1;
-		int a = 0; // 백의 자리
-		int b = 0; // 십의 자리
-		int c = 0; // 일의 자리
-		ArrayList<Integer> temp = new ArrayList<>();
-		
-		try {
-			N = Integer.parseInt(br.readLine());
-			
-			a = N / 100;
-			b = (N % 100) / 10;
-			c = (N % 10);
-			
-			while(i <= N) {
-				
-				if(i < 100) {
-					temp.add(i);
-				} else if(i >= 100 && i <= 1000){
-					a = i / 100;
-					b = (i % 100) / 10;
-					c = (i % 10);
-					
-					if((a-b) == (b-c)) {
-						temp.add(i);
-					}
-				} else {
-					System.out.println("1000이하의 값을 입력하세요");
-					
-					return;
-				}
-				i++;
-			}
-			
-			System.out.println(temp.size());
-			
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		
+//		int N = 0;
+//		int i = 1;
+//		int a = 0; // 백의 자리
+//		int b = 0; // 십의 자리
+//		int c = 0; // 일의 자리
+//		ArrayList<Integer> temp = new ArrayList<>();
+//		
+//		try {
+//			N = Integer.parseInt(br.readLine());
+//			
+//			a = N / 100;
+//			b = (N % 100) / 10;
+//			c = (N % 10);
+//			
+//			while(i <= N) {
+//				
+//				if(i < 100) {
+//					temp.add(i);
+//				} else if(i >= 100 && i <= 1000){
+//					a = i / 100;
+//					b = (i % 100) / 10;
+//					c = (i % 10);
+//					
+//					if((a-b) == (b-c)) {
+//						temp.add(i);
+//					}
+//				} else {
+//					System.out.println("1000이하의 값을 입력하세요");
+//					
+//					return;
+//				}
+//				i++;
+//			}
+//			
+//			System.out.println(temp.size());
+//			
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 	}

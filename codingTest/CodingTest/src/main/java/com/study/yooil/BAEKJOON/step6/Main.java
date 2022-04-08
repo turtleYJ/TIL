@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
 
 	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //		// 1. 아스키 코드
-//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //		
 //		int a = 0;
 //		
@@ -165,6 +166,66 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+//		// 5. 단어공부 (re)
+//		String S = "";
+//		int[] arr = new int[128];
+//		int max = 0;
+//		int maxIndex = 0;
+//		
+//		try {
+//			S = br.readLine().toUpperCase();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		// 초기화
+//		for(int i = 0; i < arr.length; i++) {
+//			arr[i] = 0;
+//		}
+//		
+//		// count
+//		for(int i = 0; i < S.length(); i++) {
+//			arr[S.charAt(i)]++;
+//		}
+//		
+//		// 최대값 인덱스 찾기
+//		for(int i = 0; i < arr.length; i++) {
+//			if(arr[i] > max) {
+//				max = arr[i];
+//				
+//				maxIndex = i;
+//			} else if(max > 0 && arr[i] == max) {
+//				maxIndex = 128;
+//			} else {
+//				continue;
+//			}
+//		}
+//		
+//		if(maxIndex != 128) {
+//			System.out.println((char)maxIndex);
+//		} else {
+//			System.out.println("?");
+//		}
+		
+		// 6 . 단어의 개수
+		int count = 0;
+		
+		try {
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			
+			while(st.hasMoreTokens()) {
+				st.nextToken();
+				
+				count++;
+			}
+			
+			System.out.println(count);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 //		// 7. 상수
@@ -326,47 +387,47 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		// 10. 그룹 단어 체커
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = 0;
-		int count = 0;
-				
-		try {
-			n = Integer.parseInt(br.readLine());
-			
-			String[] S = new String[n];
-			
-			// String들을 S[]에 대입
-			for(int i = 0; i < n; i++) {
-				S[i] = br.readLine();
-			}
-			
-			for(int i = 0; i < n; i++) {
-				Loop1 :
-				for(int j = 0; j < S[i].length() - 1; j++) {
-					if(S[i].charAt(j) != S[i].charAt(j+1)) {
-						for(int k = j+2; k < S[i].length(); k++) {
-							if(S[i].charAt(j) == S[i].charAt(k)) {
-								count++;
-								
-								break Loop1;
-							}
-						}
-					}
-				}
-				
-			}
-			
-			System.out.println(n - count);
-			
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// 10. 그룹 단어 체커
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		
+//		int n = 0;
+//		int count = 0;
+//				
+//		try {
+//			n = Integer.parseInt(br.readLine());
+//			
+//			String[] S = new String[n];
+//			
+//			// String들을 S[]에 대입
+//			for(int i = 0; i < n; i++) {
+//				S[i] = br.readLine();
+//			}
+//			
+//			for(int i = 0; i < n; i++) {
+//				Loop1 :
+//				for(int j = 0; j < S[i].length() - 1; j++) {
+//					if(S[i].charAt(j) != S[i].charAt(j+1)) {
+//						for(int k = j+2; k < S[i].length(); k++) {
+//							if(S[i].charAt(j) == S[i].charAt(k)) {
+//								count++;
+//								
+//								break Loop1;
+//							}
+//						}
+//					}
+//				}
+//				
+//			}
+//			
+//			System.out.println(n - count);
+//			
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 
 		
