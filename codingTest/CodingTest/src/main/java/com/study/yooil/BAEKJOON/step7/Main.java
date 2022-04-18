@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -46,8 +47,33 @@ public class Main {
 //			e.printStackTrace();
 //		}
 //		
-		// 2. 벌집 (보류)
-//		int n = 1;
+//		// 2. 벌집
+//		int count = 1;
+//		int range = 2;
+//		int N = 0;
+//		
+//		try {
+//			N = Integer.parseInt(br.readLine());
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		if(N == 1) {
+//			System.out.println(1);
+//		} else {
+//			while(true) {d
+//				if(range > N) break;
+//				
+//				range += 6*count;
+//				count++;
+//			}
+//			
+//			System.out.println(count);
+//				}
 		
 //		// 4. 달팽이는 올라가고 싶다.
 //		
@@ -80,6 +106,11 @@ public class Main {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
+		
+		
+		
+		
 //		
 //		// 5. ACM 호텔
 //		try {
@@ -198,49 +229,49 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		// 9. 소수 찾기
-		int count = 0;
-		
-		try {
-			int N = Integer.parseInt(br.readLine());
-			
-			String[] strArr = new String[N];
-			int[] intArr = new int[N];
-			
-			strArr = br.readLine().split(" ");
-			
-			for(int i = 0; i < strArr.length; i++) {
-				intArr[i] = Integer.parseInt(strArr[i]);
-			}
-			
-			for(int i = 0; i < intArr.length; i++) {
-				if(intArr[i] == 1) {
-					continue;
-				} else if(intArr[i] == 2) {
-					count++;
-				} else {
-					count++;
-					
-					for(int j = 2; j < intArr[i]; j++) {
-						if(intArr[i] % j == 0) {
-							count--;
-							
-							break;
-						}
-					}
-				}
-			}
-			
-			System.out.println(count);
-			
-			
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// 9. 소수 찾기
+//		int count = 0;
+//		
+//		try {
+//			int N = Integer.parseInt(br.readLine());
+//			
+//			String[] strArr = new String[N];
+//			int[] intArr = new int[N];
+//			
+//			strArr = br.readLine().split(" ");
+//			
+//			for(int i = 0; i < strArr.length; i++) {
+//				intArr[i] = Integer.parseInt(strArr[i]);
+//			}
+//			
+//			for(int i = 0; i < intArr.length; i++) {
+//				if(intArr[i] == 1) {
+//					continue;
+//				} else if(intArr[i] == 2) {
+//					count++;
+//				} else {
+//					count++;
+//					
+//					for(int j = 2; j < intArr[i]; j++) {
+//						if(intArr[i] % j == 0) {
+//							count--;
+//							
+//							break;
+//						}
+//					}
+//				}
+//			}
+//			
+//			System.out.println(count);
+//			
+//			
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		
