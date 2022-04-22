@@ -4,17 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 public class Main {
 	static int[] Sscore;
 	static Integer[] dp;
 //	static Long[][] dp ;
+//	static Integer[][] dp;
 	static long remain = 1000000000;
 	static int[] wine;
-	static int[] seq;
+	static int[][] seq;
+//	static int[] seq;
 	static Integer[] r_dp;
 	static Integer[] l_dp;
+	static char[] arrX;
+	static char[] arrY;
 	
 
 	public static void main (String[] args) throws IOException {
@@ -117,60 +122,256 @@ public class Main {
 //		
 //		System.out.println(max);
 		
-		// 11054 (LIS 알고리즘 응용)
-		int n = 0;
-		int max = -1;
-		int point = 0;
+//		// 11054 (LIS 알고리즘 응용)
+//		int n = 0;
+//		int max = -1;
+//		int point = 0;
+//		
+//		n = Integer.parseInt(br.readLine());
+//		
+//		seq = new int[n];
+//		r_dp = new Integer[n];
+//		l_dp = new Integer[n];
+//		dp = new Integer[n];
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			
+//			seq[i] = Integer.parseInt(st.nextToken());
+//		}
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			r_dp[i] = 1;
+//			
+//			for(int j = 0; j < i; j++) {
+//				if(seq[i] > seq[j] && r_dp[i] < r_dp[j] + 1) {
+//					r_dp[i] = r_dp[j] + 1;
+//				}
+//			}
+//		}
+//		
+//		for(int i = seq.length - 1; i >= 0; i--) {
+//			l_dp[i] = 1;
+//			
+//			for(int j = seq.length - 1; j > i; j--) {
+//				if(seq[i] > seq[j] && l_dp[i] < l_dp[j] + 1) {
+//					l_dp[i] = l_dp[j] + 1;
+//				}
+//			}
+//		}
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			dp[i] = r_dp[i] + l_dp[i] - 1;
+//		}
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			if(dp[i] > max) {
+//				max = dp[i];
+//				
+//			}
+//		}
+//		
+//		System.out.println(max);
 		
-		n = Integer.parseInt(br.readLine());
+//		// 2565 (LIS 알고리즘 응용2)
+//		int n = 0;
+//		int max = 0;
+//		
+//		n = Integer.parseInt(br.readLine());
+//		
+//		seq = new int[n][2];
+//		dp = new Integer[n];
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			StringTokenizer st = new StringTokenizer(br.readLine());
+//			
+//			seq[i][0] = Integer.parseInt(st.nextToken());
+//			seq[i][1] = Integer.parseInt(st.nextToken());
+//		}
+//		
+//		Arrays.sort(seq, new Comparator<int[]>() {
+//			
+//			@Override
+//			public int compare(int[] o1, int[] o2) {
+//				return o1[0] - o2[0];
+//			}
+//		});
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			dp[i] = 1;
+//			
+//			for(int j = 0; j < i; j++) {
+//				if(seq[i][1] > seq[j][1]) {
+//					dp[i] = Math.max(dp[i], dp[j] + 1);
+//				}
+//			}
+//		}
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			max = Math.max(max, dp[i]);
+//		}
+//		
+//		System.out.println(n - max);
 		
-		seq = new int[n];
-		r_dp = new Integer[n];
-		l_dp = new Integer[n];
-		dp = new Integer[n];
 		
-		StringTokenizer st = new StringTokenizer(br.readLine());
+//		// 9251 (LCS, Longest Common Sequence)
+//		String Sx = "";
+//		String Sy = "";
+//		
+//		Sx = br.readLine();
+//		Sy = br.readLine();
+//		
+//		arrX = new char[Sx.length() + 1];
+//		arrY = new char[Sy.length() + 1];
+//		
+//		dp = new Integer[arrX.length][arrY.length];
+//		
+//		for(int i = 1; i < arrX.length; i++) {
+//			arrX[i] = Sx.charAt(i-1);
+//		}
+//		
+//		for(int i = 1; i < arrY.length; i++) {
+//			arrY[i] = Sy.charAt(i-1);
+//		}
+//		
+////		System.out.println(Arrays.toString(arrX));
+////		System.out.println(Arrays.toString(arrY));
+//		
+//		System.out.println(LCS(Sx.length(), Sy.length()));
 		
-		for(int i = 0; i < seq.length; i++) {
-			
-			seq[i] = Integer.parseInt(st.nextToken());
-		}
+//		// 1912
+//		int n = 0;
+//		int max = -100000;
+//		
+//		n = Integer.parseInt(br.readLine());
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//	
+//		seq = new int[n];
+//		dp = new Integer[n];
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			seq[i] = Integer.parseInt(st.nextToken());
+//		}
+//		
+//		for(int i = n - 1; i >= 0; i--) {
+//			sumSeq(i);
+//		}
+//		
+//		for(int i = 0; i < seq.length; i++) {
+//			max = Math.max(max, dp[i]);
+//		}
+//		
+//		System.out.println(max);
 		
-		for(int i = 0; i < seq.length; i++) {
-			r_dp[i] = 1;
-			
-			for(int j = 0; j < i; j++) {
-				if(seq[i] > seq[j] && r_dp[i] < r_dp[j] + 1) {
-					r_dp[i] = r_dp[j] + 1;
-				}
-			}
-		}
+//		// 11726
+//		int n = 0;
+//		
+//		n = Integer.parseInt(br.readLine());
+//		
+//		dp = new Integer[n + 1];
+//		
+//		dp[0] = 0;
+//		dp[1] = 1;
+//		
+//		if(n > 1) {
+//			dp[2] = 2;
+//		}
+//				
+//		
+//		System.out.println(tiling(n));
 		
-		for(int i = seq.length - 1; i >= 0; i--) {
-			l_dp[i] = 1;
-			
-			for(int j = seq.length - 1; j > i; j--) {
-				if(seq[i] > seq[j] && l_dp[i] < l_dp[j] + 1) {
-					l_dp[i] = l_dp[j] + 1;
-				}
-			}
-		}
+//		// 12865 (못품)
+//		int N = 0;
+//		int K = 0;
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		
+//		N = Integer.parseInt(st.nextToken()); // 물품의 수
+//		K = Integer.parseInt(st.nextToken()); // 버틸 수 있는 무게
+//		
+//		dp = new Integer[N];
+//		seq = new int[N][2];
+//		
+//		for(int i = 0; i < N; i++) {
+//			StringTokenizer st2 = new StringTokenizer(br.readLine());
+//			
+//			seq[i][0] = Integer.parseInt(st2.nextToken());
+//			seq[i][1] = Integer.parseInt(st2.nextToken());
+//		}
+//		
+//		
+//		
+//		System.out.println(Knapsack(N - 1, K));
+//		
+//		System.out.println(Arrays.toString(dp));
 		
-		for(int i = 0; i < seq.length; i++) {
-			dp[i] = r_dp[i] + l_dp[i] - 1;
-		}
 		
-		for(int i = 0; i < seq.length; i++) {
-			if(dp[i] > max) {
-				max = dp[i];
-				
-			}
-		}
-		
-		System.out.println(max);
 	}
 	
 	
+	
+	
+	
+	
+//	private static Integer Knapsack(int N, int K) {
+//		if(N < 0) return 0;
+//		
+//		
+//		if(dp[N] == null) {
+//			if(seq[N][0] > K) {
+//				dp[N] = Knapsack(N - 1, K);
+//			} else {
+//				dp[N] = Math.max(Knapsack(N - 1, K), Knapsack(N - 1, K - seq[N][0]) + seq[N][1]);
+//			}
+//			
+//			
+//		}
+//		
+//		return dp[N];
+//	}
+	
+//	private static int tiling(int N) {
+//		if(dp[N] == null) {
+//			dp[N] = tiling(N - 1) + tiling(N - 2);
+//		}
+//		
+//		return dp[N] % 10007;
+//	}
+	
+//	private static int sumSeq(int N) {
+//		if(N == -1) return 0;
+//		if(dp[N] == null) {
+//			
+//			dp[N] = Math.max(sumSeq(N - 1) + seq[N], seq[N]);
+//			
+////			dp[N] = 0;
+////			
+////			if(seq[N] > 0) {
+////				dp[N] = sumSeq(N - 1) + seq[N];
+////			}
+//		}
+//		
+//		return dp[N];
+//	}
+//	
+//	private static int LCS(int x, int y) {
+//		if(x == 0 || y == 0) {
+//			dp[x][y] = 0;
+//		}
+//		
+//		if(dp[x][y] == null) {
+//			
+//			if(arrX[x] == arrY[y]) {
+//				dp[x][y] = LCS(x - 1, y - 1) + 1;
+//			} else {
+//				dp[x][y] = Math.max(LCS(x, y - 1), LCS(x - 1, y));
+//			}
+//		}
+//		
+//		return dp[x][y];
+//	}
 	
 	
 	
