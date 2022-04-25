@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -129,32 +131,218 @@ public class Main {
 //		
 //		System.out.println(sum);
 		
-		// 13305
-		int N = 0;
-		long sum = 0;
+//		// 13305
+//		int N = 0;
+//		long sum = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		long[] dist = new long[N - 1];
+//		long[] cost = new long[N];
+//		
+//		StringTokenizer distST = new StringTokenizer(br.readLine()); 
+//		StringTokenizer costST = new StringTokenizer(br.readLine()); 
+//		
+//		for(int i = 0; i < N - 1; i++) {
+//			dist[i] = Integer.parseInt(distST.nextToken());
+//			cost[i] = Integer.parseInt(costST.nextToken());
+//		}
+//		
+//		for(int i = 0; i < N - 1; i++) {
+//			if(cost[i] < cost[i + 1]) {
+//				cost[i + 1] = cost[i];
+//			}
+//			
+//			sum += dist[i] * cost[i];
+//		}
+//		
+//		System.out.println(sum);
 		
-		N = Integer.parseInt(br.readLine());
+//		// 1026
+//		int N = 0;
+//		int sum = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		StringTokenizer stA = new StringTokenizer(br.readLine());
+//		StringTokenizer stB = new StringTokenizer(br.readLine());
+//		
+//		Integer[] arrA = new Integer[N];
+//		Integer[] arrB = new Integer[N];
+//		
+//		for(int i = 0; i < arrA.length; i++) {
+//			arrA[i] = Integer.parseInt(stA.nextToken());
+//			arrB[i] = Integer.parseInt(stB.nextToken());
+//		}
+//		
+//		Arrays.sort(arrA);
+//		Arrays.sort(arrB, Collections.reverseOrder());
+//		
+//		for(int i = 0; i < arrA.length; i++) {
+//			sum += arrA[i] * arrB[i];
+//		}
+//		
+//		System.out.println(sum);
 		
-		long[] dist = new long[N - 1];
-		long[] cost = new long[N];
+//		// 5585
+//		int price = 0;
+//		int count = 0;
+//		
+//		price = 1000 - Integer.parseInt(br.readLine());
+//		
+//		count += price / 500;
+//		
+//		count += price % 500 / 100;
+//		
+//		count += price % 100 / 50;
+//		
+//		count += price % 50 / 10;
+//		
+//		count += price % 10 / 5;
+//		
+//		count += price % 5 / 1;
+//		
+//		System.out.println(count);
 		
-		StringTokenizer distST = new StringTokenizer(br.readLine()); 
-		StringTokenizer costST = new StringTokenizer(br.readLine()); 
+//		// 2217
+//		int N = 0;
+//		int result = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		int[] lope = new int[N]; 
+//		
+//		for(int i = 0; i < N; i++) {
+//			lope[i] = Integer.parseInt(br.readLine());
+//		}
+//		
+//		Arrays.sort(lope);
+//		
+//		for(int i = 0; i < N; i++) {
+//			result = Math.max(result, lope[i] * (N - i));
+//		}
+//		
+//		System.out.println(result);
 		
-		for(int i = 0; i < N - 1; i++) {
-			dist[i] = Integer.parseInt(distST.nextToken());
-			cost[i] = Integer.parseInt(costST.nextToken());
-		}
+//		// 10610
+//		String num = br.readLine();
+//		int sum = 0;
+//		String result = "";
+//		
+//		Integer[] arr = new Integer[num.length()];
+//		
+//		for(int i = 0; i < arr.length; i++) {
+//			arr[i] = (int)num.charAt(i) - 48;
+//		}
+//		
+//		Arrays.sort(arr, Collections.reverseOrder());
+//		
+//		for(int i = 0; i < arr.length - 1; i++) {
+//			sum += arr[i];
+//		}
+//		
+//		if(arr[arr.length - 1] != 0 || sum % 3 != 0) {
+//			System.out.println(-1);
+//		} else {
+//			for(int i = 0; i < arr.length; i++) {
+//				result += arr[i] + "";
+//			}
+//			
+//			System.out.println(result);
+//		}
 		
-		for(int i = 0; i < N - 1; i++) {
-			if(cost[i] < cost[i + 1]) {
-				cost[i + 1] = cost[i];
-			}
-			
-			sum += dist[i] * cost[i];
-		}
+//		// 1789
+//		long sum = 0;
+//		long S = Long.parseLong(br.readLine());
+//		int i = 1;
+//		int count = 0;
+//		
+//		while(sum <= S) {
+//			sum += i;
+//			
+//			i++;
+//			count++;
+//			
+//		}
+//		
+//		System.out.println(count - 1);
 		
-		System.out.println(sum);
+//		// 1946
+//		int n = 0;
+//		int k = 0;
+//		int N = 0;
+//		int min_of_itv = 0;
+//		
+//		n = Integer.parseInt(br.readLine());
+//		
+//		while(k < n) {
+//			int count = 1;
+//			
+//			N = Integer.parseInt(br.readLine());
+//			
+//			int[][] score = new int[N][2];
+//			
+//			for(int i = 0; i < N; i++) {
+//				StringTokenizer st = new StringTokenizer(br.readLine());
+//				
+//				score[i][0] = Integer.parseInt(st.nextToken());
+//				score[i][1] = Integer.parseInt(st.nextToken());
+//			}
+//			
+//			Arrays.sort(score, (e1, e2) -> {
+//				return e1[0] - e2[0];
+//			});
+//			
+//			min_of_itv = score[0][1];
+//			
+//			for(int i = 1; i < N; i++) {
+//				if(score[i][1] < min_of_itv) {
+//					min_of_itv = score[i][1];
+//					count++;
+//				}
+//			}
+//			
+//			System.out.println(count);
+//			
+////			for(int i = 0; i < N; i++) {
+////				System.out.println(score[i][0] + " " + score[i][1]);
+////			}
+//			
+//			k++;
+//		}
+		
+		// 1715
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int N = Integer.parseInt(br.readLine());
+        
+        for(int i = 0 ; i < N ; i++){
+            int x = Integer.parseInt(br.readLine());
+            pq.add(x);
+        }
+
+        int ans = 0;
+        
+        while(pq.size() > 1){
+            int a = pq.poll();
+            int b = pq.poll();
+
+            ans += a+b;
+            pq.add(a+b);
+        }
+        
+        System.out.println(ans);
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
