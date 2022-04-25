@@ -3,12 +3,11 @@ package com.study.yooil.BAEKJOON.Greedy;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
+
+	private static char[] sb;
 
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -310,37 +309,162 @@ public class Main {
 //			k++;
 //		}
 		
-		// 1715
-		PriorityQueue<Integer> pq = new PriorityQueue<>();
-        int N = Integer.parseInt(br.readLine());
-        
-        for(int i = 0 ; i < N ; i++){
-            int x = Integer.parseInt(br.readLine());
-            pq.add(x);
-        }
-
-        int ans = 0;
-        
-        while(pq.size() > 1){
-            int a = pq.poll();
-            int b = pq.poll();
-
-            ans += a+b;
-            pq.add(a+b);
-        }
-        
-        System.out.println(ans);
-    
+//		// 1715
+//		PriorityQueue<Integer> pq = new PriorityQueue<>();
+//        int N = Integer.parseInt(br.readLine());
+//        
+//        for(int i = 0 ; i < N ; i++){
+//            int x = Integer.parseInt(br.readLine());
+//            pq.add(x);
+//        }
+//
+//        int ans = 0;
+//        
+//        while(pq.size() > 1){
+//            int a = pq.poll();
+//            int b = pq.poll();
+//
+//            ans += a+b;
+//            pq.add(a+b);
+//        }
+//        
+//        System.out.println(ans);
 		
+//		// 1339
+//		int N = 0;
+//		int value = 9;
+//		int sum = 0;
+//		int k = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		Integer[] alpha = new Integer[26];
+//		
+//		Arrays.fill(alpha, 0);
+//		
+//		for(int i = 0; i < N; i++) {
+//			char[] input = br.readLine().toCharArray();
+//			int pos = 1;
+//			
+//			for(int j = input.length - 1; j >= 0; j--) {
+//				alpha[input[j] - 'A'] += pos;
+//				pos *= 10;
+//			}
+//		}
+//		
+//		Arrays.sort(alpha, Collections.reverseOrder());
+//		
+////		System.out.println(Arrays.toString(alpha));
+//		
+//		while(alpha[k] != 0) {
+//			sum += alpha[k] * value;
+//			
+//			value--;
+//			k++;
+//		}
+//		
+//		System.out.println(sum);
 		
+//		// 1439
+//		String S = br.readLine();
+//		
+//		StringTokenizer dlmByZero = new StringTokenizer(S, "0");
+//		StringTokenizer dlmByOne = new StringTokenizer(S, "1");
+//		
+//		System.out.println(Math.min(dlmByZero.countTokens(), dlmByOne.countTokens()));
 		
+//		// 16953
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		long[] arr = new long[2];
+//		long A = 0;
+//		long B = 0;
+//		int count = 0;
+//		
+//		
+//		A = arr[0] = Long.parseLong(st.nextToken());
+//		B = arr[1] = Long.parseLong(st.nextToken());
+//		
+//		while(true) {
+//			if(A == B) {
+//				System.out.println(count + 1);
+//				
+//				break;
+//			}
+//			if(B < A) {
+//				System.out.println(-1);
+//				
+//				break;
+//			}
+//			
+//			if(B % 2 == 0) {
+//				B /= 2;
+//			} else if(B % 10 == 1) {
+//				B = (B - 1) / 10;
+//			} else {
+//				System.out.println(-1);
+//				
+//				break;
+//			}
+//			
+//			count++;
+//		}
 		
+//		// 4795
+//		int count = 1;
+//		StringBuilder sb = new StringBuilder();
+//		
+//		while(true) {
+//			int L = 0;
+//			int P = 0;
+//			int V = 0;
+//			int result = 0;
+//			
+//			
+//			StringTokenizer st = new StringTokenizer(br.readLine());
+//			
+//			L = Integer.parseInt(st.nextToken());
+//			P = Integer.parseInt(st.nextToken());
+//			V = Integer.parseInt(st.nextToken());
+//			
+//			if(L == 0 && P == 0 && V == 0) break;
+//			
+//			if(V % P <= L) {
+//				result = (V / P * L) + (V % P);
+//			} else {
+//				result = (V / P * L) + L;
+//			}
+//			
+//			sb.append("Case " + count + ": " + result).append('\n');
+//			
+//			count++;
+//		}
+//		
+//		
+//		System.out.println(sb);
 		
+		// 1049
+		int N = 0;
+		int M = 0;
+		int bulkMin = Integer.MAX_VALUE;
+		int indMin = Integer.MAX_VALUE;
+		int result = 0;
+				
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		
+//		int[][] brand = new int[M][2];
 		
+		for(int i = 0; i < M; i++) {
+			StringTokenizer brandSt = new StringTokenizer(br.readLine());
+			
+			bulkMin = Math.min(Integer.parseInt(brandSt.nextToken()), bulkMin) ; // 6개 묶음
+			indMin = Math.min(Integer.parseInt(brandSt.nextToken()), indMin) ; // 낱개
+		}
 		
+		result = Math.min(Math.min((N / 6 * bulkMin) + (N % 6 * indMin), (N / 6 + 1) * bulkMin), N * indMin);
 		
+		System.out.println(result);
 		
 		
 		
