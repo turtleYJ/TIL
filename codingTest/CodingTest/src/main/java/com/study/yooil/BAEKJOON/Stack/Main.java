@@ -3,6 +3,7 @@ package com.study.yooil.BAEKJOON.Stack;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -128,99 +129,176 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
-		// 4949
-		int N = 0;
-		sb = new StringBuilder();
+//		// 4949
+//		int N = 0;
+//		sb = new StringBuilder();
+//		
+//		while(true) {
+//			char x = '\u0000';
+//			int n = 0;
+//			size1 = 0;
+//			size2 = 0;
+//			
+//			String S = br.readLine();
+//			
+//			n = S.length();
+//			
+//			if(n == 1) break;
+//			
+//			arr1 = new int[n]; // ()
+//			arr2 = new int[n]; // []
+//			
+//			for(int i = 0; i < S.length(); i++) {
+//				if(size1 < 0 || size2 < 0) {
+//					break;
+//				}
+//				
+//				x = S.charAt(i);
+//				
+//				switch (x) {
+//				case '(':
+//					push1(1);
+//					
+//					break;
+//				case '[':
+//					push2(1);
+//					
+//					break;
+//				case ')':
+//					pop1();
+//					
+//					break;
+//				case ']':
+//					pop2();
+//					
+//					break;
+//				default:
+//					continue;
+//				}
+//			}
+//			
+//			if(size1 == 0 && size2 == 0) {
+//				sb.append("YES").append('\n');
+//			} else {
+//				sb.append("NO").append('\n');
+//			}
+//		}
+//		
+//		System.out.println(sb);
 		
-		while(true) {
-			char x = '\u0000';
-			int n = 0;
-			size1 = 0;
-			size2 = 0;
-			
-			String S = br.readLine();
-			
-			n = S.length();
-			
-			if(n == 1) break;
-			
-			arr1 = new int[n]; // ()
-			arr2 = new int[n]; // []
-			
-			for(int i = 0; i < S.length(); i++) {
-				if(size1 < 0 || size2 < 0) {
-					break;
-				}
-				
-				x = S.charAt(i);
-				
-				switch (x) {
-				case '(':
-					push1(1);
-					
-					break;
-				case '[':
-					push2(1);
-					
-					break;
-				case ')':
-					pop1();
-					
-					break;
-				case ']':
-					pop2();
-					
-					break;
-				default:
-					continue;
-				}
+//		// 1874
+//		int start = 0;
+//		int N = 0;
+//		StringBuilder sb = new StringBuilder();
+//		Stack<Integer> stack = new Stack<>();
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		while(N-- > 0) {
+//			int value = 0; 
+//			
+//			value = Integer.parseInt(br.readLine());
+//			
+//			if(value > start) {
+//				for(int i = start + 1; i <= value; i++) {
+//					stack.push(i);
+//					
+//					sb.append('+').append('\n');
+//				}
+//				
+//				start = value;
+//			} else if(stack.peek() != value) {
+//				System.out.println("NO");
+//				
+//				return;
+//			} 
+//			stack.pop();
+//				
+//			sb.append('-').append('\n');
+//		
+//		}
+//		
+//		System.out.println(sb);
+		
+		// 17298
+		int N = 0;
+		Stack<Integer> stack = new Stack<>();
+		StringBuilder sb = new StringBuilder();
+		
+		N = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int[] seq = new int[N];
+		
+		for(int i = 0; i < N; i++) {
+			seq[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		for(int i = 0; i < N; i++) {
+			while(!stack.isEmpty() && seq[stack.peek()] < seq[i]) {
+				seq[stack.pop()] = seq[i];
 			}
 			
-			if(size1 == 0 && size2 == 0) {
-				sb.append("YES").append('\n');
-			} else {
-				sb.append("NO").append('\n');
-			}
+			stack.push(i);
+		}
+		
+		while(!stack.isEmpty()) {
+			seq[stack.pop()] = -1;
+		}
+		
+		for(int i = 0; i < N; i++) {
+			sb.append(seq[i]).append(' ');
 		}
 		
 		System.out.println(sb);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	
 	
 	
 	
-	static void push1(int x) {
-		size1++;
-		arr1[size1 - 1] = x;
-	}
-	
-	static void push2(int x) {
-		size2++;
-		arr2[size2 - 1] = x;
-	}
-	
-	private static void pop1() {
-		if(size1 < 1) {
-//			System.out.println(-1);
-			size1--;
-		} else {
-//			System.out.println(arr[size - 1]);
-			arr1[size1 - 1] = 0;
-			size1--;
-		}
-	}
-	
-	private static void pop2() {
-		if(size2 < 1) {
-//			System.out.println(-1);
-			size2--;
-		} else {
-//			System.out.println(arr[size - 1]);
-			arr2[size2 - 1] = 0;
-			size2--;
-		}
-	}
+//	static void push1(int x) {
+//		size1++;
+//		arr1[size1 - 1] = x;
+//	}
+//	
+//	static void push2(int x) {
+//		size2++;
+//		arr2[size2 - 1] = x;
+//	}
+//	
+//	private static void pop1() {
+//		if(size1 < 1) {
+////			System.out.println(-1);
+//			size1--;
+//		} else {
+////			System.out.println(arr[size - 1]);
+//			arr1[size1 - 1] = 0;
+//			size1--;
+//		}
+//	}
+//	
+//	private static void pop2() {
+//		if(size2 < 1) {
+////			System.out.println(-1);
+//			size2--;
+//		} else {
+////			System.out.println(arr[size - 1]);
+//			arr2[size2 - 1] = 0;
+//			size2--;
+//		}
+//	}
 	
 //	private static void size() {
 //		System.out.println(size);
