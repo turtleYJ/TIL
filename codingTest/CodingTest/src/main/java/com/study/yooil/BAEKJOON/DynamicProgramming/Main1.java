@@ -18,7 +18,6 @@ public class Main1 {
 	static int T;
 
 	public static void main(String[] args) throws IOException {
-				
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		// 2748번
