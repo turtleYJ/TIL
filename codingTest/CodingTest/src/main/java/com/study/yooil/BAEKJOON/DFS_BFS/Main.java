@@ -19,17 +19,56 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		// 1260
-		int N = 0; // 정점의 개수
-		int M = 0; // 간선의 개수
-		int V = 0; // 시작할 번호
+//		// 1260
+//		int N = 0; // 정점의 개수
+//		int M = 0; // 간선의 개수
+//		int V = 0; // 시작할 번호
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		sb = new StringBuilder();
+//		
+//		N = Integer.parseInt(st.nextToken());
+//		M = Integer.parseInt(st.nextToken());
+//		V = Integer.parseInt(st.nextToken());
+//		
+//		line = new ArrayList[N + 1];
+//		isVisit = new boolean[N + 1];
+//		
+//		for(int i = 0; i < line.length; i++) {
+//			line[i] = new ArrayList<>();
+//		}
+//		
+//		for(int i = 0; i < M; i++) {
+//			st = new StringTokenizer(br.readLine());
+//			
+//			int a = Integer.parseInt(st.nextToken());
+//			int b = Integer.parseInt(st.nextToken());
+//			
+//			line[a].add(b);
+//			line[b].add(a);
+//		}
+//		
+//		for(int i = 0; i < line.length; i++) {
+//			Collections.sort(line[i]);
+//		}
+//		
+//		DFS(V);
+//		
+//		sb.append('\n');
+//		
+//		isVisit = new boolean[N + 1];
+//		
+//		BFS(V);
+//		
+//		System.out.println(sb);
 		
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		// 2606
+		int N = 0;
+		int M = 0;
 		sb = new StringBuilder();
 		
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		V = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(br.readLine());
+		M = Integer.parseInt(br.readLine());
 		
 		line = new ArrayList[N + 1];
 		isVisit = new boolean[N + 1];
@@ -39,7 +78,7 @@ public class Main {
 		}
 		
 		for(int i = 0; i < M; i++) {
-			st = new StringTokenizer(br.readLine());
+			StringTokenizer st = new StringTokenizer(br.readLine());
 			
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
@@ -52,15 +91,8 @@ public class Main {
 			Collections.sort(line[i]);
 		}
 		
-		DFS(V);
+		System.out.println(bfs());
 		
-		sb.append('\n');
-		
-		isVisit = new boolean[N + 1];
-		
-		BFS(V);
-		
-		System.out.println(sb);
 	}
 	
 	
@@ -75,41 +107,80 @@ public class Main {
 	
 
 
-	// 꼬리를 물고 따라가는 방식
-	private static void DFS(int start) {
-		isVisit[start] = true;
+	private static int bfs() {
+		Queue<Integer> q = new LinkedList<>();
+		isVisit[1] = true;
+		int count = 0;
 		
-		sb.append(start + " ");
 		
-		for(int i = 0; i < line[start].size(); i++) {
-			if(isVisit[line[start].get(i)] == false) {
-				DFS(line[start].get(i));
-			}
-		}
-	}
-
-	// 계단식으로 한칸씩 방문하는 방식
-	private static void BFS(int start) {
-		Queue<Integer> q = new LinkedList<Integer>();
-		isVisit[start] = true;
-		
-		q.offer(start);
+		q.offer(1);
 		
 		while(!q.isEmpty()) {
 			int x = q.poll();
-			
-			sb.append(x + " ");
-			
 			for(int i = 0; i < line[x].size(); i++) {
-				int y = line[x].get(i);
+				int k = line[x].get(i);
 				
-				if(isVisit[y] == false) {
-					q.offer(y);
-					isVisit[y] = true;
+				if(isVisit[k] == false) {
+					q.offer(k);
+					isVisit[k] = true;
+					count++;
 				}
+				
 			}
 		}
+		
+		return count;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	// 꼬리를 물고 따라가는 방식
+//	private static void DFS(int start) {
+//		isVisit[start] = true;
+//		
+//		sb.append(start + " ");
+//		
+//		for(int i = 0; i < line[start].size(); i++) {
+//			if(isVisit[line[start].get(i)] == false) {
+//				DFS(line[start].get(i));
+//			}
+//		}
+//	}
+//
+//	// 계단식으로 한칸씩 방문하는 방식
+//	private static void BFS(int start) {
+//		Queue<Integer> q = new LinkedList<Integer>();
+//		isVisit[start] = true;
+//		
+//		q.offer(start);
+//		
+//		while(!q.isEmpty()) {
+//			int x = q.poll();
+//			
+//			sb.append(x + " ");
+//			
+//			for(int i = 0; i < line[x].size(); i++) {
+//				int y = line[x].get(i);
+//				
+//				if(isVisit[y] == false) {
+//					q.offer(y);
+//					isVisit[y] = true;
+//				}
+//			}
+//		}
+//	}
+	
+	
 	
 	
 	
