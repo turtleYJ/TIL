@@ -3,6 +3,8 @@ package com.study.yooil.BAEKJOON.Queue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -88,38 +90,38 @@ public class Main {
 //		
 //		System.out.println(q.poll());
 		
-		// 11866
-		int N = 0;
-		int K = 0;
-		LinkedList<Integer> q = new LinkedList<Integer>();
-		
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		StringBuilder sb = new StringBuilder();
-		
-		N = Integer.parseInt(st.nextToken());
-		K = Integer.parseInt(st.nextToken());
-		
-		sb.append("<");
-		
-		for(int i = 1; i <= N; i++) {
-			q.offer(i);
-		}
-		
-		while(true) {
-			if(q.size() == 1) {
-				sb.append(q.poll() + ">");
-				
-				break;
-			}
-			
-			for(int i = 0; i < K - 1; i++) {
-				q.offer(q.poll());
-			}
-			
-			sb.append(q.poll() + ", ");
-		}
-		
-		System.out.println(sb);
+//		// 11866
+//		int N = 0;
+//		int K = 0;
+//		LinkedList<Integer> q = new LinkedList<Integer>();
+//		
+//		StringTokenizer st = new StringTokenizer(br.readLine());
+//		StringBuilder sb = new StringBuilder();
+//		
+//		N = Integer.parseInt(st.nextToken());
+//		K = Integer.parseInt(st.nextToken());
+//		
+//		sb.append("<");
+//		
+//		for(int i = 1; i <= N; i++) {
+//			q.offer(i);
+//		}
+//		
+//		while(true) {
+//			if(q.size() == 1) {
+//				sb.append(q.poll() + ">");
+//				
+//				break;
+//			}
+//			
+//			for(int i = 0; i < K - 1; i++) {
+//				q.offer(q.poll());
+//			}
+//			
+//			sb.append(q.poll() + ", ");
+//		}
+//		
+//		System.out.println(sb);
 		
 //		// 1966
 //		int T = 0;
@@ -176,14 +178,129 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
-		// 1158
+//		// 10866
+//		Deque<Integer> dq = new ArrayDeque<>();
+//		StringBuilder sb = new StringBuilder();
+//		
+//		int N = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		Integer x = 0;
+//		while(N-- > 0) {
+//			StringTokenizer st = new StringTokenizer(br.readLine());
+//			
+//			switch (st.nextToken()) {
+//			case "push_front":
+//				dq.offerFirst(Integer.parseInt(st.nextToken()));
+//				
+//				break;
+//			case "push_back":
+//				dq.offer(Integer.parseInt(st.nextToken()));
+//				
+//				break;
+//			case "pop_front":
+//				x = dq.pollFirst();
+//				if(x == null) {
+//					sb.append(-1).append('\n');
+//				} else {
+//					sb.append(x).append('\n');
+//				}
+//				
+//				break;
+//			case "pop_back":
+//				x = dq.pollLast();
+//				if(x == null) {
+//					sb.append(-1).append('\n');
+//				} else {
+//					sb.append(x).append('\n');
+//				}
+//				
+//				break;
+//			case "size":
+//				sb.append(dq.size()).append('\n');
+//				break;
+//			case "empty":
+//				boolean k = dq.isEmpty();
+//				if(k == true) {
+//					sb.append(1).append('\n');
+//				} else {
+//					sb.append(0).append('\n');
+//				}
+//				
+//				break;
+//			case "front":
+//				x = dq.peekFirst();
+//				if(x == null) {
+//					sb.append(-1).append('\n');
+//				} else {
+//					sb.append(x).append('\n');
+//				}
+//				
+//				break;
+//			case "back":
+//				x = dq.peekLast();
+//				if(x == null) {
+//					sb.append(-1).append('\n');
+//				} else {
+//					sb.append(x).append('\n');
+//				}
+//				
+//				break;
+//			}
+//			
+//		}
+//		
+//		System.out.println(sb);
 		
+		// 1021
+		int N = 0; // 처음 큐에 포함된 수의 개수
+		int M = 0; // 뽑을 수의 개수
+		int count = 0;
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		
+		LinkedList<Integer> dq = new LinkedList<>();
 		
+		for(int i = 1; i <= N; i++) {
+			dq.offer(i);
+		}
 		
+		st = new StringTokenizer(br.readLine());
 		
+		while(M-- > 0) {
+			int x = Integer.parseInt(st.nextToken());
+			
+			int index = dq.indexOf(x);
+			
+			if(index == 0) {
+				dq.pollFirst();
+			} else {
+				
+				if(index <= (dq.size() / 2)) {
+					while(!(dq.indexOf(x) == 0)) {
+						dq.offerLast(dq.pollFirst());
+						
+						count++;
+					}
+				} else {
+					while(!(dq.indexOf(x) == 0)) {
+						dq.offerFirst(dq.pollLast());
+						
+						count++;
+					}
+				}
+				
+				dq.pollFirst();
+				
+			}
+			
+			
+		}
 		
+		System.out.println(count);
 		
 		
 		

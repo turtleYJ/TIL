@@ -13,8 +13,11 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static boolean[] isVisit;
+	static boolean[][] isVisit2;
 	static ArrayList<Integer>[] line;
 	static StringBuilder sb;
+	static int[][] apt;
+	static List<Integer> result;
 
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -62,36 +65,81 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
-		// 2606
+//		// 2606
+//		int N = 0;
+//		int M = 0;
+//		sb = new StringBuilder();
+//		
+//		N = Integer.parseInt(br.readLine());
+//		M = Integer.parseInt(br.readLine());
+//		
+//		line = new ArrayList[N + 1];
+//		isVisit = new boolean[N + 1];
+//		
+//		for(int i = 0; i < line.length; i++) {
+//			line[i] = new ArrayList<>();
+//		}
+//		
+//		for(int i = 0; i < M; i++) {
+//			StringTokenizer st = new StringTokenizer(br.readLine());
+//			
+//			int a = Integer.parseInt(st.nextToken());
+//			int b = Integer.parseInt(st.nextToken());
+//			
+//			line[a].add(b);
+//			line[b].add(a);
+//		}
+//		
+//		for(int i = 0; i < line.length; i++) {
+//			Collections.sort(line[i]);
+//		}
+//		
+//		System.out.println(bfs());
+		
+		// 2667
 		int N = 0;
-		int M = 0;
-		sb = new StringBuilder();
 		
 		N = Integer.parseInt(br.readLine());
-		M = Integer.parseInt(br.readLine());
 		
-		line = new ArrayList[N + 1];
-		isVisit = new boolean[N + 1];
+		apt = new int[N][N];
+		isVisit2 = new boolean[N][N];
 		
-		for(int i = 0; i < line.length; i++) {
-			line[i] = new ArrayList<>();
-		}
-		
-		for(int i = 0; i < M; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
+		int i = 0;
+		while(N-- > 0) {
+			String floor = br.readLine();
 			
-			int a = Integer.parseInt(st.nextToken());
-			int b = Integer.parseInt(st.nextToken());
+			for(int j = 0; j < floor.length(); j++) {
+				apt[i][j] = floor.charAt(j) - 48;
+			}
 			
-			line[a].add(b);
-			line[b].add(a);
+			i++;
 		}
 		
-		for(int i = 0; i < line.length; i++) {
-			Collections.sort(line[i]);
-		}
+		// 입력 확인 출력
+//		for(int j = 0; j < apt.length; j++) {
+//			for(int k = 0; k < apt[j].length; k++) {
+//				System.out.print(apt[j][k]);
+//			}
+//			System.out.println();
+//		}
 		
-		System.out.println(bfs());
+		StringBuilder sb = new StringBuilder();
+		result = new ArrayList<>();
+		
+		dfs();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 	
@@ -100,7 +148,28 @@ public class Main {
 	
 	
 	
+private static void dfs() {
+	int count = 0;
 	
+	for(int i = 0; i < apt.length; i++) {
+		for(int j = 0; j < apt[i].length; j++) {
+			if(isVisit2[i][j] == false && apt[i][j] == 1) {
+				isVisit2[i][j] = true;
+				
+			}
+		}
+	}
+		
+	}
+
+
+
+
+
+
+//	private static int dfs() {
+//		
+//	}
 	
 	
 	
@@ -111,7 +180,6 @@ public class Main {
 		Queue<Integer> q = new LinkedList<>();
 		isVisit[1] = true;
 		int count = 0;
-		
 		
 		q.offer(1);
 		
