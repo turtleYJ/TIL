@@ -1,27 +1,73 @@
 package com.study.yooil.ocjp;
 
-
-class Alpha {
-	int ns;
-	static int s;
-	Alpha(int ns) {
-		if(s < ns) {
-			s = ns;
-			this.ns = ns;
-		}
-	}
-	void doPrint() {
-		System.out.println("ns= " + ns + " s = " + s);
-	}
-}
-
 public class Test {
+//	class Employee {
+//		private String name;
+//		private int age;
+//		private int salary;
+//		
+//		private Employee(String name, int age) {
+//			setName(name);
+//			setAge(age);
+//			setSalary(2000);
+//		}
+//		
+//		public Employee(String name, int age, int salary) {
+//			this(name, age);
+//			setSalary(salary);
+//		}
+//
+//		public String getName() {
+//			return name;
+//		}
+//
+//		public void setName(String name) {
+//			this.name = name;
+//		}
+//
+//		public int getAge() {
+//			return age;
+//		}
+//
+//		public void setAge(int age) {
+//			this.age = age;
+//		}
+//
+//		public int getSalary() {
+//			return salary;
+//		}
+//
+//		public void setSalary(int salary) {
+//			this.salary = salary;
+//		}
+//		
+//		public void printDetails() {
+//			System.out.println(name + " : " + age + " : " + salary);
+//		}
+//		
+//		
+//	}
+	
+//	public static void main(String[] args) {
+//		Employee e1 = new Employee();
+//		Employee e2 = new Employee("Jack", 50);
+//		
+//		e2.age = 3;
+//		
+//	}
+	
 	public static void main(String[] args) {
-		Alpha ref1 = new Alpha(100);
-		Alpha ref2 = new Alpha(50);
-		Alpha ref3 = new Alpha(125);
-		ref1.doPrint();
-		ref2.doPrint();
-		ref3.doPrint();
+		Test ex = new Test();
+		int cardNo = 12344;
+//		ex.readCard(cardNo);
+		ex.checkCard(cardNo);
+	}
+
+	private void checkCard(int cardNo) throws RuntimeException{
+		System.out.println("Checking Card");
+	}
+
+	void readCard(int cardNo) throws Exception {
+		System.out.println("Reading Card");
 	}
 }

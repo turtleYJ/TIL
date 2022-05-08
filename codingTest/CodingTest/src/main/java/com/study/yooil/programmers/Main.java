@@ -1,74 +1,29 @@
 package com.study.yooil.programmers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
-
 public class Main {
 
-	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+//		String[] survey = {"TR", "RT", "TR"};
+//		int[] choices = {7, 1, 3};
+//		
+//		String S = new Solution1().solution(survey, choices);
+//		
+//		System.out.println(S);
 		
-		String[] numbersS = br.readLine().split(", ");
-		int[] numbers = new int[numbersS.length];
 		
-		for(int i = 0; i < numbersS.length; i++) {
-			numbers[i] = Integer.parseInt(numbersS[i]);
-		}
+		// 2번
+		int[] queue1 = {1, 1};
+		int[] queue2 = {1, 5};
 		
-		String hand = "";
+		int result = new Solution2().solution(queue1, queue2);
 		
-		hand = br.readLine();
+		System.out.println(result);
 		
-		System.out.println(solution(numbers, hand));
+//		// 3번
+//		int[][] problems = {{0,0,2,1,2}, {4,5,3,1,2}, {4,11,4,0,2}, {10,4,0,4,2}};
+//		
+//		new Solution3().solution(0, 0, problems);
+		
 	}
-	
-	static public String solution(int[] numbers, String hand) {
-        String answer = "";
-        int tempR = 0;
-        int tempL = 0;
-        int dstR = 0;
-        int dstL = 0;
-        
-        int i = 0;
-        
-        while(i < numbers.length) {
-        	int k = 0;
-        	
-        	k = numbers[i];
-        	
-        	switch (k) {
-	     		case 1:
-	     		case 4:
-	     		case 7:
-	     			System.out.print("L");
-	     			tempL = k;
-	     			break;
-	     		case 3:
-//	     			if()
-	     		case 6:
-	     		case 9:
-	     			System.out.print("R");
-	     			tempR = k;
-	     			break;
-	     		case 2:
-	     		case 5:
-	     		case 8:
-	     		case 0:
-	     			System.out.print("R");
-	     			tempR = k;
-	     			break;
-	
-     		}
-        	
-        	i++;
-        }
-        
-        
-        answer += "" + 1;
-        
-        return answer;
-    }
+
 }
