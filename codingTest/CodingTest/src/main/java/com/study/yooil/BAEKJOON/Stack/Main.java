@@ -129,55 +129,55 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
-		// 4949
-		StringBuilder sb = new StringBuilder();
-		while(true) {
-			Stack<Character> stack = new Stack<>();
-			String S = br.readLine();
-			
-			if(S.length() == 1) break;
-			
-			try {
-				for(int i = 0; i < S.length(); i++) {
-					if(S.charAt(i) == '(') {
-						stack.push('(');
-					}
-					
-					if(S.charAt(i) == ')') {
-						if(stack.peek() == '(') {
-							stack.pop();
-						} else {
-							break;
-						}
-					}
-
-					if(S.charAt(i) == '[') {
-						stack.push('[');
-					}
-					
-					if(S.charAt(i) == ']') {
-						if(stack.peek() == '[') {
-							stack.pop();
-						} else {
-							break;
-						}
-					}
-				}
-				
-				if(stack.size() == 0) {
-					sb.append("yes").append('\n');
-				} else {
-					sb.append("no").append('\n');
-				}
-			} catch (Exception e) {
-				sb.append("no").append('\n');
-			}
-			
-			
-			
-		}
-		
-		System.out.println(sb);
+//		// 4949
+//		StringBuilder sb = new StringBuilder();
+//		while(true) {
+//			Stack<Character> stack = new Stack<>();
+//			String S = br.readLine();
+//			
+//			if(S.length() == 1) break;
+//			
+//			try {
+//				for(int i = 0; i < S.length(); i++) {
+//					if(S.charAt(i) == '(') {
+//						stack.push('(');
+//					}
+//					
+//					if(S.charAt(i) == ')') {
+//						if(stack.peek() == '(') {
+//							stack.pop();
+//						} else {
+//							break;
+//						}
+//					}
+//
+//					if(S.charAt(i) == '[') {
+//						stack.push('[');
+//					}
+//					
+//					if(S.charAt(i) == ']') {
+//						if(stack.peek() == '[') {
+//							stack.pop();
+//						} else {
+//							break;
+//						}
+//					}
+//				}
+//				
+//				if(stack.size() == 0) {
+//					sb.append("yes").append('\n');
+//				} else {
+//					sb.append("no").append('\n');
+//				}
+//			} catch (Exception e) {
+//				sb.append("no").append('\n');
+//			}
+//			
+//			
+//			
+//		}
+//		
+//		System.out.println(sb);
 		
 		
 		
@@ -267,6 +267,56 @@ public class Main {
 //		}
 //		
 //		System.out.println(result);
+		
+		// 17413
+		String S = br.readLine();
+		
+		Stack<Character> stack = new Stack<>();
+		boolean flag = false;
+		
+		for(int i = 0; i < S.length(); i++) {
+			
+			if(S.charAt(i) == '<') {
+				flag = true;
+				
+				while(!stack.isEmpty()) {
+					System.out.print(stack.pop());
+				}
+				
+				System.out.print(S.charAt(i));
+				
+				continue;
+			} else if(S.charAt(i) == '>') {
+				flag = false;
+				
+				System.out.print(S.charAt(i));
+				continue;
+			} else if(S.charAt(i) == ' ') {
+				while(!stack.isEmpty()) {
+					System.out.print(stack.pop());
+				}
+				
+				System.out.print(S.charAt(i));
+				
+				continue;
+			}
+			
+			if(flag == true) {
+				System.out.print(S.charAt(i));
+			}
+			
+			if(flag == false) {
+				stack.push(S.charAt(i));
+			}
+			
+			if(i == S.length() - 1) {
+				while(!stack.isEmpty()) {
+					System.out.print(stack.pop());
+				}
+			}
+			
+		}
+		
 		
 		
 		
