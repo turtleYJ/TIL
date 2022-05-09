@@ -3,6 +3,7 @@ package com.study.yooil.BAEKJOON.Stack;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
@@ -268,56 +269,115 @@ public class Main {
 //		
 //		System.out.println(result);
 		
-		// 17413
-		String S = br.readLine();
+//		// 17413
+//		String S = br.readLine();
+//		
+//		Stack<Character> stack = new Stack<>();
+//		boolean flag = false;
+//		
+//		for(int i = 0; i < S.length(); i++) {
+//			
+//			if(S.charAt(i) == '<') {
+//				flag = true;
+//				
+//				while(!stack.isEmpty()) {
+//					System.out.print(stack.pop());
+//				}
+//				
+//				System.out.print(S.charAt(i));
+//				
+//				continue;
+//			} else if(S.charAt(i) == '>') {
+//				flag = false;
+//				
+//				System.out.print(S.charAt(i));
+//				continue;
+//			} else if(S.charAt(i) == ' ') {
+//				while(!stack.isEmpty()) {
+//					System.out.print(stack.pop());
+//				}
+//				
+//				System.out.print(S.charAt(i));
+//				
+//				continue;
+//			}
+//			
+//			if(flag == true) {
+//				System.out.print(S.charAt(i));
+//			}
+//			
+//			if(flag == false) {
+//				stack.push(S.charAt(i));
+//			}
+//			
+//			if(i == S.length() - 1) {
+//				while(!stack.isEmpty()) {
+//					System.out.print(stack.pop());
+//				}
+//			}
+//			
+//		}
 		
-		Stack<Character> stack = new Stack<>();
-		boolean flag = false;
+		// 17299
+		int N = 0;
 		
-		for(int i = 0; i < S.length(); i++) {
+		N = Integer.parseInt(br.readLine());
+		
+		int[] count = new int[1000001];
+		int[] seq = new int[N];
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int i = 0;
+		
+		while(st.hasMoreTokens()) {
+			int x = Integer.parseInt(st.nextToken());
 			
-			if(S.charAt(i) == '<') {
-				flag = true;
-				
-				while(!stack.isEmpty()) {
-					System.out.print(stack.pop());
-				}
-				
-				System.out.print(S.charAt(i));
-				
-				continue;
-			} else if(S.charAt(i) == '>') {
-				flag = false;
-				
-				System.out.print(S.charAt(i));
-				continue;
-			} else if(S.charAt(i) == ' ') {
-				while(!stack.isEmpty()) {
-					System.out.print(stack.pop());
-				}
-				
-				System.out.print(S.charAt(i));
-				
-				continue;
-			}
+			seq[i] = x;
+			count[x]++;
 			
-			if(flag == true) {
-				System.out.print(S.charAt(i));
-			}
-			
-			if(flag == false) {
-				stack.push(S.charAt(i));
-			}
-			
-			if(i == S.length() - 1) {
-				while(!stack.isEmpty()) {
-					System.out.print(stack.pop());
-				}
-			}
-			
+			i++;
 		}
 		
+		Stack<Integer> stack = new Stack<>();
 		
+		for(int j = 0; j < N; j++) {
+			
+			while(!stack.isEmpty() && count[seq[stack.peek()]] < count[seq[j]]) {
+				seq[stack.pop()] = seq[j];
+			}
+			
+			stack.push(j);
+			
+			// 시간 초과
+//			for(int k = j + 1; k < N; k++) {
+//				if(count[seq[j]] < count[seq[k]]) {
+//					seq[j] = seq[k];
+//					
+//					break;
+//				}
+//				
+//				if(k == N - 1) {
+//					seq[j] = -1;
+//				}
+//			}
+//			
+//			if(j == 6) {
+//				seq[j] = -1;
+//			}
+		}
+		
+		while(!stack.isEmpty()) {
+			seq[stack.pop()] = -1;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int result : seq) {
+			sb.append(result + " ");
+		}
+		
+		System.out.println(sb);
 		
 		
 		
