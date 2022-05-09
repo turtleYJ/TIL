@@ -1,5 +1,7 @@
 package com.study.yooil.ocjp;
 
+import java.util.Iterator;
+
 public class Test {
 //	class Employee {
 //		private String name;
@@ -56,18 +58,42 @@ public class Test {
 //		
 //	}
 	
+//	public static void main(String[] args) {
+//		Test ex = new Test();
+//		int cardNo = 12344;
+////		ex.readCard(cardNo);
+//		ex.checkCard(cardNo);
+//	}
+	
+//	public static void main(String[] args) {
+//		int[] numbers;
+//		numbers = new int[2];
+//		numbers[0] = 10;
+//		numbers[1] = 20;
+//		
+//		numbers = new int[4];
+//		numbers[2] = 30;
+//		numbers[3] = 40;
+//		for (int i : numbers) {
+//			System.out.println(i);
+//			
+//		}
+//		
+//	}
+	
 	public static void main(String[] args) {
-		Test ex = new Test();
-		int cardNo = 12344;
-//		ex.readCard(cardNo);
-		ex.checkCard(cardNo);
+		Short s1= 200;
+		Integer s2 = 400;
+		Long s3 = (long) s1 + s2;
+//		String s4 = (String) (s3 *s2);
+		
 	}
 
-	private void checkCard(int cardNo) throws RuntimeException{
-		System.out.println("Checking Card");
-	}
-
-	void readCard(int cardNo) throws Exception {
-		System.out.println("Reading Card");
-	}
+//	private void checkCard(int cardNo) throws RuntimeException{
+//		System.out.println("Checking Card");
+//	}
+//
+//	void readCard(int cardNo) throws Exception {
+//		System.out.println("Reading Card");
+//	}
 }
