@@ -378,57 +378,110 @@ public class Main {
 //		
 //		System.out.println(sb);
 		
-		// 1918
-		String S = br.readLine();
+//		// 1918
+//		String S = br.readLine();
+//		
+//		Stack<Character> stack = new Stack<Character>();
+//		StringBuilder sb = new StringBuilder();
+//		
+//		for(int i = 0; i < S.length(); i++) {
+//			char x = S.charAt(i);
+//			
+//			switch (x) {
+//			case '+':
+//			case '-':
+//			case '*':
+//			case '/':
+//				while(!stack.isEmpty() && priority(stack.peek()) >= priority(x)) {
+//						sb.append(stack.pop());
+//				}
+//				
+//				stack.push(x);
+//				
+//				break;
+//			case '(':
+//				stack.push(x);
+//				
+//				break;
+//			case ')':				
+//				while(true) {
+//					
+//					if(stack.peek() == '(') {
+//						stack.pop();
+//						
+//						break;
+//					}
+//					
+//					sb.append(stack.pop());
+//				}
+//				
+//				break;
+//			default:
+//				sb.append(x);
+//				break;
+//			}
+//						
+//		}
+//		
+//		while(!stack.isEmpty()) {
+//			sb.append(stack.pop());
+//		}
+//		
+//		System.out.println(sb);
 		
-		Stack<Character> stack = new Stack<Character>();
-		StringBuilder sb = new StringBuilder();
+		// 1935
+		int N = 0;
 		
-		for(int i = 0; i < S.length(); i++) {
-			char x = S.charAt(i);
+		N = Integer.parseInt(br.readLine());
+		
+		double[] alp = new double[N]; // 0 index가 A이다.(-65)
+		Stack<Double> stack = new Stack<>();
+		
+		String postfix = br.readLine();
+		
+		for(int i = 0 ; i < N; i++) {
+			alp[i] = Integer.parseInt(br.readLine());
+		}
+		
+		for(int i = 0; i < postfix.length(); i++) {
+			double A = 0;
+			double B = 0;
+			
+			char x = postfix.charAt(i);
 			
 			switch (x) {
 			case '+':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A + B);
+				
+				break;
 			case '-':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A - B);
+				
+				break;
 			case '*':
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A * B);
+				
+				break;
 			case '/':
-				while(!stack.isEmpty() && priority(stack.peek()) >= priority(x)) {
-						sb.append(stack.pop());
-				}
-				
-				stack.push(x);
-				
-				break;
-			case '(':
-				stack.push(x);
-				
-				break;
-			case ')':				
-				while(true) {
-					
-					if(stack.peek() == '(') {
-						stack.pop();
-						
-						break;
-					}
-					
-					sb.append(stack.pop());
-				}
+				B = stack.pop();
+				A = stack.pop();
+				stack.push(A / B);
 				
 				break;
 			default:
-				sb.append(x);
+				stack.push(alp[x-65]);
+				
 				break;
 			}
-						
 		}
 		
-		while(!stack.isEmpty()) {
-			sb.append(stack.pop());
-		}
-		
-		System.out.println(sb);
-		
+		System.out.printf("%.2f", stack.pop());
 		
 	}
 
@@ -436,15 +489,15 @@ public class Main {
 	
 	
 	
-	static int priority(char op) {
-		if(op == '*' || op == '/') {
-			return 2;
-		} else if(op == '+' || op == '-') {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+//	static int priority(char op) {
+//		if(op == '*' || op == '/') {
+//			return 2;
+//		} else if(op == '+' || op == '-') {
+//			return 1;
+//		} else {
+//			return 0;
+//		}
+//	}
 
 	
 	
