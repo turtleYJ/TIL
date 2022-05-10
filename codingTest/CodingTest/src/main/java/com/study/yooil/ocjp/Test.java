@@ -81,13 +81,30 @@ public class Test {
 //		
 //	}
 	
-	public static void main(String[] args) {
-		Short s1= 200;
-		Integer s2 = 400;
-		Long s3 = (long) s1 + s2;
-//		String s4 = (String) (s3 *s2);
-		
-	}
+//	public static void main(String[] args) {
+//		Short s1= 200;
+//		Integer s2 = 400;
+//		Long s3 = (long) s1 + s2;
+////		String s4 = (String) (s3 *s2);
+//		
+//	}
+	
+//	public static void main(String[] args) {
+//		Short s1= 200;
+//		Integer s2 = 400;
+////		String s3 = (String) (s1 + s2);
+//		Long s4 = (long) s1 + s2;
+//		
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 //	private void checkCard(int cardNo) throws RuntimeException{
 //		System.out.println("Checking Card");

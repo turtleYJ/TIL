@@ -5,6 +5,15 @@ package com.study.yooil.ocjp;
 //class E2 extends RuntimeException {}
 
 public class App {
+	int foo;
+	static int bar;
+	
+	static void process() {
+//		foo += 10; static 메소드는 스태틱 멤버변수만을 가져올 수 있다.
+		bar += 10;
+	}
+	
+
 //    public void m1() {
 //    	System.out.println("m1.Accessed.");
 //    }
@@ -14,14 +23,18 @@ public class App {
 //    	throw new E2();
 //    }
 	
+//	public static void main(String[] args) {
+//		Boolean[] bool = new Boolean[2];
+//		
+//		bool[0] = new Boolean(Boolean.parseBoolean("true"));
+////		bool[1] = new Boolean(null);
+//		bool[1] = null;
+//		
+//		System.out.println(bool[0] + " " + bool[1]);
+//	}
+	
 	public static void main(String[] args) {
-		Boolean[] bool = new Boolean[2];
 		
-		bool[0] = new Boolean(Boolean.parseBoolean("true"));
-//		bool[1] = new Boolean(null);
-		bool[1] = null;
-		
-		System.out.println(bool[0] + " " + bool[1]);
 	}
     
     
