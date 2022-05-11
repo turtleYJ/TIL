@@ -36,6 +36,42 @@ public class Main {
 //		
 //		System.out.println(S.length());
 		
+		// 10820
+		StringBuilder sb = new StringBuilder();
+		
+		String S = "";
+		
+		while((S = br.readLine()) != null) {
+						
+			int[] count = new int[4]; // 0 - 소문자, 1 - 대문자, 2 - 숫자, 3 - 공백
+			
+			int x = 0;
+			for(int i = 0; i < S.length(); i++) {
+				
+				x = S.charAt(i);
+				
+				if(x >= 97 && x <= 122) {
+					count[0]++;
+				} else if(x >= 65 && x <= 90) {
+					count[1]++;
+				} else if(x >= 48 && x <= 57) {
+					count[2]++;
+				} else {
+					count[3]++;
+				}
+				
+			}
+			
+			for (int i : count) {
+				sb.append(i + " ");
+			}
+			
+			sb.append('\n');
+			
+		}
+		
+		
+		System.out.println(sb);
 	}
 
 }
