@@ -1,4 +1,4 @@
-package com.study.yooil.BAEKJOON.Queue;
+package com.study.yooil.BAEKJOON.queue;
 
 import java.io.BufferedReader;
 import java.io.IOException;

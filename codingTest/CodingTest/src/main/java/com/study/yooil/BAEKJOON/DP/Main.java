@@ -1,4 +1,4 @@
-package com.study.yooil.BAEKJOON.DynamicProgramming;
+package com.study.yooil.BAEKJOON.DP;
 
 import java.io.BufferedReader;
 import java.io.IOException;
