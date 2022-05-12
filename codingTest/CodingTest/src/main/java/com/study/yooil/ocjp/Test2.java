@@ -1,5 +1,9 @@
 package com.study.yooil.ocjp;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import com.study.yooil.ocjp.test.Acc;
 
 //class Bird {
@@ -14,8 +18,41 @@ import com.study.yooil.ocjp.test.Acc;
 //	}
 //}
 
+// **
+//class C1 {}
+//class C2 extends C1 {}
+//class C3 extends C2 {}
+
+//class MyException extends RuntimeException{}
+
+//// 174
+//class Caller {
+//	void init() {
+//		System.out.println("Indslkfj");
+//	}
+//	
+//	void start() {
+//		init();
+//		System.out.println("dsfsad");
+//	}
+//}
+
 public class Test2 {
+//	// 174
+//	public static void main(String[] args) {
+//		Caller c = new Caller();
+//		c.start();
+//		c.init();
+//		
+//	}
 	
+	// **
+//	public static void main(String[] args) {
+//		C1 obj1 = (C1) new C2();
+//		C2 obj2 = (C2) new C3();
+//		C2 obj3 = (C2) new C1();
+//		C3 obj4 = (C3) obj2;
+//	}
 	
 //	public static void main(String[] args) {
 //		Bird b = new Peacock();
@@ -153,7 +190,93 @@ public class Test2 {
 //		}
 //	}
 	
+//	// 210
+//	public static final int Min = 1;
+//	
+//	public static void main(String[] args) {
+//		int x = args.length;
+//		if(checkLimit(x)) {
+//			System.out.println("Java Se");
+//		} else {
+//			System.out.println("Java EE");
+//		}
+//	}
+//
+//	private static boolean checkLimit(int x) {
+//		
+//		return (x >= Min) ? true : false;
+//	}
 	
+	// 213
+//	public static void main(String[] args) {
+//		String ta = "A ";
+//		ta = ta.concat("B ");
+//		String tb = "C ";
+//		ta = ta.concat(tb);
+//		ta.replace('C', 'D');
+//		ta = ta.concat(tb);
+//		
+//		System.out.println(ta);
+//	}
+	
+//	// 221
+//	static public void main(String[] args) {
+//		char colorCode = 'y';
+//		
+//		switch (colorCode) {
+//		case 'r':
+//			int color = 100;
+//			break;
+//		case 'b':
+//			color = 100;
+//			break;
+//		case 'y':
+//			color = 100;
+//			break;
+//		}
+//		
+//		System.out.println(color);
+//	}
+	
+//	// 223
+//	static public void main(String[] args) {
+//		LocalDate date2 = LocalDate.of(6, 20, 2014);
+//		LocalDate date3 = LocalDate.parse("2014-06-20", DateTimeFormatter.ISO_DATE);
+//		
+//		System.out.println(date2);
+//	}
+	
+//	static double area;
+//	int b = 2, h = 3;
+//	public static void main(String[] args) {
+//		double p, b, h;
+//		if(area == 0) {
+//			b = 3;
+//			h = 4;
+//			p = 0.5;
+//			area = p * b * h;
+//		}
+//		System.out.println(area);
+//	}
+	
+//	// 129
+//	public static void main(String[] args) {
+//		try {
+//			method1();
+//		} catch (MyException ne) {
+//			System.out.println("A");
+//		}
+//	}
+//	
+//	public static void method1() {
+//		try {
+//			throw 3 > 10 ? new MyException() : new IOException();
+//		} catch (IOException e) {
+//			System.out.println("I");
+//		} catch (Exception re) {
+//			System.out.println("B");
+//		}
+//	}
 	
 	
 	
