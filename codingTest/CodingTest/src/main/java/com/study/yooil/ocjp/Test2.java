@@ -3,6 +3,9 @@ package com.study.yooil.ocjp;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.study.yooil.ocjp.test.Acc;
 
@@ -38,6 +41,17 @@ import com.study.yooil.ocjp.test.Acc;
 //}
 
 public class Test2 {
+	
+	// 199
+	public static void main(String[] args) {
+		String[] arr = {"Hi", "How", "Are", "You"};
+		List<String> arrList = new ArrayList<>(Arrays.asList(arr));
+		if(arrList.removeIf(s -> { System.out.println(s); return s.length() <= 2; })) {
+			System.out.println(" removed");
+		}
+			
+	}
+	
 //	// 174
 //	public static void main(String[] args) {
 //		Caller c = new Caller();
