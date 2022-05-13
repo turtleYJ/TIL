@@ -19,11 +19,13 @@ public class Main {
 //	static int[][] apt;
 //	static List<Integer> result;
 //	static int[][] square;
-	static int[][] map;
-	static int hNum;
+//	static int[][] map;
+	static int[][] field;
+//	static int hNum; 
 	static int dx[];
 	static int dy[];
 	static int N;
+	static int M;
 
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -164,52 +166,95 @@ public class Main {
 //			System.out.println("Hing");
 //		}
 		
-		// 2667 단지번호붙이기
-		N = 0;
+//		// 2667 단지번호붙이기
+//		N = 0;
+//		
+//		N = Integer.parseInt(br.readLine());
+//		
+//		map = new int[N][N];
+//		isVisit2 = new boolean[N][N];
+//		dx = new int[] {0, 0, 1, -1};
+//		dy = new int[] {1, -1, 0, 0};
+//		
+//		for(int i = 0; i < N; i++) {			
+//			String S = br.readLine();
+//			
+//			for(int j = 0; j < N; j++) {				
+//				map[i][j] = S.charAt(j) - 48;
+//			}
+//		}
+//		
+//		int cNum = 0; // 단지수
+//		List<Integer> aptNum = new ArrayList<Integer>();
+//		
+//		for(int i = 0; i < N; i++) {			
+//			for(int j = 0; j < N; j++) {	
+//				if(map[i][j] == 1 && !isVisit2[i][j]) {
+//					hNum = 0;					
+//					dfs(i, j);
+//					
+//					aptNum.add(hNum);
+//					
+//					cNum++;
+//				}
+//			}
+//		}
+//		
+//		Collections.sort(aptNum);
+//		
+//		
+//		System.out.println(cNum);
+//		
+//		
+//		for (Integer i : aptNum) {
+//			System.out.println(i);
+//		}
 		
-		N = Integer.parseInt(br.readLine());
+		// 1012 유기농 배추
+		int T = 0;
+		StringBuilder sb = new StringBuilder();
 		
-		map = new int[N][N];
-		isVisit2 = new boolean[N][N];
 		dx = new int[] {0, 0, 1, -1};
 		dy = new int[] {1, -1, 0, 0};
 		
-		for(int i = 0; i < N; i++) {			
-			String S = br.readLine();
+		T = Integer.parseInt(br.readLine());
+		
+		while(T-- > 0) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
 			
-			for(int j = 0; j < N; j++) {				
-				map[i][j] = S.charAt(j) - 48;
+			M = Integer.parseInt(st.nextToken());
+			N = Integer.parseInt(st.nextToken());
+			int K = Integer.parseInt(st.nextToken());
+			
+			field = new int[M][N];
+			isVisit2 = new boolean[M][N];
+			
+			for(int i = 0; i < K; i++) {
+				st = new StringTokenizer(br.readLine());
+				int x = Integer.parseInt(st.nextToken()); // 가로
+				int y = Integer.parseInt(st.nextToken()); // 세로
+				
+				field[x][y] = 1;
 			}
-		}
-		
-		int cNum = 0; // 단지수
-		List<Integer> aptNum = new ArrayList<Integer>();
-		
-		for(int i = 0; i < N; i++) {			
-			for(int j = 0; j < N; j++) {	
-				if(map[i][j] == 1 && !isVisit2[i][j]) {
-					hNum = 0;					
-					dfs(i, j);
-					
-					aptNum.add(hNum);
-					
-					cNum++;
+			
+			int count = 0;
+			
+			for(int i = 0; i < M; i++) {
+				for(int j = 0; j < N; j++) {
+					if(field[i][j] == 1 && !isVisit2[i][j]) {
+						dfs(i, j);
+						
+						count++;
+					}
 				}
 			}
+			
+			sb.append(count).append('\n');
+			
+			
 		}
 		
-		Collections.sort(aptNum);
-		
-		
-		System.out.println(cNum);
-		
-		
-		for (Integer i : aptNum) {
-			System.out.println(i);
-		}
-		
-		
-		
+		System.out.println(sb);
 		
 		
 		
@@ -218,29 +263,49 @@ public class Main {
 		
 		
 	}
+	
+	
+	
+	// 1012
+	private static void dfs(int x, int y) {
+		isVisit2[x][y] = true;
+		
+		for(int i = 0; i < 4; i++) {
+			int newX = x + dx[i];
+			int newY = y + dy[i];
+			
+			if(newX >= 0 && newX < M && newY >= 0 && newY < N) {
+				if(field[newX][newY] == 1 && !isVisit2[newX][newY]) {
+					dfs(newX, newY);
+				}
+			}
+		}
+		
+	}
+
 
 	
 	
 	
 	
-	// 2667
-	private static void dfs(int r, int c) {
-		hNum++;
-		 // 단지 내 집의 수
-		isVisit2[r][c] = true;
-		
-		for(int i = 0; i < 4; i++) {
-			int tempR = r + dx[i];
-			int tempC = c + dy[i];
-			
-			if(tempR >= 0  && tempR < N && tempC >= 0  && tempC < N) {
-				if(map[tempR][tempC] == 1 && !isVisit2[tempR][tempC]) {
-					dfs(tempR, tempC);
-					
-				}
-			}
-		}
-	}
+//	// 2667
+//	private static void dfs(int r, int c) {
+//		hNum++;
+//		 // 단지 내 집의 수
+//		isVisit2[r][c] = true;
+//		
+//		for(int i = 0; i < 4; i++) {
+//			int tempR = r + dx[i];
+//			int tempC = c + dy[i];
+//			
+//			if(tempR >= 0  && tempR < N && tempC >= 0  && tempC < N) {
+//				if(map[tempR][tempC] == 1 && !isVisit2[tempR][tempC]) {
+//					dfs(tempR, tempC);
+//					
+//				}
+//			}
+//		}
+//	}
 	
 	
 //	// 16173
