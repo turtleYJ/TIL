@@ -1,14 +1,18 @@
 package com.study.yooil.BAEKJOON;
 
-public class main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-	public static void main(String[] args) {
-		for(int i = 1 ; i < 1000; i++) {
-			if(100 * Math.pow(i, 2) < Math.pow(2, i)) {
-				System.out.println(i);
-				
-				break;
-			}
+public class Main {
+
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String S = "";
+		
+		while((S = br.readLine()) != null) {
+			System.out.println(S);
 		}
 	}
 
