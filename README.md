@@ -1,2 +1,2 @@
-# algorithm-codingTest
-알고리즘 공부에 대한 리파지토리 입니다.
+# Today I Learn
+학습한 내용들을 정리하는 공간입니다.
