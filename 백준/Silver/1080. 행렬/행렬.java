@@ -79,16 +79,11 @@ public class Main {
 			}
 		}
 		
-		
 		if(equals) {
 			System.out.println(count);
 		} else {
 			System.out.println(-1);
 		}
-		
-		
-		
-		
 		
 	}
 	
