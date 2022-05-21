@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+
+// 주의사항 테스트 범위의 맹점?들 검사해보기(100000 0, 0 100000, 0 0)
+// 함정이 있는 문제
+// N이 0으로 주어졌을 때 일어날 수 있는 사항 생각해보기
 public class Main {
 
 	private static int N;
@@ -69,11 +73,8 @@ public class Main {
 						count[nextX] = Math.min(count[M], count[x] + 1);
 					} else {
 						if(nextX >= 0 && nextX < isVisit.length && !isVisit[nextX]) {
-							if(d[i] != 0) {
-								q.add(nextX);
-								
-								count[nextX] = count[x] + 1;
-							}
+							q.add(nextX);
+							count[nextX] = count[x] + 1;
 							isVisit[nextX] = true;
 						}
 					}
