@@ -25,4 +25,4 @@ COUNT : 행(row) 수 출력
 <BR>
 
 참고. ### SQL 실행 순서
-> FROM -> SELECT -> WHERE -> GROUP BY -> HAVING -> ORDER BY
+> FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
