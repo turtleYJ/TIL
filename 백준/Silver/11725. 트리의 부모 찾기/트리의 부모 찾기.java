@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+
+// N(입력)의 개수가 100,000까지 가능. -> 배열로 그래프화하면 메모리 제한에 걸림.
 public class Main {
 
 	private static boolean[] isVisit;
