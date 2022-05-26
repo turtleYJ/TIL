@@ -5,7 +5,6 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	private static int N;
 	private static int[][] board;
 
 	public static void main(String[] args) throws IOException{
@@ -36,13 +35,19 @@ public class Main {
 		}
 		
 		if(row == 9) {
+			
 			StringBuilder sb = new StringBuilder();
+			
 			for (int i = 0; i < 9; i++) {
+				
 				for (int j = 0; j < 9; j++) {
+					
 					sb.append(board[i][j]).append(' ');
 				}
+				
 				sb.append('\n');
 			}
+			
 			System.out.println(sb);
 			
 			System.exit(0);
@@ -54,10 +59,12 @@ public class Main {
 				if(isPossible(row, col, i + 1)) {
 					board[row][col] = i + 1;
 					
-					sudoku(row, col + 1);
+					// flag1
+					sudoku(row, col + 1); 
 				}
 			}
 			
+			// 백트래킹! 특정값을 넣고 재귀함수를 진행했는데 깊은 곳에서 막혔을 시 다시 내려보낸다. flag1으로 돌아가서 다른 숫자를 대입해서 연산을 진행하게 된다.
 			board[row][col] = 0;
 			return;
 		}
@@ -66,17 +73,13 @@ public class Main {
 	}
 
 	private static boolean isPossible(int row, int col, int value) {
-		// 열 검사
+		// 행, 열 검사
 		for(int i = 0; i < 9; i++) {
 			
 			if(board[row][i] ==  value) {
 				
 				return false;
 			}
-		}
-		
-		// 행 검사
-		for(int i = 0; i < 9; i++) {
 			
 			if(board[i][col] ==  value) {
 				
