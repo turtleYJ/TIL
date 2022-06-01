@@ -4,6 +4,9 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
+// 에디터
+// 키로거
+// stack을 이용한 키보드 입출력
 public class Main {
 
 	public static void main(String[] args) throws IOException {
