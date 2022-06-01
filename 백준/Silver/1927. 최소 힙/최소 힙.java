@@ -3,9 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
-// 정렬된 map
-// TreeMap
-// comparator사용
+// 최소힙
+// PriorityQueue
 public class Main {
 
 	public static void main(String[] args) throws IOException{
