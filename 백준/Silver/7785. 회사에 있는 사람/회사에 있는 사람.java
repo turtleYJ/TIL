@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
 
+// 정렬된 map
+// TreeMap
+// comparator사용
 public class Main {
 
 	public static void main(String[] args) throws IOException{
