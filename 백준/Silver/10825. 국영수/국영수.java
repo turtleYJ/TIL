@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
+// Comparator구현
 class Score {
 	String name;
 	int korean;
