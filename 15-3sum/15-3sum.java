@@ -1,4 +1,5 @@
 class Solution {
+    // 세 수의 합에 해당하는 모든 경우의 수를 구하는 방법
     public List<List<Integer>> threeSum(int[] nums) {
         if(nums.length == 0) return new ArrayList<List<Integer>>();
 		Set<List<Integer>> set = new HashSet<>();
