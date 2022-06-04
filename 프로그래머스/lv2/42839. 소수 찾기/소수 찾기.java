@@ -8,19 +8,6 @@ class Solution {
     public int solution(String numbers) {
         nums = numbers;
         
-        boolean arr[] = new boolean[10000001];
-        
-        arr[0] = true;
-		arr[1] = true;
-        
-		// 에라토스테네스의 체
-        for(int i = 2; i <= Math.sqrt(10000001); i++) {
-			// 아래에서 i의 제곱수 부터 검사를 시작함으로 전체범위의 제곱근까지 검사함.
-			for(int j = i*i; j < 10000001; j += i) {
-				arr[j] = true;
-			}
-		}
-		
 		isVisit = new boolean[nums.length()];
 		Set<Integer> numSet = new HashSet<>();
 		
@@ -28,7 +15,7 @@ class Solution {
         
         int answer = 0;
         for (Integer i : numSet) {
-			if(!arr[i]) {
+			if(isPrime(i)) {
 				answer++;
 			}
 		}
@@ -57,5 +44,13 @@ class Solution {
 				S = num;
 			}
 		}
+	}
+    
+    private static boolean isPrime(int n) {
+		if(n == 0 || n == 1) return false;
+		for(int i = 2; i <= (int)Math.sqrt(n); i++){
+            if(n % i == 0) return false;
+        }
+        return true;
 	}
 }
