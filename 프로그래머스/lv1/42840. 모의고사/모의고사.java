@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<Integer> solution(int[] answers) {
+    public int[] solution(int[] answers) {
         int M = answers.length;
 		int[] answer1 = new int[M];
 		int[] answer2 = new int[M];
@@ -42,19 +42,24 @@ class Solution {
 			}
 		}
 		
-		List<Integer> answer = new ArrayList<>();
+		List<Integer> list = new ArrayList<>();
 		
 		int max = Math.max(Math.max(count1, count2), count3);
 		
 		if(count1 == max) {
-			answer.add(1);
+			list.add(1);
 		}
 		if(count2 == max) {
-			answer.add(2);
+			list.add(2);
 		}
 		if(count3 == max) {
-			answer.add(3);
+			list.add(3);
 		}
+        
+        int[] answer = new int[list.size()];
+        for(int i = 0; i < list.size(); i++) {
+            answer[i] = list.get(i);
+        }
         
         return answer;
     }
