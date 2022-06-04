@@ -31,7 +31,7 @@ public class Main {
         	}
 		}
     }
-
+	// 팰린드롬 수인지 판별
 	private static boolean isPalindrome(int value) {
 		String S = Integer.toString(value);
     	
