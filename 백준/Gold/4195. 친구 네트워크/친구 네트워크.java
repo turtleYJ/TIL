@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 // Union Find
 // 서로소
 // 유니온 파인드 카운트
-// 
+// 카운트
 public class Main {
 
 	private static int[] parent; // 인덱스와 값이 같은 것이 루트
