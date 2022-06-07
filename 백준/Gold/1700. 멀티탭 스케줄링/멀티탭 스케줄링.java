@@ -67,6 +67,7 @@ public class Main {
 			Map<Integer, Boolean> map = new HashMap<>();
 			
 			for (int j = i + 1; j < K; j++) {
+				// 소켓에 포함된 숫자가 중복되어 overlap 리스트에 들어가는 것을 막아줘야한다.!
 				if(socket.contains(plug[j]) && !overlap.contains(plug[j])) {
 					overlap.add(plug[j]);
 					map.put(plug[j], true);
