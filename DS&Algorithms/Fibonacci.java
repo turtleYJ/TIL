@@ -1,7 +1,7 @@
 // memoization
 // Dynamic Programming
 // fibonacci
-public class Fib {
+public class Fibonacci {
     long fibo(int n, HashMap<Integer, Long> memo) {
     	if (memo.containsKey(n)) return memo.get(n);
     	if (n <= 2) return 1;
