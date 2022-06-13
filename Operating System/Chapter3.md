@@ -94,3 +94,28 @@
 - 여유 공간 마련을 위해 프로세스를 통쨰로 메모리에서 디스크로 쫓아냄
 - 프로세스에게서 memory를 뺏는 문제
 - degree of Multiprogramming을 제어
+
+# Thread
+> 프로세스 내부에 CPU 수행 단위가 여러개 있는 것.  
+> 프로세스 하나에 CPU 수행 단위만 여러개 가지고 있는 것.  
+> lightweight process라고도 한다.
+
+![](./Image/OS%20chapter3-6.png) ![](./Image/OS%20chapter3-7.png)
+
+- 쓰레드 하나가 코드 어느부분을 실행하다가 함수 호출을 하면, 
+- 함수를 호출하고 리턴하는 것과 관련된 정보는 Stack에 쌓아야한다.
+- 이런 상황에서 CPU수행 단위가 여러 개 있으면 개별적인 스택이 필요하다.
+
+### Thread가 독립적으로 가지는 것
+- program counter
+- register set
+- stack space
+
+### Thread들 끼리 공유하는 부분(= task)
+- code section
+- data section
+- OS resources
+
+## Thread의 장점
+- 스레드 하나가 blocked(waiting) 상태일 때, 다른 스레드가 CPU를 잡고 실행(running)되어 빠른 처리가 가능하다.
+- 메모리사용을 줄일 수 있다. 
