@@ -5,7 +5,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-// 벽 부수고 이동하기 2
+// 벽 부수고 이동하기 3
+// 밤 낮 추가
 public class Main {
 	static class Place {
 		int y;
