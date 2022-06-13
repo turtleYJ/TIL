@@ -80,6 +80,7 @@ public class Main {
 						}
 					}
 					// 이전에 벽을 부순 경우면서 방문하지 않은 곳인 경우
+					// 벽을 부신 상태(isCrash == 1)에서 isVisit의 두상태 모두를 제외할 수 있는 이유는 bfs는 레벨에 따라 움직이는데, 안 부신 상태의 빠른 것이 부신상태의 빠른 것 보다 월등하기에 대체가능하기 때문이다.
 					if(isCrash == 1 && !isVisit[newR][newC][1] && !isVisit[newR][newC][0]) {
 						if(matrix[newR][newC] == 0) { // 벽이 아닐 때만 큐에 넣어준다.
 							q.add(new int[] {newR, newC, isCrash, dis + 1});
