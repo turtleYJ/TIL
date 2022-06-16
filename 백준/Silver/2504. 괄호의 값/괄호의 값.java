@@ -72,8 +72,7 @@ public class Main {
 
 				}
 		} catch (Exception e) {
-			System.out.println(0);
-			return;
+			level.put(0, 0);
 		}
 		
 		System.out.println(level.getOrDefault(0, 0));
