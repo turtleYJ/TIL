@@ -24,7 +24,6 @@ public class Main {
 		StringTokenizer st = null;
 		
 		while(K-- > 0) {
-			int[][] gearClone = gear;
 			st =  new StringTokenizer(br.readLine());
 			
 			int currGear = Integer.parseInt(st.nextToken()) - 1;
@@ -43,7 +42,6 @@ public class Main {
 					if (gear[nr - 1][2] == gear[nr][6]) {
 						right = false;
 					} else {
-//						rotate(nr, direction, gearClone);
 						list.add(new int[] {nr, direction});
 					}
 				}
@@ -51,11 +49,9 @@ public class Main {
 					if (gear[nl + 1][6] == gear[nl][2]) {
 						left = false;
 					} else {
-//						rotate(nl, direction, gearClone);
 						list.add(new int[] {nl, direction});
 					}
 				}
-//				if (i == 1) rotate(nl + 1, -direction, gearClone);
 			}
 			
 			for (int i = 0; i < list.size(); i++) {
@@ -76,7 +72,6 @@ public class Main {
 		int gearNum = target[0];
 		int direction = target[1];
 		
-		
 		// 시계방향
 		if(direction == 1) {
 			int temp = gear[gearNum][gear[gearNum].length - 1];
@@ -94,24 +89,4 @@ public class Main {
 			gear[gearNum][gear[gearNum].length - 1] = temp;
 		}
 	}
-
-//	private static void rotate(int gearNum, int direction, int[][] gearClone) {
-//		
-//		// 시계방향
-//		if(direction == 1) {
-//			int temp = gearClone[gearNum][gearClone[gearNum].length - 1];
-//			for (int i = gearClone[gearNum].length - 1; i >= 1; i--) {
-//				gearClone[gearNum][i] = gearClone[gearNum][i - 1];
-//			}
-//			gearClone[gearNum][0] = temp;
-//		}
-//		// 반시계 방향
-//		if(direction == -1) {
-//			int temp = gearClone[gearNum][0];
-//			for (int i = 0; i < gearClone[gearNum].length - 1; i++) {
-//				gearClone[gearNum][i] = gearClone[gearNum][i + 1];
-//			}
-//			gearClone[gearNum][gearClone[gearNum].length - 1] = temp;
-//		}
-//	}
 }
