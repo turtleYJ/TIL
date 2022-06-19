@@ -3,6 +3,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 트리
+// 이진 트리
+// 순회
 class Node {
 	char value;
 	Node left;
