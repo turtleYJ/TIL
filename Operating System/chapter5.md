@@ -18,5 +18,5 @@
 > 둘 다 운영체제 커널 속에 있는 함수? 코드 들이다.
 
 ### 용어
-nonpreemptive : CPU를 강제로 뺏기지 않고 자진반납
+nonpreemptive : CPU를 강제로 뺏기지 않고 자진반납  
 preemptive : CPU를 강제로 뺏김
