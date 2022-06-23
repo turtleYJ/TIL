@@ -64,6 +64,7 @@ public class Main {
 		}
 	}
 
+	// 시간 복잡도 15(단어의 최대 길이) * 50(단어의 최대 개수)
 	private static int countWord() {
 		
 		int count = 0;
@@ -71,7 +72,7 @@ public class Main {
 			String S = arr[i];
 			boolean flag = true;
 			
-			for (int j = 0; j < S.length(); j++) {
+			for (int j = 4; j < S.length() - 4; j++) {
 				int n = S.charAt(j) - 97;
 				
 				if(!alphabet[n]) {
