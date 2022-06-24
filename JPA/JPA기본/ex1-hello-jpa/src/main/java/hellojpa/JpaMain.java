@@ -21,15 +21,16 @@ public class JpaMain {
 
         // code
         try {
-//            Member findMember = em.find(Member.class, 1L);
-            // JPQL : 테이블이 아닌 객체를 대상으로 검색하는 객체 지향 쿼리
-            // 엔티티에서 컬럼이 아닌 객체 그 자체를 가져온다.
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .getResultList();
+//
+            // 비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("HelloJPA");
 
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+            // 영속
+            System.out.println("=== BEFORE ===");
+            em.persist(member);
+            System.out.println("=== AFTER ===");
 
             tx.commit();
         } catch (Exception e) {
