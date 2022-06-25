@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 투 포인터
+// 일정한 간격
 public class Main {
 
 	public static void main(String[] args) throws IOException {
