@@ -52,4 +52,4 @@
       - Indirect Communication : mailbox(또는 port)를 통해 메세지를 간접 전달
     - shared message : 서로 다른 프로세스간에도 일부 주소 공간을 공유하게 하는 shared memory 메커니즘이 있음
 
-![](Image/OS%20chapter4-1.png)
+![](Image/OS%20chapter4-1.png)http://cafe.naver.com/javachobostudy.cafe
