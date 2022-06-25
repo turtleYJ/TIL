@@ -19,7 +19,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <!-- 주석을 달아준다. 이 쿼리가 나온 이유 -->
             <property name="hibernate.use_sql_comments" value="true"/>
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
 </persistence>
