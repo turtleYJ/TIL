@@ -52,7 +52,7 @@ member.setUsername("회원1");
 - em.close() : 영속성 컨텍스트를 종료.
 
 ## 영속성 컨텍스트의 이점
-- 1차 캐시 - 같은 엔티티에 대해 find를 여러번 해도 쿼리문을 여러번 실행하지 않는다.
+- 1차 캐시 -같은 엔티티에 대해 find를 여러번 해도 쿼리문을 여러번 실행하지 않는다.
 - 동일성 보장 - 1차 캐시에서 가져다 씀으로 참조 변수와 같이 동일성이 보장된다.(==)
 - 트랜잭션을 지원하는 쓰기 지연
 - 변경 감지(Dirty Checking) : 추가로 save해주지 않아도 인스턴스에 대한 참조 변수처럼 자연스럽게 데이터에 대한 update가 진행된다.
@@ -105,3 +105,14 @@ member.setUsername("회원1");
 - 주로 메모리상에서 임시로 어떤 값을 보관하고 싶을 때 사용
 
 ## 기본 키 매핑
+- 직접 할당 : @Id만 사용
+- 자동 생성(@GeneratedValue)
+  - IDENTITY : 데이터베이스에 위임, MYSQL
+  - SEQUENCE : 데이터베이스 시퀀스 오브젝트 사용, ORACLE
+    - @SequenceGenerator 필요
+  - TABLE : 키 생성용 테이블 사용, 모든 DB에서 사용
+    - @TableGenerator필요
+  - AUTO : 방언에 따라 자동 지정, 기본값
+
+- @Id
+- @GeneratedValue
