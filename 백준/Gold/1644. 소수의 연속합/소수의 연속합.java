@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+// 에라토스테네스의 체
+// (기본)
 public class Main {
 
 	private static boolean[] arr;
@@ -29,7 +31,6 @@ public class Main {
 		System.out.println(res);
 	}
 
-	// 에라토스테네스의 체
 	private static void sieve(int n) {
 		arr[0] = true;
 		arr[1] = true;
