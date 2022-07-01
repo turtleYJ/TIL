@@ -1,87 +1,95 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
+
+// 세그먼트 트리
 public class Main {
-    static long[] arr;
-    static long[] tree;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+		int num = M + K;
+		// 트리의 높이
+		int h = (int)Math.ceil(Math.log(N) / Math.log(2));
+		// 트리의 사이즈(노드의 수)
+//		int tree_size = (int)Math.pow(2, h + 1);
+		int tree_size = (1 << (h + 1));
+		long[] arr = new long[N];
+		long[] tree = new long[tree_size];
+		
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = Long.parseLong(br.readLine());
+		}
+		
+		init(arr, tree, 1, 0, N - 1);
+		StringBuilder sb = new StringBuilder();
+		
+		while (num-- > 0) {
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			long c = Long.parseLong(st.nextToken());
+			
+			// 숫자 변경
+			if (a == 1) {
+				long diff = c - arr[b - 1];
+				arr[b - 1] = c;
+				
+				update(tree, 1, 0, N - 1, b - 1, diff);
+			} 
+			// 합을 구하여 출력
+			else if (a == 2) {
+				
+				sb.append(sum(tree, 1, 0, N - 1, b - 1, c - 1)).append('\n');
+			}
+		}
+		
+		System.out.println(sb);
+	}
 
-        int N = Integer.parseInt(st.nextToken());   // 수의 개수
-        int M = Integer.parseInt(st.nextToken());   // 변경이 일어나는 횟수
-        int K = Integer.parseInt(st.nextToken());   // 구간 합을 구하는 횟수
-        arr = new long[N];
-        tree = new long[4 * N];
+	// 더할 인덱스의 범위(left ~ right), 노드의 담당 범위(start ~ end)
+	private static long sum(long[] tree, int node, int start, int end, int left, long right) {
+		// 노드의 범위 밖에 더할 범위가 존재한다면 (관련 없는 노드이다.)
+		if (left > end || right < start) {
+			return 0;
+		}
+		// 노드의 범위가 더할 범위에 포함될 때(그 노드범위의 합을 리턴하여 상위 재귀식에서 더해질 수 있도록 한다.)
+		if (left <= start && end <= right) {
+			return tree[node];
+		}
+		// 그 밖에, 노드의 범위[start ~ end]가 전체 합산핧 범위[left ~ right]를 완전히 포함하는 경우 => 하위 노드로 가서 노드의 범위가 합산범위에 포함되는 것을 찾는다.
+		return sum(tree, node * 2, start, (start + end) / 2, left, right) + sum(tree, node * 2 + 1, (start + end) / 2 + 1, end, left, right);
+	}
 
-        // 정수 입력 받기
-        for (int i = 0; i < N; i++) {
-            arr[i] = Long.parseLong(br.readLine());
-        }
+	// 여기서 index는 바꿔줘야할 숫자의 인덱스이다.
+	private static void update(long[] tree, int node, int start, int end, int index, long diff) {
+		// 범위(start ~ end)에 index가 포함되지 않으면 리턴해준다.
+		if (index < start || index > end) return;
+		// 범위(start ~ end)에 index가 포함된다면 차이값(diff)을 더해준다.
+		tree[node] = tree[node] + diff;
+		// 리프가 아니면 하위 노드들도 탐색한다.
+		if(start != end) {
+			// 왼쪽
+			update(tree, node * 2, start, (start + end) / 2, index, diff);
+			// 오른쪽
+			update(tree, node * 2 + 1, (start + end) / 2 + 1, end, index, diff);
+		}
+	}
 
-        init(0, arr.length - 1, 1);
-
-        for (int i = 0; i < M + K; i++) {
-            st = new StringTokenizer(br.readLine());
-            int a = Integer.parseInt(st.nextToken());
-            int b = Integer.parseInt(st.nextToken());
-            long c = Long.parseLong(st.nextToken());
-
-            if (a == 1) {  // 변경
-                long diff = c - arr[b - 1];
-                update(0, arr.length - 1, 1, b - 1, diff);
-            } else if (a == 2) { // 구간 합
-                bw.write(sum(0, arr.length - 1, 1, b - 1, c - 1) + "\n");
-            } else {
-                return;
-            }
-        }
-
-        br.close();
-        bw.flush();
-        bw.close();
-    }
-
-    // start, end: 원래 배열의 시작, 끝 인덱스
-    // node: segment tree 의 주소
-    static long init(int start, int end, int node) {
-        if (start == end) {
-            return tree[node] = arr[start];
-        } else {
-            int mid = (start + end) / 2;
-            return tree[node] = init(start, mid, node * 2) + init(mid + 1, end, node * 2 + 1);
-        }
-    }
-
-    // left, right: 구해야하는 구간 합 범위
-    static long sum(int start, int end, int node, int left, long right) {
-        if (left > end || right < start) {  // 범위 밖에 있는 경우
-            return 0;
-        }
-        if (left <= start && end <= right) { // 범위 안에 속하는 경우
-            return tree[node];
-        }
-        int mid = (start + end) / 2;
-        return sum(start, mid, node * 2, left, right) + sum(mid + 1, end, node * 2 + 1, left, right);
-    }
-
-    // index: 원래 배열에서 바꾸려는 자리
-    // diff: 원래 값과 바꾸려는 값의 차이
-    static void update(int start, int end, int node, int index, long diff) {
-        if (index < start || index > end) { // 범위 밖에 있는 경우
-            return;
-        }
-        // 범위 안에 있는 경우
-        tree[node] += diff; // 우선 트리의 값을 바꿈
-        if (start == end) { // leaf 노드인 경우
-            arr[index] = tree[node];    // diff 계산할 때 arr의 값을 참고하기 때문에 arr의 값도 바꿔줘야함
-            return;
-        }
-        // 하위에 있는 노드도 바꿔줌
-        int mid = (start + end) / 2;
-        update(start, mid, node * 2, index, diff);
-        update(mid + 1, end, node * 2 + 1, index, diff);
-    }
+	// 초기화
+	private static long init(long[] arr, long[] tree, int node, int start, int end) {
+		// 만약 리프노드에 닿는 다면
+		// 리프 노드는 배열의 그 원소를 가진다.
+		if (start == end) {
+			return tree[node] = arr[start];
+		} else {
+			return tree[node] = init(arr, tree, node * 2, start, (start  + end) / 2) + init(arr, tree, node * 2 + 1, (start  + end) / 2 + 1, end);
+		}
+	}
 }
