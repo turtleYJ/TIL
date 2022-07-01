@@ -80,3 +80,56 @@
 ### Starvation
 - **indefinite blocking** 프로세스가 suspend된 이유에 해당하는 세마포어 큐에서 빠져날갈 수 없는 현상
 - 특정 프로세스들이 CPU를 독점하여 어느 프로세스가 CPU를 사용할 수 없는 경우.
+
+## Classical Problems of Synchronization
+### 1. Bounded-Buffer Problem(Producer-Consumer Problem)
+  생산자
+  - Empty 버퍼가 있나?(없으면 기다림)
+  - 공유데이터에 lock을 건다.
+  - Empty buffer에 데이터 입력 및 buffer 조작
+  - lock을 푼다.
+  - Full buffer하나 증가
+
+  소비자
+  - full 버퍼가 있나?(없으면 기다림)
+  - 공유데이터에 lock을 건다.
+  - Full buffer에서 데이터 꺼내고 buffer 조작
+  - lock을 푼다.
+  - empty buffer 하나 증가
+
+![](Image/OS%20chapter6-6.png)
+
+#### Shared data
+- buffer 자체 및 buffer조작 변수(empty/full buffer의 시작 위치)
+#### Synchronization variables
+- semaphore full(처음에 0), empty(처음에 n), mutex(하나의 프로세스(생산자 or 소비사)만 접근할 수 있도록 하는 세마포어)
+- mutual exclusion -> binary semaphore변수(mutex)가 필요
+- resource count -> integer semaphore변수(full, empty)가 필요(empty/full buffer의 수 표시)
+
+![](Image/OS%20chapter6-7.png)
+
+
+### 2. Readers and Writers Problem
+- 한 process가 DB에 write 중일 때 다른 process가 접근하면 안됨.
+- read는 동시에 여럿이 해도 됨.
+- solution
+  - Writer가 DB에 접근 허가를 아직 얻지 못한 상태(읽는 중)에서는 모든 대기중인 Reader들을 다 DB에 접근하게 해준다.
+  - Writer는 대기 중인 Reader가 하나도 없을 때 DB접근이 허용된다.
+  - 일단, Writer가 DB에 접근 중이면 Reader들은 접근이 금지된다.
+  - Writer가 DB에서 빠져나가야만 Reader의 접근이 허용된다.
+
+#### Shared data
+- DB 자체
+- readcount; (현재 DB에 접근 중인 Reader의 수)
+
+#### Synchronization variables
+- muttex (공유 변수  readcount를 접근하는 코드(critical section)의 mutual exclusion 보장을 위해 사용)
+- db (Reader와 writer가 공유 DB 자체를 올바르게 접근하게 하는 역할)
+
+![](Image/OS%20chapter6-8.png)
+
+- Starvation 발생 가능
+- 리더들이 지속적으로 들어오게 되면 Writer의 Starvation이 발생한 코드이다.
+
+
+### 3. Dining-Philosophers Problem
