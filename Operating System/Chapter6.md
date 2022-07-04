@@ -133,3 +133,19 @@
 
 
 ### 3. Dining-Philosophers Problem
+
+## Monitor
+- 동시 수행중인 프로세스 사이에서 abstract data type의 안전한 공유를 보장하기 위한 high-level synchronization construct
+- 모니터 내에서는 한번에 하나의 프로세스만이 활동 가능
+- 프로그래머가 동기화 제약 조건을 명시적으로 코딩할 필요없음
+- 프로세스가 모니터 안에서 기다릴 수 있도록 하기 위해 condition variable 사용(condition x, y;)
+- Condition variable은 wait와 signal연산에 의하새ㅓ만 접근 가능
+- x.wait();
+- x.wait()을 invoke한 프로세스는 다른 프로세스가 x.siganl()을 invoke하기 전까지 suspend된다.
+- x.signal();
+- x.signal()은 정확하게 하나의 suspend된 프로세스를 resume한다.
+- Suspend된 프로세스가 없으면 아무 일도 일어나지 않는다.
+
+### Semaphore vs Monitor
+- Moniter는 Moniter자체가 동시 접근을 막아준다.
+- Semaphore는 코드(P, V 연산)로써 동시접근을 막는다.
