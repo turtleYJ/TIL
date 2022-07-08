@@ -46,8 +46,18 @@
 
 - 자원 요총에 대한 부가정보를 이용해서 자원 할당이 deadlock으로 부터 안전(safe) 한지를 동적으로 조사해서 안전한 경우에만 할당.
 - 가장 단순하고 일반적인 모델은 프로세스들이 필요로 하는 각 자원별 최대 사용량을 미리 선언하도록 하는 방법임
+- 뱅커스 알고리즘
+
+
+> Deadlock Prevention과 Deadlock Avoidance 는 데드락을 원천적으로 차단하는 방법.
+
 ### Deadlock Detection and recovery
+
+
 ### Deadlock Ignorance
+> 데드락이 생기든 말든 상관하지 않는 방식
+> 사용자가 데드락을 처리하도록 하고 운영체제는 데드락에 대처하지 않음
+> 현재 대부분의 운영체제들이 사용하는 방식
 
 Deadlock Prevention
 - Utilization 저하, throughput 감소, starvation 문제
