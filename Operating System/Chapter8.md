@@ -74,3 +74,64 @@ Symbolic Address : 프로그래머가 사용하는 변수(변수명)
   - Compile time 혹은 load time binding에서는 원래 메모리 위치로 swap in 해야 함
   - Execution time binding 에서는 추후 빈 메모리 영역 아무 곳에나 올릴 수 있음
   - swap time은 대부분 transfer time(swap되는 양에 비례하는 시간)임
+
+## Dynamic Linking
+> Linking을 실행 시간(execution time)까지 미루는 기법
+
+- Static linking
+  - 라이브러리가 프로그램의 실행 파일 코드에 포함됨
+  - 실행 파일의 크기가 커짐
+  - 동일한 라이브러리를 각각의 프로세스가 메모리에 올리므로 메모리 낭비
+- Dynamic linking
+  - 라이브러리가 실행시 연결(link)됨
+  - 라이브러리 호출 부분에 라이브러리 루틴의 위치를 찾기 위한 stub이라는 작은 코드를 둠
+  - 라이브러리가 이미 메모리에 있으면 그 루틴의 주소로 가고 없으면 디스크에서 읽어옴
+  - 운영체제의 도움 필요
+
+## Allocation of Physical memory
+- 메모리는 일반적으로 두 영역으로 나뉘어 사용
+  - OS 상주 영역
+    - interrupt vector와 함께 낮은 주소 영역 사용
+  - 사용자 프로세스 영역
+    - 높은 주소 영역 사용
+
+- 사용자 프로세스 영역의 할당 방법
+  - Contiguous allocation : 각각의 프로세스가 메모리의 연속적인 공간에 적재되도록 하는 것
+    - Fixed partition allocation
+    - Variable partition allocation
+  - Noncontiguous allocation : 하나의 프로세스가 메모리의 여러 영역에 분산되어 올라갈 수 있음
+  - Paging
+  - Segmentation
+  - Paged Segmentation
+
+### Contiguous Allocation
+- 고정분할(Fixed partition) 방식
+  - 물리적 메모리를 몇 개의 영구적 분할(partition)로 나눔
+  - 분할의 크기가 모두 동일한 방식과 서로 다른 방식이 존재
+  - 분할당 하나의 프로그램 적재
+  - 융통성이 없음
+    - 동시에 메모리에 load되는 프로그램의 수가 고정됨
+    - 최대 수행 가능 프로그램 크기 제한
+  - Internal fragmentation 발생 (external fragmentation도 발생)
+
+- 가변분할(Variable partition) 방식
+  - 프로그램의 크기를 고려해서 할당
+  - 분할의 크기, 개수가 동적으로 변함
+  - 기술적 관리 기법 필요
+  - External fragmentation 발생
+
+![](Image/OS%20chapter8-4.png)
+
+## Paging
+### Paging
+- Process의 virtual memoryy를 동일한 사이즈의 page 단위로 나눔
+- Virtual memory의 내용이 page 단위로 noncontiguous하게 저장됨
+- 일부는 backing storage에, 일부는 physical memory에 저장
+
+### Basic Method
+- physical memory를 동일한 크기의 frame 으로 나눔
+- logical memory를 동일한 크기의 page로 나눔(frame과 같으 크기)
+- 모든 가용 frame들을 관리
+- page table을 사용하여 logical address를 physical address로 변환
+- External fragmentation 발생 안함
+- Internal fragmentation 발생 가능
