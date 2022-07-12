@@ -33,12 +33,9 @@ public class Main {
 		for (int i = 0; i < forest.length; i++) {
 			for (int j = 0; j < forest.length; j++) {
 				if(DP[i][j] == null) {
-//					boolean[][] isVisit = new boolean[n][n];
-//					isVisit[i][j] = true;
 					cur = 0;
 					localMax = 0;
 					dfs(i, j, 1);
-//					dfs(i, j, isVisit, 1);
 					res = Math.max(cur, res);
 				}
 			}
@@ -70,9 +67,7 @@ public class Main {
 						
 						continue;
 					} else {
-//						isVisit[ny][nx] = true;
 						dfs(ny, nx, cnt + 1);
-//						isVisit[ny][nx] = false;
 						if(DP[y][x] == null) {
 							DP[y][x] = DP[ny][nx] + 1;
 						} else {
