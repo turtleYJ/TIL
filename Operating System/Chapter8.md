@@ -124,9 +124,11 @@ Symbolic Address : 프로그래머가 사용하는 변수(변수명)
 
 ## Paging
 ### Paging
-- Process의 virtual memoryy를 동일한 사이즈의 page 단위로 나눔
+- Process의 virtual memory를 **동일한 사이즈**의 page 단위로 나눔
 - Virtual memory의 내용이 page 단위로 noncontiguous하게 저장됨
 - 일부는 backing storage에, 일부는 physical memory에 저장
+- page table을 사용하여 각각의 페이지들이 물리적 메모리의 어디에 올라가있는지를 확인.
+- page table은 메모리에 올라가 있다.
 
 ### Basic Method
 - physical memory를 동일한 크기의 frame 으로 나눔
@@ -135,3 +137,24 @@ Symbolic Address : 프로그래머가 사용하는 변수(변수명)
 - page table을 사용하여 logical address를 physical address로 변환
 - External fragmentation 발생 안함
 - Internal fragmentation 발생 가능
+
+### Implementation of Page Table
+- Page table은 main memory에 상주
+- Page-table base register(PTBR)가 page table을 가리킴
+- Page-table length register(PTLR)가 테이블 크기를 보관
+- 모든 모메리 접근 연산에는 2번의 memory access 필요
+- page table 접근 1번, 실제 data/instruction 접근 1번
+- 속도 향상을 위해 associative register(parallel search 가능) 혹은 translation look-aside buffer(TLB)라 불리는 고속의 lookup hardware cache 사용 
+
+- TLB: 주소변환을 위한 캐시메모리
+- page table에서 빈번히 참조되는 일부 entry(page number, 인덱스 같은 느낌)를 캐싱을 하고 있다.
+- 2차례의 메모리 접근을 하기 전에 TLB에 저장이 되어 있는지를 확인한다.
+- TLB는 context switch 때 flush(remove old entries)
+
+### Two-Level Page Table
+- 현대의 컴퓨터는 address space가 매우 큼
+- 32비트로 표현가능한 서로 다른 정보가 몇개인가? 2의 32 제곱
+- 32비트 주소체계를 쓴다면 메모리 주소가 0번지부터 2^32
+- 2^10 =  K(킬로), 2^20 = M(메가), 2^30 = G(기가)
+- 2^32B(4GB)
+- 32 bit address 사용시 : 2^32B(4GB)의 주소 공간 
