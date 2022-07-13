@@ -357,6 +357,127 @@
 # print("전체 총 : {0}".format(gun))
 
 
+# Quiz) 표준 체중을 구하는 프로그램
+# 남자 : 키 * 키 * 22
+# 여자 : 키 * 키 * 21
+
+
+# height = int(input("키를 입력해 주세요 : "))
+# gender = input("성별을 입력해 주세요 : ")
+
+# def std_weight(height, gender):
+#     if gender == "남자":
+#         return (height / 100) * (height / 100) * 22
+#     else:
+#         return (height / 100) * (height / 100) * 21
+
+# std = std_weight(height, gender)
+
+# print("키 {0} {1}의 표준 체중은 {2: .2f} 입니다.".format(height, gender, std))
+
+
+# 표준 입출력
+# print("Python", "Java", file=sys.stdout)
+# print("Python", "Java", file=sys.stderr)
+
+# 시험 성적
+# scores = {"수학" : 0, "영어" : 50, "코딩" : 100}
+# for subject, score in scores.items():
+#     print(subject.ljust(8), str(score).rjust(4), sep=":")
+
+# 은행 대기순번표
+# 001, 002, 003, ...
+# for num in range(1, 21):
+#     print("대기번호 : " + str(num).zfill(3))
+
+# answer = input("아무 값이나 입력하세요 : ")
+# print(type(answer))
+# print("입력하신 값은 " + answer + "입니다.")
+
+
+# 다양한 출력 포맷
+# 빈 자리는 빈공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보
+# print("{0: >10}".format(500))
+# # 양수일 땐 +로 표시, 음수일 때는 -로 표시
+# print("{0: >+10}".format(500))
+# print("{0: >+10}".format(-500))
+# # 왼쪽 정렬하고, 빈칸으로 _로 채움
+# print("{0:_<+10}".format(500))
+# print("{0:_<10}".format(500))
+# # 3자리 마다 콤마를 찍어주기
+# print("{0:,}".format(1000000000000))
+# # 3자리 마다 콤마를 찍어주기, +- 부호도 붙이기
+# print("{0:+,}".format(1000000000000))
+# print("{0:+,}".format(-1000000000000))
+# # 3자리 마다 콤마를 찍어주기, +- 부호도 붙이기, 자리수 확보
+# # 빈 자리는 ^로 채워주기
+# print("{0:^<+30,}".format(+1000000000000))
+# # 소수점 출력
+# print("{0:f}".format(5/3))
+# # 소수점을 특정 자리수 까지만 표시
+# print("{0:.2f}".format(5/3))
+
+
+# 파일 입출력
+# score_file = open("score.txt", "w", encoding="utf8")
+# print("수학 : 0", file=score_file)
+# print("영어 : 50", file=score_file)
+# score_file.close()
+
+# append
+# 덮어쓰기
+# score_file = open("score.txt", "a", encoding="utf-8")
+# score_file.write("과학 : 80")
+# score_file.write("\n코딩 : 100")
+# score_file.close()
+
+# read
+# score_file = open("score.txt", "r", encoding="utf-8")
+# print(score_file.read())
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf-8")
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="")
+# print(score_file.readline(), end="") # 줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+# print(score_file.readline(), end="")
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf-8")
+# while True:
+#     line = score_file.readline()
+#     if not line:
+#         break
+#     print(line, end="")
+# score_file.close()
+
+# score_file = open("score.txt", "r", encoding="utf-8")
+# lines = score_file.readlines() # list 형태로 저장
+# for line in lines:
+#     print(line, end="")
+# score_file.close()
+
+
+# pickle
+# wb : 바이너리 파일로 쓴다.
+# import pickle
+# profile_file = open("profile.picle", "wb")
+# profile = {"이름" : "박명수", "나이" : 30, "취미" : ["축구", "골프", "코딩"]}
+# print(profile)
+# pickle.dump(profile, profile_file) # profile에 있는 정보를 file에 저장
+# profile_file.close()
+
+# profile_file = open("profile.picle", "rb")
+# profile = pickle.load(profile_file) # file에 있는 정보를 profile 변수에 불러오기
+# print(profile)
+# profile_file.close()
+
+
+# with
+
+
+
+
 
 
 
