@@ -19,21 +19,22 @@ public class JpaMain {
 
         // code
         try {
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            Member member1 = new Member();
-            member1.setUsername("member1");
-            em.persist(member1);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
 
+            em.persist(parent);
+//            em.persist(child1);
+//            em.persist(child2);
+            
             em.flush();
             em.clear();
 
-            Member refMember = em.getReference(Member.class, member1.getId());
-            System.out.println("refMember = " + refMember.getClass());
-
-//            em.detach(refMember);
-            em.close();
-
-            refMember.getUsername();
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
 
 
             tx.commit();
