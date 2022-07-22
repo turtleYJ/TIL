@@ -1,13 +1,9 @@
-package hellojpa;
+package jpql;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.time.LocalDateTime;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class JpaMain {
 
@@ -25,10 +21,15 @@ public class JpaMain {
         // code
         try {
 
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Member> query = cb.createQuery(Member.class);
+            Member member = new Member();
+            member.setUsername("Member1");
+            member.setAge(10);
+            em.persist(member);
 
-            Root<Member> m = query.from(Member.class);
+            Member result = em.createQuery("selet m from Member m where m.username = :username", Member.class)
+                    .setParameter("username", "member1")
+                    .getSingleResult();
+            System.out.println("result = " + result.getUsername());
 
             tx.commit();
         } catch (Exception e) {
