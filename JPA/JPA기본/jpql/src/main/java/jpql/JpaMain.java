@@ -22,20 +22,29 @@ public class JpaMain {
         // code
         try {
 
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
             Member member = new Member();
-            member.setUsername("Member1");
+            member.setUsername("teamA");
             member.setAge(10);
+
+            member.setTeam(team);
+
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            List<MemberDTO> result = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
+            String query = "select m from Member m left join Team t on m.username = t.name";
+            List<Member> result = em.createQuery(query, Member.class)
                     .getResultList();
 
-            MemberDTO memberDTO = result.get(0);
-            System.out.println("memberDTO = " + memberDTO.getUsername());
-            System.out.println("memberDTO = " + memberDTO.getAge());
+            System.out.println("result.size = " + result.size());
+            for (Member member1 : result) {
+                System.out.println("member1 = " + member1);
+            }
 
 
             tx.commit();
