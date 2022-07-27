@@ -319,20 +319,21 @@ member.setUsername("회원1");
 
 ## 객체지향 쿼리 언어1 - 기본 문법
 
-### JPA는 다양한 쿼리 방법을 지원
+### 기본 문법과 쿼리 API
+#### JPA는 다양한 쿼리 방법을 지원
 - JPQL
 - JPA Criteria
 - QueryDSL
 - 네이티브 SQL
 - JDBC API 직접 사용, MyBatis, SpringJdbcTemplate 함께 사용
 
-### JPQL
+#### JPQL
 - JPA에서 제공하는 SQL의 추상화된 방법 (객체지향 적으로)
 - JPQL은 엔티티 객체를 대상으로 쿼리
 - SQL은 데이터베이스 테이블을 대상으로 쿼리
 - 객체 지향 SQL
 
-### TypeQuery, Query
+#### TypeQuery, Query
 - TypeQuery : 반환 타입이 명확할 때 사용
 - Query : 반환 타입이 명확하지 않을 때 사용
 
@@ -345,7 +346,7 @@ Query query = em.createQuery("SELECT m.username, m.age from Member m");
 
 ```
 
-### 결과 조회 API
+#### 결과 조회 API
 - query.getResultList(): 결과가 하나 이상일 때, 리스트 반환
   - 결과가 없으면 빈 리스트 반환
 
@@ -353,7 +354,7 @@ Query query = em.createQuery("SELECT m.username, m.age from Member m");
   - 결과가 없으면 : javax.persistence.NoResultException
   - 둘 이상이면 : javax.persistence.NonUniqueResultException
 
-### 파라미터 바인딩 - 이름 기준(권장), 위치 기준
+#### 파라미터 바인딩 - 이름 기준(권장), 위치 기준
 - 이름 기준
 ``` java
 
@@ -369,3 +370,17 @@ select m from Member m where m.username = **?1**
 query.setParameter(1, username의 값);
 
 ```
+### 프로젝션(SELECT)
+- SELECT 절에 조회할 대상을 지정하는 것
+- 프로젝션 대산 : 엔티티, 임베디드 타입, 스칼라 타입(숫자, 문자등 기본 데이터 타입)
+- SELECT m FROM Member m -> 엔티티 프로젝션
+- SELECT m.team FROM Member m -> 엔티티 프로젝션
+- SELECT m.address FROM Member m -> 임베디드 타입 프로젝션 -> 임베디드 타입 프로젝션
+- SELECT m.username, m.age FROM Member m -> 스칼라 타입 프로젝션
+- DISTINCT로 중복 제거 
+
+### 페이징
+- List에 두가지 메소드 체이닝을 통해 페이징을 추상적으로 구현할 수 있다.
+- .setFirstResult()
+- .setMaxResults()
+- 마지막으로 .getResultList()를 통해 결과를 가져온다.
