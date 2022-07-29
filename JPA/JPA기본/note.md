@@ -384,3 +384,11 @@ query.setParameter(1, username의 값);
 - .setFirstResult()
 - .setMaxResults()
 - 마지막으로 .getResultList()를 통해 결과를 가져온다.
+
+### 조인
+### 서브쿼리
+- JPA는 WHERE, HAVING 절에서만 서브 쿼리 사용 가능
+- SELECT 에서도 사용가능(하이버네이트)
+- FROM절의 서브 쿼리는 현재 JPQL에서 불가능
+
+### JPQL 타입 표현
