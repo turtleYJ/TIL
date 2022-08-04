@@ -4,7 +4,9 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-
+// 최소 스패닝 트리
+// 최소 신장 트리
+// 크루스칼 알고리즘
 public class Main {
     private static int[] parent;
 
