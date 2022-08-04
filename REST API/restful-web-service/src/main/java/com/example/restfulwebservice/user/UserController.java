@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User savedUser = service.save(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -46,14 +48,13 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User updatedUser, @PathVariable int id) {
-        User user = service.updateById(id, updatedUser);
+    public User updateUser(@RequestBody User newUser, @PathVariable int id) {
+        User user = service.findOne(id);
 
-        if (user == null) {
-            throw new UserNotFoundException(String.format("ID[%s] not found", id));
-        }
+        user.setName(newUser.getName());
+        user.setJoinDate(new Date());
 
-        return ResponseEntity.noContent().build();
+        return user;
     }
 
     @DeleteMapping("/users/{id}")
