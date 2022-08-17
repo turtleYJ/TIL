@@ -6,7 +6,7 @@
 - Physical address
   - 메모리에 실제 올라가는 위치
 
-주소 바인딩 : 주소를 결정하는 것
+주소 바인딩 : 주소를 결정하는 것.
 Symbolic Address -> Logical Address -> Physical address
 
 Symbolic Address : 프로그래머가 사용하는 변수(변수명)
