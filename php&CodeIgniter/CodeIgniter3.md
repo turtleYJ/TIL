@@ -18,5 +18,9 @@
 <br>
 <br>
 
+## log 메세지 함수
+- https://codeigniter.com/userguide3/general/errors.html?highlight=log#log_message
+
+
 모든 모르는 사항 여기에 다 있음
 > https://codeigniter.com/userguide3/index.html
