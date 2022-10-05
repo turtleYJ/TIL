@@ -16,11 +16,11 @@ Apache & PHP 버전 확인 명령어
 - PHP 확인 : php -v
 
 ## DocumentRoot 변경 및 확인
-/usr/local/etc/httpd/httpd.conf
+/opt/homebrew/etc/httpd/httpd.conf
 의 DocumentRoot를 찾아서 변경.
 
 ## php 설치 위치
-: /usr/local/etc/php/7.4
+: /opt/homebrew/etc/php/7.4
 
 ## httpd.conf 설정 변경
 - 포트번호 변경 : localhost:8080 으로 접속 -> localhost 로 접속가능
