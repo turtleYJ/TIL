@@ -40,6 +40,9 @@ DocumentRoot "/Users/tutleJ/dcRoot"
 LoadModule php_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so
 ```
 
+## URL 상의 index.php 생략하는 방법
+- https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=blackfrost&logNo=220275081140
+
 
 
 
