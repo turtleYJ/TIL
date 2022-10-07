@@ -9,8 +9,10 @@ class Board extends CI_Controller {
 
     public function index()
     {
-        $data['posts'] = $this->board_model->get_posts();
-
+        $data['postA'] = $this->board_model->get_posts('a');
+        $data['postB'] = $this->board_model->get_posts('b');
+        $data['postC'] = $this->board_model->get_posts('c');
+        
         // $this->load->view('common/header');
         $this->load->helper('url');
         $this->load->view('board/index', $data);
@@ -21,7 +23,23 @@ class Board extends CI_Controller {
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->view('board/write');
+
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('text', 'Text', 'required');
+        
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('board/write');
+        }
+        else
+        {
+            $this->board_model->set_posts();
+            $this->load->view('board/success');
+        }
     }
 
+    public function view()
+    {
+        
+    }
 }

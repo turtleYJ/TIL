@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+div {
+    display: block;
+}
+
 /* button : default */
 .btn{position:relative;display:inline-block;text-decoration:none;border-radius:2px;behavior:url(/asset/wm60/js/PIE.htc);vertical-align:middle;cursor:pointer}
 .btn .icon{position:absolute}
@@ -81,4 +85,104 @@
     height: 100%;
     width: 100%;
     min-width: 1080px;
+}
+
+.sidebar-wrapper.first-load, .sidebar-wrapper.fix-Y {
+    width: 271px;
+}
+
+.sidebar-wrapper {
+    /* position: relative; */
+    display: table-cell;
+    width: 60px;
+    vertical-align: top;
+}
+
+#header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.column .title-page {
+    display: table-cell;
+    float: left;
+    display: block;
+    margin-left: 55px;
+    width: calc(50% - 55px);
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.top_box {
+    height: 30px;
+    padding: 20px 15px 12px;
+}
+
+.quick_area {
+    width: 240px;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    top: 29px;
+    left: 0;
+}
+
+#scroll_body_list {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#scroll_body_list .leftBoard {
+    float: left;
+    width: 50%;
+    *width: 49.9%;
+    padding: 15px 7.5px 0 15px;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .rightBoard {
+    float: right;
+    width: 50%;
+    padding: 15px 15px 0 7.5px;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .leftBoard article, .rightBoard article {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 0px #ddd;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .leftBoard h1, .rightBoard h1 {
+    height: 21px;
+    padding: 10px 15px 10px 9px;
+    border-bottom: 1px solid #333;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    background: #fff;
+}
+
+#scroll_body_list .leftBoard h1 div, .rightBoard h1 div {
+    float: left;
+    margin-left: 6px;
+}
+
+article {
+    display: block;
 }
