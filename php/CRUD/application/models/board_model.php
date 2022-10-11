@@ -32,4 +32,3 @@ class Board_model extends CI_Model {
 
         return $this->db->insert('YJtest_board', $data);
     }
-}
