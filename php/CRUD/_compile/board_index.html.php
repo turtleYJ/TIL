@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2022/10/12 04:22:07 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_index.html 000009262 */ 
+<?php /* Template_ 2.2.8 2022/10/12 05:26:03 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_index.html 000009265 */ 
 $TPL_postA_item_1=empty($TPL_VAR["postA_item"])||!is_array($TPL_VAR["postA_item"])?0:count($TPL_VAR["postA_item"]);
 $TPL_postB_item_1=empty($TPL_VAR["postB_item"])||!is_array($TPL_VAR["postB_item"])?0:count($TPL_VAR["postB_item"]);
 $TPL_postC_item_1=empty($TPL_VAR["postC_item"])||!is_array($TPL_VAR["postC_item"])?0:count($TPL_VAR["postC_item"]);?>
@@ -75,7 +75,7 @@ $TPL_postC_item_1=empty($TPL_VAR["postC_item"])||!is_array($TPL_VAR["postC_item"
 <?php if($TPL_postA_item_1){foreach($TPL_VAR["postA_item"] as $TPL_V1){?>
                                 <tr>
                                     <td>
-                                        <a href="/bbs/board/view/22987?wr_id=4591894" class="ellipsis" style="height: 28px; width: 185px; max-width: 185px;"><span><?php echo $TPL_V1["title"]?></span></a>
+                                        <a href="/board/view/<?php echo $TPL_V1["id"]?>" class="ellipsis" style="height: 28px; width: 185px; max-width: 185px;"><span><?php echo $TPL_V1["title"]?></span></a>
                                         <div name="helpImg">
                                             <div>
                                                 <span class="mdi mdi-alpha-n-box mdi-16 mdi-orange"></span>

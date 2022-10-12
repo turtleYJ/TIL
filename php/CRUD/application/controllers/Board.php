@@ -40,6 +40,15 @@ class Board extends CI_Controller {
 
     public function view()
     {
-        
+        $writerId = $this->uri->segment(3);
+        $data['post'] = $this->board_model->get_post($writerId);
+        $this->load->view('board/view', $data);
+    }
+
+    public function update()
+    {
+        $writerId = $this->uri->segment(3);
+        $data['post'] = $this->board_model->get_post($writerId);
+        $this->load->view('board/view', $data);
     }
 }

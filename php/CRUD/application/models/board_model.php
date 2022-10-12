@@ -20,6 +20,12 @@ class Board_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_post($writerId)
+    {
+        $query = $this->db->get_where('YJtest_board', array('id' => $writerId));
+        return $query->result_array();
+    }
+
     public function set_posts()
     {
         $data = array(
@@ -27,8 +33,6 @@ class Board_model extends CI_Model {
             'text' => $this->input->post('text'),
             'category' => $this->input->post('board_select')
         );
-
-        echo $data['category'];
 
         return $this->db->insert('YJtest_board', $data);
     }
