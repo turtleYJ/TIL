@@ -20,9 +20,9 @@ class Board_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function get_post($writerId)
+    public function get_post($boardId)
     {
-        $query = $this->db->get_where('YJtest_board', array('id' => $writerId));
+        $query = $this->db->get_where('YJtest_board', array('id' => $boardId));
         return $query->result_array();
     }
 

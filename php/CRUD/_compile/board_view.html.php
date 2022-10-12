@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2022/10/12 08:28:29 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_view.html 000000799 */ 
+<?php /* Template_ 2.2.8 2022/10/12 09:10:15 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_view.html 000000830 */ 
 $TPL_post_1=empty($TPL_VAR["post"])||!is_array($TPL_VAR["post"])?0:count($TPL_VAR["post"]);?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,9 @@ $TPL_post_1=empty($TPL_VAR["post"])||!is_array($TPL_VAR["post"])?0:count($TPL_VA
     <?php echo $TPL_V1["writer"]?> <br>
     <?php echo $TPL_V1["text"]?> <br>
     <?php echo $TPL_V1["postdate"]?> <br>
+    
+    <button onclick="location.href='/board/update/<?php echo $TPL_V1["id"]?>'">수정</button>
 <?php }}?>
-
-    <button onclick="location.href='/board/update'">수정</button>
     <button>삭제</button>
 </body>
 </html>

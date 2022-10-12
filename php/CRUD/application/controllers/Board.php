@@ -40,15 +40,19 @@ class Board extends CI_Controller {
 
     public function view()
     {
-        $writerId = $this->uri->segment(3);
-        $data['post'] = $this->board_model->get_post($writerId);
+        $boardId = $this->uri->segment(3);
+        $data['post'] = $this->board_model->get_post($boardId);
         $this->load->view('board/view', $data);
     }
 
     public function update()
     {
-        $writerId = $this->uri->segment(3);
-        $data['post'] = $this->board_model->get_post($writerId);
-        $this->load->view('board/view', $data);
+        // 기존의 정보들을 가져와서 화면에 나타나도록 한다.
+        $boardId = $this->uri->segment(3);
+        $data['post'] = $this->board_model->get_post($boardId);
+        
+        $this->load->view('board/update', $data);
+
+       
     }
 }
