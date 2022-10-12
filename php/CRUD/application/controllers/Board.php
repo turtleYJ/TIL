@@ -15,7 +15,7 @@ class Board extends CI_Controller {
         
         // $this->load->view('common/header');
         $this->load->helper('url');
-        $this->load->view('board/index', $data);
+        $this->load->view('board/index_tem', $data);
         // $this->load->view('common/footer');
     }
 
