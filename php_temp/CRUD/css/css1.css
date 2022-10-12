@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+/* button : default */
+.btn{position:relative;display:inline-block;text-decoration:none;border-radius:2px;behavior:url(/asset/wm60/js/PIE.htc);vertical-align:middle;cursor:pointer}
+.btn .icon{position:absolute}
+.btn.icon_btn{padding:0 9px !important;}
+.btn.icon_btn span.text{padding:0 0 0 15px;}
+.btn.btn_sm .text{height:28px;padding:0 12px;line-height:28px;font-size:14px;letter-spacing: -.5px;color:#59595A;}
+.btn.btn_xs{height:18px;line-height:18px;padding:0 7px}
+.btn.btn_xs .text{display:block;height:18px;line-height:16px;font-size:11px}
+.btn.btn_xs.btn_grayline{color: #a9bbcc;border:1px solid #5e6b75}
+.btn.btn_white{background:#fff;border:1px solid #ccc;color:#37474f}
+.btn.btn_gray{background:#76838f;border:1px solid #76838f;color:#fff}
+/* button */
+.button{display:inline-block;text-decoration:none;border-radius:2px;behavior:url(/asset/wm60/js/PIE.htc);vertical-align:middle;cursor:pointer}
+.button:focus{outline:none;}
+.button span{vertical-align:middle;word-break: keep-all;display:table-cell}
+.button span.inline{display: inline;}
+.button.medium span{height:30px;line-height:29px;font-size:14px}
+.button.small span{padding:0 12px;line-height:28px;font-size:14px;color:#3A3B3C;display:flex;align-items:center;justify-content:center;}
+.button.small span i{margin-left:4px;line-height:initial;}
+.button.small span.cus{padding:0px 3px!important;max-width:50px;}
+.button.blue{background:#57aefa;color:#fff}
+.button.gray{background:#D8D9DA;color:#fff}
+.button.white{background:#fff;border:1px solid #D8D9DA;color:#59595A}
+.button.add{font-weight:700}
+.button.disabled span, .button.disabled:hover span{color:#acacac !important;cursor:default;}
+
+.skin_bg04 {
+    background: #1E88E5 !important;
+}
+
+.static-sidebar .button_menu .button.single {
+    width: 100%;
+    border-radius: 2px;
+    font-weight: 500;
+}
+
+.static-sidebar .button_menu {
+    height: 40px;
+    padding: 15px 12px 10px;
+    text-align: center;
+}
+
+.static-sidebar {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    display: block;
+    width: 210px;
+    height: 100vh;
+    background: transparent;
+    border-right: 1px solid #ccc;
+    z-index: 1;
+}
+
+.static-content-wrapper {
+    position: relative;
+    display: table-cell;
+    background: #fff;
+    z-index: 0;
+    overflow: visible;
+}
+
+
+.static-sidebar.skin_white {
+    background-color: #fff;
+}
+
+#layout-static {
+    display: table-row;
+}
+
+#wrapper {
+    display: table;
+    table-layout: fixed;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    min-width: 1080px;
+}
+
+.sidebar-wrapper.first-load, .sidebar-wrapper.fix-Y {
+    width: 271px;
+}
+
+.sidebar-wrapper {
+    /* position: relative; */
+    display: table-cell;
+    width: 60px;
+    vertical-align: top;
+}
+
+#header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    line-height: 50px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.column .title-page {
+    display: table-cell;
+    float: left;
+    display: block;
+    margin-left: 55px;
+    width: calc(50% - 55px);
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.top_box {
+    height: 30px;
+    padding: 20px 15px 12px;
+}
+
+.quick_area {
+    width: 240px;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    top: 29px;
+    left: 0;
+}
+
+#scroll_body_list {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#scroll_body_list .leftBoard {
+    float: left;
+    width: 50%;
+    *width: 49.9%;
+    padding: 15px 7.5px 0 15px;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .rightBoard {
+    float: right;
+    width: 50%;
+    padding: 15px 15px 0 7.5px;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .leftBoard article, .rightBoard article {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 0px #ddd;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+#scroll_body_list .leftBoard h1, .rightBoard h1 {
+    height: 21px;
+    padding: 10px 15px 10px 9px;
+    border-bottom: 1px solid #333;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    background: #fff;
+}
+
+#scroll_body_list .leftBoard h1 div, .rightBoard h1 div {
+    float: left;
+    margin-left: 6px;
+}
+
+article {
+    display: block;
+}
