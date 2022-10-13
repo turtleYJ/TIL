@@ -14,7 +14,24 @@
     {post.postdate} <br>
     
     <button onclick="location.href='/board/update/{post.id}'">수정</button>
-    <button onclick="location.href='/board/delete/{post.id}'">삭제</button>
+    <button onclick="del({post.id});">삭제</button>
     <!--{/}-->
 </body>
 </html>
+
+<script>
+    function del(id) {
+        if (confirm("정말 삭제하시겠습니까?"))
+        {
+            console.log("delete");
+            location.href = '/board/delete/' + id;
+        }
+    }
+    
+    // Jquery 문법이라 사용 불가 (라이브러리 추가해줘야 함.)
+    // $("#del").on("click", function(){
+    //     if(window.confirm("정말 삭제하시곘습니까?")){
+    //         console.log("확인");
+    //     }
+    // });
+</script>

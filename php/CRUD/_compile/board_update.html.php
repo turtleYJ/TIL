@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2022/10/13 07:12:59 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_update.html 000001615 */ 
+<?php /* Template_ 2.2.8 2022/10/13 07:42:02 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_update.html 000001611 */ 
 $TPL_post_1=empty($TPL_VAR["post"])||!is_array($TPL_VAR["post"])?0:count($TPL_VAR["post"]);?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@ $TPL_post_1=empty($TPL_VAR["post"])||!is_array($TPL_VAR["post"])?0:count($TPL_VA
         <input type="submit" name="submit" value="등록" />
         <!-- <button type="submit">수정하기</button> -->
     </form>
-    
+
     <button onclick="location.href='/board/view/<?php echo $TPL_V1["id"]?>'">취소</button>
 <?php }}?>
 </body>

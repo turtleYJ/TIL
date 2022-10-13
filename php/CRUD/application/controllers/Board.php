@@ -65,7 +65,13 @@ class Board extends CI_Controller {
         $data['post'] = $this->board_model->get_post($boardId);
         
         $this->load->view('board/update', $data);
+    }
 
-       
+    public function delete($boardId)
+    {
+        $this->load->helper('url');
+
+        $this->board_model->delete($boardId);
+        redirect('board');
     }
 }

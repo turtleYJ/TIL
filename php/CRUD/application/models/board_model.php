@@ -54,6 +54,10 @@ class Board_model extends CI_Model {
 
             return $this->db->update('YJtest_board', $data, $where);
         }
-        
+    }
+
+    public function delete($boardId)
+    {
+        return $this->db->delete('YJtest_board', array('id' => $boardId));
     }
 }
