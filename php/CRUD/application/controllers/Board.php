@@ -4,6 +4,7 @@ class Board extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('url');
         $this->load->model('board_model');
     }
 
@@ -14,28 +15,40 @@ class Board extends CI_Controller {
         $data['postC'] = $this->board_model->get_posts('c');
         
         // $this->load->view('common/header');
-        $this->load->helper('url');
         $this->load->view('board/index_tem', $data);
         // $this->load->view('common/footer');
     }
 
-    public function write()
+    public function write($boardId = FALSE)
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('text', 'Text', 'required');
         
-        if ($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('board/write');
-        }
-        else
-        {
-            $this->board_model->set_posts();
+
+        if ($boardId === FALSE) {
+            
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+    
+            $this->form_validation->set_rules('title', 'Title', 'required');
+            $this->form_validation->set_rules('text', 'Text', 'required');
+
+            if ($this->form_validation->run() === FALSE)
+            {
+                $this->load->view('board/write');
+            }
+            else
+            {
+                $this->board_model->set_posts();
+                $this->load->view('board/success');
+            }
+        } else {
+
+            $title = $this->input->post('title');
+
+            $this->board_model->set_posts($boardId);
             $this->load->view('board/success');
+
         }
+        
     }
 
     public function view()

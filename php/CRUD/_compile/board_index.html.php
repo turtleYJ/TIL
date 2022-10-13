@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2022/10/12 05:26:03 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_index.html 000009265 */ 
+<?php /* Template_ 2.2.8 2022/10/12 09:41:58 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_index.html 000009265 */ 
 $TPL_postA_item_1=empty($TPL_VAR["postA_item"])||!is_array($TPL_VAR["postA_item"])?0:count($TPL_VAR["postA_item"]);
 $TPL_postB_item_1=empty($TPL_VAR["postB_item"])||!is_array($TPL_VAR["postB_item"])?0:count($TPL_VAR["postB_item"]);
 $TPL_postC_item_1=empty($TPL_VAR["postC_item"])||!is_array($TPL_VAR["postC_item"])?0:count($TPL_VAR["postC_item"]);?>

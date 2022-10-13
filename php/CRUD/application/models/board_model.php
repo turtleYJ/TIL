@@ -26,14 +26,34 @@ class Board_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function set_posts()
+    public function set_posts($boardId = FALSE)
     {
-        $data = array(
-            'title' => $this->input->post('title'),
-            'text' => $this->input->post('text'),
-            'category' => $this->input->post('board_select')
-        );
+        if ($boardId === FALSE)
+        {
+            $data = array(
+                'title' => $this->input->post('title'),
+                'text' => $this->input->post('text'),
+                'category' => $this->input->post('board_select')
+            );
+    
+            return $this->db->insert('YJtest_board', $data);
+        } 
+        else 
+        {
+            $data = array(
+                'title' => $this->input->post('title'),
+                'text' => $this->input->post('text'),
+                'category' => $this->input->post('board_select')
+            );
 
-        return $this->db->insert('YJtest_board', $data);
+            $where = array(
+                'id'    => $boardId,
+            );
+
+            echo "수정";
+
+            return $this->db->update('YJtest_board', $data, $where);
+        }
+        
     }
 }

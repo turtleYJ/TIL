@@ -7,27 +7,28 @@
     <title>update</title>
 </head>
 <body>
-
     <h1>수정 페이지</h1>
     <!--{@ post}-->
-    <label for="title">제목</label>
-    <input type="text" id="title" value="{post.title}" size="50"> <br>
+    <form action="/board/write/{post.id}" method="post">
+        <label for="title">제목</label>
+        <input name="title" type="text" id="title" value="{post.title}" size="50"> <br>
 
-    <label for="text">게시판</label>
-    <select name="board_select" id="board_select" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-        <option value="no_data" selected="selected">게시판 선택</option>
-        <option value="a">공지사항</option>
-        <option value="b">정보보안 뉴스</option>
-        <option value="c">사내뉴스레터</option>
-    </select> <br>
+        <label for="text">게시판</label>
+        <select name="board_select" id="board_select" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+            <option value="no_data" selected="selected">게시판 선택</option>
+            <option value="a">공지사항</option>
+            <option value="b">정보보안 뉴스</option>
+            <option value="c">사내뉴스레터</option>
+        </select> <br>
 
-    <label for="text">내용</label>
-    <textarea name="" id="text" cols="30" rows="10"></textarea> <br>
+        <label for="text">내용</label>
+        <textarea name="text" id="text" cols="30" rows="10">{post.text}</textarea> <br>
 
-    <button>수정하기</button>
-    <button>취소</button>
-    <!--{/}-->
-
+        <input type="submit" name="submit" value="등록" />
+        <!-- <button type="submit">수정하기</button> -->
+    </form>
     
+    <button onclick="location.href='/board/view/{post.id}'">취소</button>
+    <!--{/}-->
 </body>
 </html> 

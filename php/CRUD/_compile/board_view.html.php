@@ -1,4 +1,4 @@
-<?php /* Template_ 2.2.8 2022/10/12 09:10:15 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_view.html 000000830 */ 
+<?php /* Template_ 2.2.8 2022/10/12 09:41:58 /Users/dev1/Desktop/TIL/php/CRUD/_template/board_view.html 000000830 */ 
 $TPL_post_1=empty($TPL_VAR["post"])||!is_array($TPL_VAR["post"])?0:count($TPL_VAR["post"]);?>
 <!DOCTYPE html>
 <html lang="en">
