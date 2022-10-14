@@ -2,7 +2,7 @@
 
 <?php echo form_open('board/write'); ?>
 
-    <input type="submit" name="submit" value="등록" />
+    <input  type="submit" name="submit" value="등록" />
     <button onclick="location.href='/board'" type="button" name="btn_cancel" id="btn_cancel_s" class="button small white"><span>취소</span></button>
 
     <br><br>
