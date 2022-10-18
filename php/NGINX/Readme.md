@@ -7,8 +7,8 @@
 Apache의 C10K 문제점(한 시스템에 동시 접속사수가 1만 명이 넘어갈 때 느려지는 문제점) 해결을 위해 만들어진 Event_Driven 구조의 웹서버.
 
 ## Nginx와 Apache의 차이점?
-Nginx - Event-Driven 방식으로 작동
-Apache - 쓰레드 / 프로세스 기반으로 작동
+Nginx : Event-Driven 방식으로 작동
+Apache : 쓰레드 / 프로세스 기반으로 작동
 
 Event-Driven :
 - 서버로 들어오는 여러 개의 커넥션을 Event-Handler를 통해 비동기방식으로 처리를 하게 한다.
