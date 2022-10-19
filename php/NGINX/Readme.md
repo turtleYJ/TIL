@@ -48,3 +48,19 @@ Event-Driven :
 ```
     ps -ax | grep nginx
 ```
+
+# Using nginx as HTTP load balancer
+
+## Load balancing methods supported in nginx
+1. round-robin
+- 프로세스가 도착한 순서대로 프로세스를 디스패치한다.
+- 정해진 할당량(또는 시간 간격)에 의해 실행을 제한한다.
+- 즉, 프로세스마다 할당된 시간이 있고 이 시간안에 작업을 완료하지 못하면 큐의 맨 뒤에 배치된다.
+- 이렇게 하여 CPU를 독점하지 않고 공평하게 이용하도록 한다.
+- round-robin 방식의 성능은 시간 할당에 달려있다.
+- 시간 할당이 너무 크다면, FCFS(first come first served) 정도로 성능이 낮아질 것이며
+- 시간 할당이 너무 적으면 잦은 문맥 교환이 작업 수행을 방해하여 오버헤드가 증가될 것이다.
+2. least-connected
+- 서버마다 연결된 커넥션이 몇개인지 체크하여 커넥션이 가장 적은 서버로 요청을 분배한다.
+- Real Server의 Open세션 수를 고려한 다음, 가장 적은 수의 open session을 가진 Real Server로 session을 맺어주는 방식.
+3. ip-hash
