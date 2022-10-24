@@ -64,3 +64,18 @@ Event-Driven :
 - 서버마다 연결된 커넥션이 몇개인지 체크하여 커넥션이 가장 적은 서버로 요청을 분배한다.
 - Real Server의 Open세션 수를 고려한 다음, 가장 적은 수의 open session을 가진 Real Server로 session을 맺어주는 방식.
 3. ip-hash
+
+# NGINX Reverse Proxy
+cf.
+일반적인 프로시의 장점
+1. 익명성 (ip를 숨김)
+2. 캐싱(캐시 정보를 프록시 서버에 저장할 수 있음) - 속도의 증가
+3. Blocking unwanted sites
+
+## Reverse Proxy Benefit
+1. Load Balancing
+2. Cashing
+3. Isolating internal traffic
+4. Logging
+
+
