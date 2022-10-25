@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--{@ post}-->
+    {post.title} <br>
+    {post.writer} <br>
+    {post.text} <br>
+    {post.postdate} <br>
+    
+    <button onclick="location.href='/board/update/{post.id}'">수정</button>
+    <button onclick="del({post.id});">삭제</button>
+    <!--{/}-->
+</body>
+</html>
+
+<script>
+    function del(id) {
+        if (confirm("정말 삭제하시겠습니까?"))
+        {
+            console.log("delete");
+            location.href = '/board/delete/' + id;
+        }
+    }
+    
+    // Jquery 문법이라 사용 불가 (라이브러리 추가해줘야 함.)
+    // $("#del").on("click", function(){
+    //     if(window.confirm("정말 삭제하시곘습니까?")){
+    //         console.log("확인");
+    //     }
+    // });
+</script>
