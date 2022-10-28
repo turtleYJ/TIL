@@ -1,0 +1,11 @@
+git init : initialize repository
+git status : working tree status
+git add : add to staging area
+git commit : create version
+git log : show version
+git log --stat
+git diff : Show changes
+git log -p : diff log
+git checkout
+git reset --hard : 현재 버전을 버리고 이전 기록으로 되돌리기
+git revert : 이전 버전으로 되돌리기(현재 버전은 이전 기록으로 저장된다)
