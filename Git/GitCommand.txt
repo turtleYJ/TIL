@@ -9,3 +9,6 @@ git log -p : diff log
 git checkout
 git reset --hard : 현재 버전을 버리고 이전 기록으로 되돌리기
 git revert : 이전 버전으로 되돌리기(현재 버전은 이전 기록으로 저장된다)
+
+# pushing an existing repository / 기존의 저장소를 푸싱하는 방법
+git remote add [원격저장소의 별명 주로 origin] [원격저장소 주소]
