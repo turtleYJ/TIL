@@ -19,6 +19,26 @@ class SutdaDeck {
 			cards[i] = new SutdaCard(num, isKwang);
 		}
 	}
+	
+	public void shuffle() {
+		for (int i = 0; i < cards.length; i++) {
+			int randomIndex = (int)(Math.random() * 20);
+			SutdaCard temp = cards[i];
+			cards[i] = cards[randomIndex];
+			cards[randomIndex] = temp;
+		}
+	}
+	
+	public SutdaCard pick(int index) {
+		return cards[index];
+	}
+	
+	public SutdaCard pick() {
+		int randomIndex = (int)(Math.random() * 20);
+		return cards[randomIndex];
+	}
+	
+	
 }
 
 class SutdaCard {
@@ -46,5 +66,25 @@ class Excercise7_1 {
 		for (int i = 0; i < deck.cards.length; i++) {
 			System.out.print(deck.cards[i] + ",");
 		}
+		
+		deck.shuffle();
+		
+		System.out.println();
+		System.out.println();
+		
+		for (int i = 0; i < deck.cards.length; i++) {
+			System.out.print(deck.cards[i] + ",");
+		}
+		
+		System.out.println();
+		System.out.println();
+		
+		System.out.println(deck.pick(0));
+		
+		System.out.println();
+		System.out.println();
+		
+		System.out.println(deck.pick());
+		
 	}
 }
