@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cc8dd9fc-196f-4cec-92d0-be5d4cc43cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../JPA/JPA기본/jpql/src/main/java/jpql/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JPA/JPA기본/jpql/src/main/java/jpql/JpaMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JPA/JPA기본/jpql/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JPA/JPA기본/jpql/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JPA/JPA기본/jpql/target/classes/jpql/JpaMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JPA/JPA기본/jpql/target/classes/jpql/JpaMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/java/com/example/restfulwebservice/RestfulWebServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/java/com/example/restfulwebservice/RestfulWebServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/java/com/example/restfulwebservice/helloworld/HelloWorldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/java/com/example/restfulwebservice/helloworld/HelloWorldController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../REST API/restful-web-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java/자바의정석/Chapter11.컬렉션프레임워크/src/ch11_컬렉션프레임워크/ArrayListEx2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Java/자바의정석/Chapter11.컬렉션프레임워크/src/ch11_컬렉션프레임워크/ArrayListEx2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +15,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CyjR1QDHtNFtz5LBWvjXxVRMk4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -28,7 +30,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/tutleJ/Desktop/Repository/TIL/codingTest"
+    "last_opened_file_path": "/Users/tutleJ/Desktop/Repository/TIL/codingTest",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -40,6 +46,7 @@
       <option name="presentableId" value="Default" />
       <updated>1659781706796</updated>
       <workItem from="1659781707981" duration="45000" />
+      <workItem from="1692616412673" duration="599000" />
     </task>
     <servers />
   </component>
