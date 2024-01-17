@@ -1,8 +1,5 @@
 def check_only_one_digit(num_str):
-  for digit in num_str:
-    if digit != '1':
-      return False
-  return True
+  return all(digit == '1' for digit in num_str)
 
 
 while True:
