@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import static com.example.productorderservice.product.ProductSteps.상품등록요청;
+import static com.example.productorderservice.product.ProductSteps.상품등록요청_생성;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class ProductApiTest extends ApiTest {
@@ -22,21 +24,5 @@ class ProductApiTest extends ApiTest {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
     }
 
-    private static ExtractableResponse<Response> 상품등록요청(AddProductRequest request) {
-        return RestAssured.given().log().all()
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(request)
-                .when()
-                .post("/products")
-                .then()
-                .log().all().extract();
-    }
 
-    private static AddProductRequest 상품등록요청_생성() {
-        final String name = "상품영";
-        final int price = 1000;
-        final DiscountPolicy discountPolicy = DiscountPolicy.NONE;
-        final AddProductRequest request = new AddProductRequest(name, price, discountPolicy);
-        return request;
-    }
 }
