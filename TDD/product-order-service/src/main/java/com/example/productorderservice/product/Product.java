@@ -52,4 +52,8 @@ public class Product {
     public DiscountPolicy getDiscountPolicy() {
         return discountPolicy;
     }
+
+    public int getDiscountedPrice() {
+        return discountPolicy.applyDiscount(price);
+    }
 }
