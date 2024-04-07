@@ -8,7 +8,7 @@ import hello.core.order.OrderService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class OrderApp {
+public class  OrderApp {
 
     public static void main(String[] args) {
 
