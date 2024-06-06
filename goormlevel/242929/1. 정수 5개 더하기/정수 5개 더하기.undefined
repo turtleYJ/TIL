@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# UTF-8 encoding when using korean
+user_input = input().split()
+numbers = [int(num) for num in user_input]
+
+print(sum(numbers))

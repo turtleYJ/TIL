@@ -1,0 +1,19 @@
+def calculate_remaining_budget(N, M, items):
+	total_cost = 0;
+	
+	for price, quantity in items:
+		total_cost += price * quantity
+	
+	if total_cost <= M:
+		return M - total_cost
+	else:
+		return "No"
+
+N, M = map(int, input().split())
+items = []
+for _ in range(N):
+	c, v = map(int, input().split())
+	items.append((c, v))
+	
+result = calculate_remaining_budget(N, M, items)
+print(result)
