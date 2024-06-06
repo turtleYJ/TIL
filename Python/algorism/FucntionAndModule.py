@@ -49,7 +49,7 @@
 
 # # # 패키지: 모듈을 논리적으로 묶은 것.
 # # 패키지 사용 예제
-from mypackage import module1, module2
+# from mypackage import module1, module2
 
-print(module1.func1())
-print(module2.func2())
+# print(module1.func1())
+# print(module2.func2())

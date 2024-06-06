@@ -65,8 +65,8 @@
 # print(squares)
 
 # 학생들의 이름과 점수를 담은 딕셔너리 {"John": 90, "Alice": 85, "Bob": 75} 가 주어졌을 때, 가장 높은 점수를 받은 학생의 이름을 출력하는 프로그램을 작성해보세요.
-scores = {"John": 90, "Alice": 85, "Bob": 75}
-highest_score = max(scores.values())
-print(highest_score)
-highest_score_student = [name for name, score in scores.items() if score == highest_score]
-print(highest_score_student[0])
+# scores = {"John": 90, "Alice": 85, "Bob": 75}
+# highest_score = max(scores.values())
+# print(highest_score)
+# highest_score_student = [name for name, score in scores.items() if score == highest_score]
+# print(highest_score_student[0])
