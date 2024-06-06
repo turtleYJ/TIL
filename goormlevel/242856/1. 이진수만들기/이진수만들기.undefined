@@ -1,0 +1,6 @@
+def integer_to_binary(N):
+	return bin(N)[2:]
+
+N = int(input())
+binary_representation = integer_to_binary(N)
+print(binary_representation)
