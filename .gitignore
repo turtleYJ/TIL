@@ -1,1 +1,15 @@
 .DS_Store
+
+# Ignore Python virtual environment
+venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Numpy package files
+*.egg-info/
+*.dist-info/
+site-packages/
