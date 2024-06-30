@@ -1,0 +1,6 @@
+def print_stars(N):
+	for i in range(N):
+		print('*' * (i+1))
+
+N = int(input())
+print_stars(N)

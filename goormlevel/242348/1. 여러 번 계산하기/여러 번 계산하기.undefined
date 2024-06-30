@@ -1,0 +1,12 @@
+def sum_pairs(pairs):
+	for pair in pairs:
+		print(sum(pair))
+
+N = int(input())
+pairs = []
+
+for _ in range(N):
+	a, b = map(int, input().split())
+	pairs.append((a, b))
+	
+sum_pairs(pairs)
