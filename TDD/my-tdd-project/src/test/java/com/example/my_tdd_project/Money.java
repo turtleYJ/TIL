@@ -1,20 +1,39 @@
 package com.example.my_tdd_project;
 
-abstract class Money {
+class Money {
     protected int amount;
+    protected String currency;
 
-    public static Dollar dollar(int amount) {
-        return new Dollar(amount);
+    public Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
+
+    public static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
     public static Money franc(int amount) {
-        return new Franc(amount);
+        return new Money(amount, "CHF");
     }
 
     public boolean equals(Object object) {
         Money money = (Money) object;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && currency.equals(money.currency);
     }
 
-    abstract Money times(int multiplier);
+    public String currency() {
+        return currency;
+    }
+
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
 }
