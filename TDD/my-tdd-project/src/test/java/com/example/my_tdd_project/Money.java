@@ -1,6 +1,6 @@
 package com.example.my_tdd_project;
 
-class Money {
+class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -35,5 +35,14 @@ class Money {
                 "amount=" + amount +
                 ", currency='" + currency + '\'' +
                 '}';
+    }
+
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }
