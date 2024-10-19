@@ -38,19 +38,31 @@ public class JdbcTacoRepository implements TacoRepository {
     // SaveTacoInfo() 메서드는 Taco 객체의 이름과 생성 날짜를 Taco 테이블에 저장
     private long saveTacoInfo(Taco taco) {
         taco.setCreatedAt(new Date());
-        PreparedStatementCreator psc = 
-            new PreparedStatementCreatorFactory(
+
+        // 자동 생성된 키 반환 설정
+        PreparedStatementCreatorFactory pscFactory = new PreparedStatementCreatorFactory(
                 "insert into Taco (name, createdAt) values (?, ?)",
                 Types.VARCHAR, Types.TIMESTAMP
-            ).newPreparedStatementCreator(
+        );
+        pscFactory.setReturnGeneratedKeys(true);
+
+        PreparedStatementCreator psc = pscFactory.newPreparedStatementCreator(
                 Arrays.asList(
-                    taco.getName(),
-                    new Timestamp(taco.getCreatedAt().getTime())));
+                        taco.getName(),
+                        new Timestamp(taco.getCreatedAt().getTime())
+                )
+        );
 
         // KeyHolder는 자동 생성된 키를 저장하는 데 사용
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbc.update(psc, keyHolder);
-        return keyHolder.getKey().longValue();
+
+        Number key = keyHolder.getKey(); // 생성된 키 확인
+        if (key != null) {
+            return key.longValue();
+        }  else {
+            throw new IllegalStateException("Fail to retrieve auto-generated key");
+        }
     }
 
     private void saveIngredientToTaco(

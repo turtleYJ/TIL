@@ -1,11 +1,11 @@
 create table if not exists Ingredient (
-  id varchar(4) not null,
+  id varchar(4) PRIMARY KEY,
   name varchar(25) not null,
   type varchar(10) not null
 );
 
 create table if not exists Taco (
-  id identity,
+  id identity primary key,
   name varchar(50) not null,
   createdAt timestamp not null
 );
