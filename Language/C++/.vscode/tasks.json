@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "type": "shell",
+        "command": "/usr/local/opt/llvm/bin/clang++",
+        "args": [
+          "-std=c++17",   // 사용할 C++ 버전
+          // "-g",           // 디버깅 플래그 추가
+          "${file}",
+          "-o",
+          "${fileDirname}/${fileBasenameNoExtension}"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],
+        "detail": "Generated task by VS Code"
+      }
+    ]
+  }
+  
