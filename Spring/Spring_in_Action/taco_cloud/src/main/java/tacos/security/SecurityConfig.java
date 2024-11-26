@@ -1,8 +1,12 @@
 package tacos.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.ldap.core.support.BaseLdapPathContextSource;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -25,12 +29,29 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(new AntPathRequestMatcher("/design")).hasRole("USER")  // USER 권한 필요
-                        .requestMatchers(new AntPathRequestMatcher("/orders")).hasRole("USER")  // USER 권한 필요
-                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()          // 모든 요청 허용
+                        .requestMatchers(new AntPathRequestMatcher("/design")).hasRole("USER")
+                        .requestMatchers(new AntPathRequestMatcher("/orders")).hasRole("USER")
+                        .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()   // 모든 요청 허용
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();
+    }
+
+    // LDAP 방식 코드
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .ldapAuthentication()
+                .userSearchBase("ou=people")
+                .userSearchFilter("(uid={0})")
+                .groupSearchBase("ou=groups")
+                .groupSearchFilter("member={0}")
+                .contextSource()
+                .url("ldap://localhost:8389/dc=tacocloud,dc=org")
+                .and()
+                .passwordCompare()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .passwordAttribute("userPasscode");
     }
 
     // 사용자 인증 정보 설정
@@ -52,18 +73,18 @@ public class SecurityConfig {
 //    }
 
     // JDBC 기반 사용자 인증 정보 설정
-    @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource) {
-        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-
-        // 필요시, 기본 테이블 생성 SQL 설정 (Spring Security 기본 스키마를 사용하지 않을 경우)
-        jdbcUserDetailsManager.setUsersByUsernameQuery(
-                "SELECT username, password, enabled FROM users WHERE username = ?");
-        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
-                "SELECT username, authority FROM authorities WHERE username = ?");
-
-        return jdbcUserDetailsManager;
-    }
+//    @Bean
+//    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+//
+//        // 필요시, 기본 테이블 생성 SQL 설정 (Spring Security 기본 스키마를 사용하지 않을 경우)
+//        jdbcUserDetailsManager.setUsersByUsernameQuery(
+//                "SELECT username, password, enabled FROM users WHERE username = ?");
+//        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+//                "SELECT username, authority FROM authorities WHERE username = ?");
+//
+//        return jdbcUserDetailsManager;
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
