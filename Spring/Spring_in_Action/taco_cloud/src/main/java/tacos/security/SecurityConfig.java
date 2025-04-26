@@ -42,16 +42,14 @@ public class SecurityConfig {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .ldapAuthentication()
-                .userSearchBase("ou=people")
-                .userSearchFilter("(uid={0})")
-                .groupSearchBase("ou=groups")
-                .groupSearchFilter("member={0}")
+                .userDnPatterns("uid={0},ou=people") // 사용자 DN 패턴
+                .groupSearchBase("ou=groups")       // 그룹 검색 기본 경로
                 .contextSource()
-                .url("ldap://localhost:8389/dc=tacocloud,dc=org")
+                .url("ldap://localhost:8389/dc=tacocloud,dc=com")
                 .and()
                 .passwordCompare()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .passwordAttribute("userPasscode");
+                .passwordEncoder(new BCryptPasswordEncoder()) // 비밀번호 비교
+                .passwordAttribute("userPassword");
     }
 
     // 사용자 인증 정보 설정
