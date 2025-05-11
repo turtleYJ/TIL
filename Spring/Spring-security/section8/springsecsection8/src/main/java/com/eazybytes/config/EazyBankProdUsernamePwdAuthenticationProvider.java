@@ -20,27 +20,19 @@ public class EazyBankProdUsernamePwdAuthenticationProvider implements Authentica
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * @param authentication the authentication request object.
-     * @return
-     * @throws AuthenticationException
-     */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if (passwordEncoder.matches(pwd, userDetails.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(username, pwd, userDetails.getAuthorities());
-        } else {
-            throw new BadCredentialsException("Invalid credentials");
+            // Fetch Age details and perform validation to check if age >18
+            return new UsernamePasswordAuthenticationToken(username,pwd,userDetails.getAuthorities());
+        }else {
+            throw new BadCredentialsException("Invalid password!");
         }
     }
 
-    /**
-     * @param authentication
-     * @return
-     */
     @Override
     public boolean supports(Class<?> authentication) {
         return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
