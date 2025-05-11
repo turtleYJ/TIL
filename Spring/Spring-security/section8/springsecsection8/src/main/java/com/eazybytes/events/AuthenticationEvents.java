@@ -12,12 +12,13 @@ public class AuthenticationEvents {
 
     @EventListener
     public void onSuccess(AuthenticationSuccessEvent successEvent) {
-        log.info("Authentication successful for the user {}", successEvent.getAuthentication().getName());
+        log.info("Login successful for the user : {}", successEvent.getAuthentication().getName());
     }
 
     @EventListener
     public void onFailure(AbstractAuthenticationFailureEvent failureEvent) {
-        log.error("login failed for the user {} due to {}", failureEvent.getAuthentication().getName(),
-            failureEvent.getException().getMessage());
+        log.error("Login failed for the user : {} due to : {}", failureEvent.getAuthentication().getName(),
+                failureEvent.getException().getMessage());
     }
+
 }

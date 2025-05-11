@@ -19,11 +19,6 @@ public class EazyBankUserDetailsService implements UserDetailsService {
 
     private final CustomerRepository customerRepository;
 
-    /**
-     * @param username the username identifying the user whose data is required.
-     * @return
-     * @throws UsernameNotFoundException
-     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Customer customer = customerRepository.findByEmail(username).orElseThrow(() -> new
@@ -32,3 +27,4 @@ public class EazyBankUserDetailsService implements UserDetailsService {
         return new User(customer.getEmail(), customer.getPwd(), authorities);
     }
 }
+
