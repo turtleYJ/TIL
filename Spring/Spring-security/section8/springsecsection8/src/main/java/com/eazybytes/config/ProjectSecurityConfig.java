@@ -2,25 +2,16 @@ package com.eazybytes.config;
 
 import com.eazybytes.exceptionhandling.CustomAccessDeniedHandler;
 import com.eazybytes.exceptionhandling.CustomBasicAuthenticationEntryPoint;
-import com.eazybytes.filter.CsrfCookieFilter;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-
-import java.util.Collections;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
