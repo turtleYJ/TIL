@@ -1,2 +1,13 @@
-package springbook.db;public class SimpleConnectionMaker {
+package springbook.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class SimpleConnectionMaker {
+    public Connection makeNewConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("org.h2.Driver");
+        Connection c = DriverManager.getConnection("jdbc:h2:mem:test", "sa", "");
+        return c;
+    }
 }

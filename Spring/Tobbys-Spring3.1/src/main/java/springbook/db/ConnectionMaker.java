@@ -1,2 +1,8 @@
-package springbook.db;public class ConnectionMaker {
+package springbook.db;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public interface ConnectionMaker {
+    public Connection makeNewConnection() throws ClassNotFoundException, SQLException;
 }
