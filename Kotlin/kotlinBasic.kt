@@ -1,14 +1,14 @@
-class test1 {
+fun main() {
     // 1. 변수
     val name: String = "토스"        // final (불변)
     var count: Int = 0              // 가변
     val inferred = "타입 추론됨"       // 타입 생략 가능
 
     // 2. 함수
-    fun add(a: Int, b: Int): Int {
-        return a + b
-    }
-    fun add(a: Int, b: Int): Int = a + b // 한줄 함수
+//    fun add(a: Int, b: Int): Int {
+//        return a + b
+//    }
+//    fun add(a: Int, b: Int): Int = a + b // 한줄 함수
 
     // 기본값 파라미터
     fun greet(name: String = "Guest") =  "Hello, $name"
@@ -19,6 +19,7 @@ class test1 {
     var len2 = nullable?.length ?: 0    // null이면 0 (엘비스 연산자)
     var len3 = nullable!!.length        // null이면 NPE (위험)
 
+    val status: String = "REDAY"
     // 4. when (= Java switch)
     when (status) {
         "READY" -> println("준비")
@@ -34,6 +35,7 @@ class test1 {
     )
     // equals, hashCode, toString, copy 자동 생성
 
+    val payment: Payment = Payment(1, 1000)
     // 6. String template
     val msg = "결제 금액: ${payment.amount}원"
 
