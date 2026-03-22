@@ -5,9 +5,8 @@ import com.yj.order.dto.OrderResponse;
 import com.yj.order.entity.Order;
 import com.yj.order.entity.OrderStatus;
 import com.yj.order.service.OrderService;
-import lombok.Getter;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
@@ -20,7 +19,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponse> createOrder(@RequestBody CreateOrderRequest createOrderRequest) {
+    public ResponseEntity<OrderResponse> createOrder(@Valid @RequestBody CreateOrderRequest createOrderRequest) {
         Order order = orderService.createOrder(createOrderRequest);
         return ResponseEntity.ok(OrderResponse.from(order));
     }
